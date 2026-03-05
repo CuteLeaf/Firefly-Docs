@@ -60,7 +60,15 @@ pageWidth: 100,
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `card.border` | `boolean` | `true` | 是否开启卡片边框和阴影，开启后让网站更有立体感 |
+| `card.border` | `boolean` | `false` | 是否开启卡片边框和阴影，开启后让网站更有立体感 |
+| `card.followTheme` | `boolean` | `false` | 卡片背景是否在浅色模式下跟随主题色相 |
+
+```ts
+card: {
+  border: false,
+  followTheme: false,
+},
+```
 
 ## 导航栏
 

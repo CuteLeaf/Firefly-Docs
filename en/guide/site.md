@@ -52,7 +52,15 @@ pageWidth: 100,
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `card.border` | `boolean` | `true` | Enable card border and shadow for a 3D effect |
+| `card.border` | `boolean` | `false` | Enable card border and shadow for a 3D effect |
+| `card.followTheme` | `boolean` | `false` | Whether card background follows theme hue in light mode |
+
+```ts
+card: {
+  border: false,
+  followTheme: false,
+},
+```
 
 ## Navbar
 
