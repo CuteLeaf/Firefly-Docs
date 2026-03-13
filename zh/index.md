@@ -13,6 +13,12 @@ hero:
       text: 快速开始
       link: /zh/guide/getting-started
     - theme: alt
+      text: 赞助
+      link: https://blog.cuteleaf.cn/sponsor/
+    - theme: alt
+      text: QQ群
+      link: https://qm.qq.com/q/ZGsFa8qX2G
+    - theme: alt
       text: GitHub
       link: https://github.com/CuteLeaf/Firefly
 

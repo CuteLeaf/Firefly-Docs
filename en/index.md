@@ -13,6 +13,9 @@ hero:
       text: Get Started
       link: /en/guide/getting-started
     - theme: alt
+      text: Support
+      link: https://ko-fi.com/cuteleaf
+    - theme: alt
       text: GitHub
       link: https://github.com/CuteLeaf/Firefly
 
