@@ -14,6 +14,7 @@
 | `description` | `string` | `""` | 页面描述文本（留空使用 i18n 翻译） |
 | `usage` | `string` | - | 赞助用途说明 |
 | `showSponsorsList` | `boolean` | `true` | 是否显示赞助者列表 |
+| `showComment` | `boolean` | `true` | 是否显示赞助页评论区（需先启用评论系统） |
 | `showButtonInPost` | `boolean` | `true` | 是否在文章详情页底部显示赞助按钮 |
 
 ## 赞助方式
@@ -73,4 +74,6 @@ sponsors: [
 
 ::: tip
 需要在 `siteConfig.ts` 中将 `pages.sponsor` 设为 `true` 才能访问赞助页面。
+
+赞助页评论区基于固定路径 `/sponsor/`，不需要创建 `src/content/spec/sponsor.md` 等内容文件。
 :::

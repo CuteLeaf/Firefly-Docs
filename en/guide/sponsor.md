@@ -14,6 +14,7 @@ The sponsor configuration manages the sponsor page content, including donation m
 | `description` | `string` | `""` | Page description (empty uses i18n) |
 | `usage` | `string` | - | Sponsorship usage description |
 | `showSponsorsList` | `boolean` | `true` | Show sponsors list |
+| `showComment` | `boolean` | `true` | Show comment section on sponsor page (requires comment system enabled) |
 | `showButtonInPost` | `boolean` | `true` | Show sponsor button on post pages |
 
 ## Sponsor Methods
@@ -47,4 +48,6 @@ sponsors: [
 
 ::: tip
 Set `pages.sponsor` to `true` in `siteConfig.ts` to enable the sponsor page.
+
+The sponsor page comment section is path-based (`/sponsor/`) and does not require creating a content entry like `src/content/spec/sponsor.md`.
 :::

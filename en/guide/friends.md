@@ -13,6 +13,7 @@ The friends configuration manages the friend links page display.
 | `title` | `string` | `""` | Page title, uses i18n translation if empty |
 | `description` | `string` | `""` | Page description, uses i18n translation if empty |
 | `showCustomContent` | `boolean` | `true` | Whether to show custom content at the bottom (friends.mdx) |
+| `showComment` | `boolean` | `true` | Whether to show the comment section on the friends page (requires comment system enabled) |
 | `randomizeSort` | `boolean` | `false` | Whether to enable random sort. If true, ignores weight and randomizes order once during build |
 
 ## Friend Link Properties
@@ -37,6 +38,8 @@ export const friendsPageConfig: FriendsPageConfig = {
   description: "",
   // Whether to show custom content (friends.mdx)
   showCustomContent: true,
+  // Whether to show comment section (requires comment system enabled)
+  showComment: true,
   // Whether to enable random sort
   randomizeSort: false,
 };
@@ -78,6 +81,10 @@ export const notes = [
 ```
 
 Set `showCustomContent: false` in the config to hide the custom content section.
+
+Use `siteConfig.pages.friends` to control whether the `/friends/` page is accessible.
+
+When `commentConfig.type !== "none"` and `friendsPageConfig.showComment` is `true`, the friends page comment section is enabled.
 
 ::: tip
 - The MDX file can be fully rewritten to match your preferences — the default layout is just a reference template

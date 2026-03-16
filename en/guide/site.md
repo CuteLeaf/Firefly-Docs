@@ -152,6 +152,7 @@ Restart the dev server after changing this setting.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
+| `pages.friends` | `boolean` | `true` | Friends page toggle |
 | `pages.sponsor` | `boolean` | `true` | Sponsor page toggle |
 | `pages.guestbook` | `boolean` | `true` | Guestbook page toggle (requires comment system) |
 | `pages.bangumi` | `boolean` | `true` | Bangumi page toggle |
