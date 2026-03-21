@@ -138,6 +138,7 @@ Restart the dev server after changing this setting.
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `postListLayout.defaultMode` | `string` | `"list"` | Default layout: `"list"` or `"grid"` |
+| `postListLayout.mobileDefaultMode` | `string` | `-` | Mobile default layout: `"list"` or `"grid"`. If not set, it follows `defaultMode` |
 | `postListLayout.allowSwitch` | `boolean` | `true` | Allow users to switch layout |
 | `postListLayout.grid.masonry` | `boolean` | `false` | Enable masonry layout |
 | `postListLayout.grid.columnWidth` | `number` | `320` | Minimum card width in grid mode (px). The browser automatically calculates column count based on container width |
