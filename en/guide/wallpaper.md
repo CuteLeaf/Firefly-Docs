@@ -106,6 +106,18 @@ Image path formats:
 | `banner.navbar.enableBlur` | `boolean` | `true` | Enable frosted glass blur |
 | `banner.navbar.blur` | `number` | `3` | Blur intensity |
 
+### Banner Carousel
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `banner.carousel.enable` | `boolean` | `true` | Enable banner image carousel. If disabled, one image is randomly chosen on page refresh |
+| `banner.carousel.interval` | `number` | `5000` | Carousel interval in milliseconds |
+| `banner.carousel.switchable` | `boolean` | `true` | Allow users to toggle carousel in the control panel |
+
+::: tip
+Banner carousel only works when multiple images are configured in `src.desktop` or `src.mobile`.
+:::
+
 ### Wave Animation
 
 | Property | Type | Default | Description |

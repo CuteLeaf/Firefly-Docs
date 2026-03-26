@@ -108,6 +108,18 @@ src: {
 | `banner.navbar.enableBlur` | `boolean` | `true` | 是否开启毛玻璃模糊效果 |
 | `banner.navbar.blur` | `number` | `3` | 毛玻璃模糊度 |
 
+### 横幅图片轮播
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.carousel.enable` | `boolean` | `true` | 是否启用横幅图片轮播；关闭时保持每次刷新随机显示一张 |
+| `banner.carousel.interval` | `number` | `5000` | 轮播切换间隔（毫秒） |
+| `banner.carousel.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换横幅轮播 |
+
+::: tip
+横幅轮播仅在 `src.desktop` 或 `src.mobile` 配置多张图片时生效。
+:::
+
 ### 水波纹动画
 
 | 属性 | 类型 | 默认值 | 说明 |
