@@ -6,6 +6,9 @@ Code block configuration is based on [Expressive Code](https://expressive-code.c
 
 `src/config/expressiveCodeConfig.ts`
 
+See also: [Mermaid Diagram](./mermaid.md)
+See also: [PlantUML Diagram](./plantuml.md)
+
 ## Properties
 
 | Property | Type | Default | Description |

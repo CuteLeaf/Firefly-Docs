@@ -65,9 +65,8 @@ export default defineConfig({
                 { text: '封面图片', link: '/zh/guide/cover-image' },
                 { text: '文章加密', link: '/zh/guide/password' },
                 { text: '音乐播放器', link: '/zh/guide/music' },
-                
-                
-                
+                { text: 'Mermaid 图表', link: '/zh/guide/mermaid' },
+                { text: 'PlantUML 图表', link: '/zh/guide/plantuml' }, 
               ],
             },
             {
@@ -146,6 +145,8 @@ export default defineConfig({
                 { text: 'Music Player', link: '/en/guide/music' },
                 { text: 'Encryption Post', link: '/en/guide/password' },
                 { text: 'Cover Image', link: '/en/guide/cover-image' },
+                { text: 'Mermaid Diagram', link: '/en/guide/mermaid' },
+                { text: 'PlantUML Diagram', link: '/en/guide/plantuml' },
               ],
             },
             {

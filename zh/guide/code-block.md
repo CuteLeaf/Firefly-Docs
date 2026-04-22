@@ -6,6 +6,9 @@
 
 `src/config/expressiveCodeConfig.ts`
 
+另见：[Mermaid 图表](./mermaid.md)
+另见：[PlantUML 图表](./plantuml.md)
+
 ## 配置项
 
 | 属性 | 类型 | 默认值 | 说明 |
