@@ -12,10 +12,6 @@ pnpm build
 
 The build output is in the `dist/` directory. Upload all files from that directory to your server.
 
-::: tip
-The following platforms build and deploy automatically — no manual build required.
-:::
-
 ## Vercel
 
 [Vercel](https://vercel.com/) is one of the easiest platforms for deploying Astro projects.
@@ -23,10 +19,10 @@ The following platforms build and deploy automatically — no manual build requi
 ### Option 1: Via Vercel Dashboard
 
 1. Push your project to GitHub / GitLab / Bitbucket
-2. Log in to [Vercel](https://vercel.com/), click **Add New → Project**
+2. Log in to [Vercel](https://vercel.com/), click **Add New … → Project**
 3. Import your repository
 4. Vercel will auto-detect the Astro framework:
-   - **Framework Preset**: `Astro`
+   - **Application Preset**: `Astro`
    - **Build Command**: `pnpm build`
    - **Output Directory**: `dist`
    - **Install Command**: `pnpm install`
@@ -46,24 +42,21 @@ Create `vercel.json` in the project root:
 }
 ```
 
-::: tip
-Vercel supports automatic deployments: every push to the main branch triggers a build and deploy.
-:::
-
 ## Netlify
 
 [Netlify](https://www.netlify.com/) is another popular static site hosting platform.
 
 ### Option 1: Via Netlify Dashboard
 
-1. Log in to [Netlify](https://app.netlify.com/)
-2. Click **Add new project → Import an existing project**
-3. Connect your GitHub repository
-4. Configure build settings:
+1. Push your project to GitHub / GitLab / Bitbucket / Azure DevOps
+2. Log in to [Netlify](https://app.netlify.com/)
+3. Click **Add new project → Import a Git repository**
+4. Connect your repository
+5. Configure build settings:
    - **Build command**: `pnpm build`
    - **Publish directory**: `dist`
-5. Set `NODE_VERSION` to `22` in **Environment variables**
-6. Click **Deploy site**
+6. Set `NODE_VERSION` to `22` in **Environment variables**
+7. Click **Deploy …**
 
 ### Option 2: Using netlify.toml
 
@@ -159,7 +152,7 @@ No editing needed for `base`, if the GitHub Pages set a custom domain or the rep
 
 ### Option 1: Via Cloudflare Dashboard
 
-1. Create `wrangler.toml` in the project root：
+1. Create `wrangler.toml` in the project root:
   ```toml
   name = "firefly"
   compatibility_date = "YYYY-MM-DD" # edit to today
@@ -170,9 +163,20 @@ No editing needed for `base`, if the GitHub Pages set a custom domain or the rep
   [vars]
   NODE_VERSION = "22"
   ```
+  or `wrangler.jsonc`:
+  ```jsonc
+  {
+    "name": "firefly",
+    "compatibility_date": "YYYY-MM-DD", // edit to today
+    "assets": {
+      "directory": "./dist",
+    },
+  }
+  ```
+2. Push your project to GitHub / GitLab
 2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-3. Enter **Compute → Workers & Pages**, click **Create application → Connect Github**
-4. Select your GitHub repository
+3. Enter **Compute → Workers & Pages**, click **Create application → Connect Github / GitLab**
+4. Select your repository
 5. Configure build settings:
    - **Build command**: `pnpm build`
    - **Deploy command**: `npx wrangler deploy`
@@ -198,15 +202,16 @@ wrangler deploy dist
 
 ### Option 1: Via Cloudflare Dashboard
 
-1. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. Enter **Compute → Workers & Pages**, click **Create application → Pages → Connect to Git**
-3. Select your GitHub repository
-4. Configure build settings:
+1. Push your project to GitHub / GitLab
+2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
+3. Enter **Compute → Workers & Pages**, click **Create application → Pages → Connect to Git**
+4. Select your repository
+5. Configure build settings:
    - **Framework preset**: `Astro`
    - **Build command**: `pnpm build`
    - **Build output directory**: `dist`
-5. Set `NODE_VERSION` to `22` in **Environment variables**
-6. Click **Save and Deploy**
+6. Set `NODE_VERSION` to `22` in **Environment variables**
+7. Click **Save and Deploy**
 
 ### Option 2: Using Wrangler CLI
 
@@ -228,15 +233,17 @@ wrangler pages deploy dist
 
 ### Steps
 
-1. Log in to [EdgeOne Console](https://console.cloud.tencent.com/edgeone)
-2. Go to **Site Acceleration → Pages**, click **Create Project**
-3. Select **Import from Git**, connect your GitHub / GitLab repository
-4. Configure build settings:
-   - **Framework preset**: `Astro`
+1. Push your project to GitHub / GitLab / Gitee / CNB
+2. Log in to [EdgeOne Console](https://console.tencentcloud.com/edgeone)
+3. Go to **Service Dashboard → Pages**, click **Create project**
+4. Select **Import Git repository**, connect your repository
+5. Configure build settings:
+   - **Preset framework**: `Astro`
+   - **Build output directory**: `dist`
    - **Build command**: `pnpm build`
-   - **Output directory**: `dist`
-5. Set `NODE_VERSION` to `22` in environment variables
-6. Click **Start Deployment**
+   - **Install command**: `pnpm install`
+6. Set `NODE_VERSION` to `22` in environment variables
+7. Click **Start Deployment**
 
 ::: tip
 EdgeOne Pages has edge nodes in mainland China, providing fast access for Chinese users.
@@ -273,6 +280,7 @@ Most platforms support custom domain binding. General steps:
 
 ## Deployment Notes
 
+- Most of the above platforms support automatic deployments: every push to the corresponding branch triggers a build and deploy.
 - Ensure `site` in `astro.config.mjs` is set to your actual domain
 - If deploying to a subpath (e.g., `https://example.com/blog/`), set the `base` field
 - Node.js version must be set to 22 or higher on all platforms

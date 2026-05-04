@@ -12,10 +12,6 @@ pnpm build
 
 构建产物位于 `dist/` 目录，将该目录下的所有文件上传到你的服务器即可。
 
-::: tip
-以下平台会自动构建和部署，无需手动构建。
-:::
-
 ## Vercel
 
 [Vercel](https://vercel.com/) 是部署 Astro 项目最简单的平台之一。
@@ -23,10 +19,10 @@ pnpm build
 ### 方法一：通过 Vercel 控制台
 
 1. 将你的项目推送到 GitHub / GitLab / Bitbucket
-2. 登录 [Vercel](https://vercel.com/)，点击 **Add New → Project**
+2. 登录 [Vercel](https://vercel.com/)，点击 **Add New … → Project**
 3. 导入你的仓库
 4. Vercel 会自动检测 Astro 框架，配置如下：
-   - **Framework Preset**: `Astro`
+   - **Application Preset**: `Astro`
    - **Build Command**: `pnpm build`
    - **Output Directory**: `dist`
    - **Install Command**: `pnpm install`
@@ -46,24 +42,21 @@ pnpm build
 }
 ```
 
-::: tip
-Vercel 支持自动部署：每次推送到主分支时会自动触发构建和部署。
-:::
-
 ## Netlify
 
 [Netlify](https://www.netlify.com/) 是另一个流行的静态站点托管平台。
 
 ### 方法一：通过 Netlify 控制台
 
-1. 登录 [Netlify](https://app.netlify.com/)
-2. 点击 **Add new project → Import an existing project**
-3. 连接 GitHub 仓库
-4. 配置构建设置：
+1. 将你的项目推送到 GitHub / GitLab / Bitbucket / Azure DevOps
+2. 登录 [Netlify](https://app.netlify.com/)
+3. 点击 **Add new project → Import a Git repository**
+4. 连接你的仓库
+5. 配置构建设置：
    - **Build command**: `pnpm build`
    - **Publish directory**: `dist`
-5. 在 **Environment variables** 中设置 `NODE_VERSION` 为 `22`
-6. 点击 **Deploy site**
+6. 在 **Environment variables** 中设置 `NODE_VERSION` 为 `22`
+7. 点击 **Deploy …**
 
 ### 方法二：使用 netlify.toml
 
@@ -170,13 +163,24 @@ export default defineConfig({
   [vars]
   NODE_VERSION = "22"
   ```
+  又或`wrangler.jsonc`：
+  ```jsonc
+  {
+    "name": "firefly",
+    "compatibility_date": "YYYY-MM-DD", // 更为今日
+    "assets": {
+      "directory": "./dist",
+    },
+  }
+  ```
+2. 将你的项目推送到 GitHub / GitLab
 2. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
-3. 进入 **Compute → Workers & Pages → Create application → Connect Github**
-4. 选择 GitHub 仓库
+3. 进入 **计算 → Workers 和 Pages → 创建应用程序 → Connect Github / GitLab**
+4. 选择你的仓库
 5. 配置构建设置：
-   - **Build command**: `pnpm build`
-   - **Deploy command**: `npx wrangler deploy`
-6. 点击 **Deploy**
+   - **构建命令**: `pnpm build`
+   - **部署命令**: `npx wrangler deploy`
+6. 点击 **部署**
 
 ### 方法二：使用 Wrangler CLI
 
@@ -198,15 +202,16 @@ wrangler deploy dist
 
 ### 方法一：通过 Cloudflare 仪表盘
 
-1. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
-2. 进入 **Compute** → **Workers & Pages → Create application → Pages → Connect to Git**
-3. 选择 GitHub 仓库
-4. 配置构建设置：
+1. 将你的项目推送到 GitHub / GitLab
+2. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
+3. 进入 **计算** → Workers 和 Pages → 创建应用程序 → Pages → Connect to Git**
+4. 选择你的仓库
+5. 配置构建设置：
    - **Framework preset**: `Astro`
    - **Build command**: `pnpm build`
    - **Build output directory**: `dist`
-5. 在 **Environment variables** 中设置 `NODE_VERSION` 为 `22`
-6. 点击 **Save and Deploy**
+6. 在 **Environment variables** 中设置 `NODE_VERSION` 为 `22`
+7. 点击 **Save and Deploy**
 
 ### 方法二：使用 Wrangler CLI
 
@@ -228,15 +233,17 @@ wrangler pages deploy dist
 
 ### 部署步骤
 
-1. 登录 [EdgeOne 控制台](https://console.cloud.tencent.com/edgeone)
-2. 进入 **站点加速 → Pages**，点击 **新建项目**
-3. 选择 **从 Git 仓库导入**，连接 GitHub / GitLab 仓库
-4. 配置构建设置：
+1. 将你的项目推送到 GitHub / GitLab / Gitee / CNB
+2. 登录 [EdgeOne 控制台](https://console.tencentcloud.com/edgeone)
+3. 进入 **服务总览 → Pages**，点击 **创建项目**
+4. 选择 **从 Git 仓库导入**，连接你的仓库
+5. 配置构建设置：
    - **框架预设**: `Astro`
-   - **构建命令**: `pnpm build`
    - **输出目录**: `dist`
-5. 在环境变量中设置 `NODE_VERSION` 为 `22`
-6. 点击 **开始部署**
+   - **构建命令**: `pnpm build`
+   - **安装命令**: `pnpm install`
+6. 在环境变量中设置 `NODE_VERSION` 为 `22`
+7. 点击 **开始部署**
 
 ::: tip
 EdgeOne Pages 在中国大陆有边缘节点，对国内用户访问速度友好。
@@ -273,6 +280,7 @@ EdgeOne Pages 在中国大陆有边缘节点，对国内用户访问速度友好
 
 ## 部署注意事项
 
+- 以上大多静态资源托管平台都支持自动部署仓库的每次提交
 - 确保 `astro.config.mjs` 中的 `site` 字段设置为你的实际域名
 - 如果使用子路径部署（如 `https://example.com/blog/`），需要设置 `base` 字段
 - 各平台的 Node.js 版本需要设置为 22 或更高
