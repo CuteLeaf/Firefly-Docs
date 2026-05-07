@@ -10,8 +10,12 @@
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `mode` | `string` | `"banner"` | 壁纸模式：`"banner"` 横幅、`"overlay"` 全屏透明、`"none"` 纯色背景 |
+| `mode` | `string` | `"banner"` | 壁纸模式：`"banner"` 横幅、`"fullscreen"` 全屏、`"overlay"` 全屏透明、`"none"` 纯色背景 |
 | `switchable` | `boolean` | `true` | 是否允许用户通过导航栏切换壁纸模式 |
+
+::: tip
+设为 `false` 可提升性能（只渲染当前模式）。推荐只选择自己喜欢的模式并关闭切换功能。
+:::
 
 ## 图片配置
 
@@ -57,35 +61,39 @@ src: {
 1. **public 目录**（以 `/` 开头）：不会被优化
 2. **src 目录**（不以 `/` 开头）：自动优化（推荐）
 3. **远程 URL**：不会被优化，请确保图片体积足够小
+
+建议不要替换 `d1-d6`、`m1-m6` 这些默认示例图片的名称。使用自己的图片时请命名为其他名称，避免以后更新时被覆盖。
 :::
 
-## Banner 模式配置
+## 通用配置（Banner 和 Fullscreen 共享）
 
-### 图片位置
+`common` 下的配置在横幅壁纸和全屏壁纸模式下共享。
+
+### 文字遮罩暗度
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `banner.position` | `string` | `"0% 20%"` | CSS `object-position` 值 |
+| `common.dimOpacity` | `number` | `0.2` | 横幅文字遮罩暗度，0-1 之间，值越大越暗 |
 
 ### 首页横幅文字
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `banner.homeText.enable` | `boolean` | `true` | 是否启用横幅文字 |
-| `banner.homeText.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换显示 |
-| `banner.homeText.title` | `string` | `"Lovely firefly!"` | 主标题 |
-| `banner.homeText.titleSize` | `string` | `"3.8rem"` | 主标题字体大小 |
-| `banner.homeText.subtitle` | `string \| string[]` | - | 副标题，支持单个或多个 |
-| `banner.homeText.subtitleSize` | `string` | `"1.5rem"` | 副标题字体大小 |
+| `common.homeText.enable` | `boolean` | `true` | 是否启用横幅文字 |
+| `common.homeText.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换显示 |
+| `common.homeText.title` | `string` | `"Lovely firefly!"` | 主标题 |
+| `common.homeText.titleSize` | `string` | `"3.8rem"` | 主标题字体大小 |
+| `common.homeText.subtitle` | `string \| string[]` | - | 副标题，支持单个或多个 |
+| `common.homeText.subtitleSize` | `string` | `"1.5rem"` | 副标题字体大小 |
 
 ### 打字机效果
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `banner.homeText.typewriter.enable` | `boolean` | `true` | 是否启用打字机效果 |
-| `banner.homeText.typewriter.speed` | `number` | `100` | 打字速度（毫秒） |
-| `banner.homeText.typewriter.deleteSpeed` | `number` | `50` | 删除速度（毫秒） |
-| `banner.homeText.typewriter.pauseTime` | `number` | `2000` | 完全显示后的暂停时间（毫秒） |
+| `common.homeText.typewriter.enable` | `boolean` | `true` | 是否启用打字机效果 |
+| `common.homeText.typewriter.speed` | `number` | `100` | 打字速度（毫秒） |
+| `common.homeText.typewriter.deleteSpeed` | `number` | `50` | 删除速度（毫秒） |
+| `common.homeText.typewriter.pauseTime` | `number` | `2000` | 完全显示后的暂停时间（毫秒） |
 
 ::: info
 - 打字机**开启** → 循环显示所有副标题
@@ -96,50 +104,68 @@ src: {
 
 | 属性 | 类型 | 说明 |
 |------|------|------|
-| `banner.credit.enable` | `boolean \| { desktop, mobile }` | 是否显示来源文本 |
-| `banner.credit.text` | `string \| { desktop, mobile }` | 来源文本 |
-| `banner.credit.url` | `string \| { desktop, mobile }` | 原始作品链接 |
+| `common.credit.enable` | `boolean \| { desktop, mobile }` | 是否显示来源文本 |
+| `common.credit.text` | `string \| { desktop, mobile }` | 来源文本 |
+| `common.credit.url` | `string \| { desktop, mobile }` | 原始作品链接 |
 
 ### 导航栏透明模式
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `banner.navbar.transparentMode` | `string` | `"semifull"` | 透明模式：`"semi"` 半透明、`"full"` 完全透明、`"semifull"` 动态透明 |
-| `banner.navbar.enableBlur` | `boolean` | `true` | 是否开启毛玻璃模糊效果 |
-| `banner.navbar.blur` | `number` | `3` | 毛玻璃模糊度 |
-
-### 横幅图片轮播
-
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `banner.carousel.enable` | `boolean` | `true` | 是否启用横幅图片轮播；关闭时保持每次刷新随机显示一张 |
-| `banner.carousel.interval` | `number` | `5000` | 轮播切换间隔（毫秒） |
-| `banner.carousel.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换横幅轮播 |
-
-::: tip
-横幅轮播仅在 `src.desktop` 或 `src.mobile` 配置多张图片时生效。
-:::
+| `common.navbar.transparentMode` | `string` | `"semi"` | 透明模式：`"semi"` 半透明、`"full"` 完全透明、`"semifull"` 动态透明 |
+| `common.navbar.enableBlur` | `boolean` | `true` | 是否开启毛玻璃模糊效果 |
+| `common.navbar.blur` | `number` | `5` | 毛玻璃模糊度 |
 
 ### 水波纹动画
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `banner.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用水波纹动画 |
-| `banner.waves.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换 |
+| `common.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用水波纹动画 |
+| `common.waves.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换 |
 
 ::: warning
 水波纹动画会影响页面性能，请根据需要开启。
 :::
 
+## Banner 模式配置
+
+### 图片位置
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.position` | `string` | `"0% 20%"` | CSS `object-position` 值。支持 `'center'`、`'top'`、`'bottom'`、`'left'`、`'right'`、百分比等 |
+
+### 横幅图片轮播
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.carousel.enable` | `boolean` | `false` | 是否启用横幅图片轮播；关闭时保持每次刷新随机显示一张 |
+| `banner.carousel.interval` | `number` | `5000` | 轮播切换间隔（毫秒） |
+| `banner.carousel.switchable` | `boolean` | `false` | 是否允许用户通过控制面板切换横幅轮播 |
+
+::: tip
+横幅轮播仅在 `src.desktop` 或 `src.mobile` 配置多张图片时生效。
+
+开启轮播时，为了图片之间的切换自然，图片会在下一张加载完成后当前图片才会消失，过渡时可能有重影。如果觉得效果不理想，可以关闭轮播保持每次刷新随机显示。
+:::
+
+## Fullscreen 模式配置
+
+全屏壁纸模式将背景图片铺满整个屏幕。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `fullscreen.position` | `string` | `"center"` | CSS `object-position` 值 |
+
 ## Overlay 模式配置
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `overlay.switchable` | `boolean \| { opacity, blur, cardOpacity }` | `false`（未配置时） | 是否允许访客在显示设置面板中调整透明模式参数。支持总开关或分项开关 |
-| `overlay.zIndex` | `number` | `-1` | 层级 |
+| `overlay.switchable` | `boolean \| { opacity, blur, cardOpacity }` | - | 是否允许访客在显示设置面板中调整透明模式参数。支持总开关或分项开关 |
+| `overlay.zIndex` | `number` | `-1` | 层级，确保壁纸在背景层 |
 | `overlay.opacity` | `number` | `0.8` | 壁纸透明度（0-1） |
-| `overlay.blur` | `number` | `3` | 背景模糊程度（px） |
-| `overlay.cardOpacity` | `number` | `0.6` | 卡片背景透明度（0-1），值越小卡片越透明 |
+| `overlay.blur` | `number` | `10` | 背景模糊度（px） |
+| `overlay.cardOpacity` | `number` | `0.5` | 卡片背景透明度（0-1），值越小卡片越透明 |
 
 `overlay.switchable` 支持两种写法：
 
