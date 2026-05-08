@@ -100,14 +100,6 @@ src: {
 - 打字机**关闭** → 每次刷新随机显示一条副标题
 :::
 
-### 图片来源
-
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `common.credit.enable` | `boolean \| { desktop, mobile }` | 是否显示来源文本 |
-| `common.credit.text` | `string \| { desktop, mobile }` | 来源文本 |
-| `common.credit.url` | `string \| { desktop, mobile }` | 原始作品链接 |
-
 ### 导航栏透明模式
 
 | 属性 | 类型 | 默认值 | 说明 |
@@ -125,6 +117,20 @@ src: {
 
 ::: warning
 水波纹动画会影响页面性能，请根据需要开启。
+:::
+
+### 渐变过渡
+
+当水波纹关闭时自动启用，在壁纸底部提供到背景色的平滑渐变过渡效果。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用渐变过渡 |
+| `common.gradient.height` | `string` | `"30vh"` | 渐变高度 |
+| `common.gradient.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换 |
+
+::: info
+渐变过渡与水波纹互斥：水波纹开启时渐变自动隐藏，水波纹关闭时渐变自动显示。两者都可通过控制面板独立切换。
 :::
 
 ## Banner 模式配置

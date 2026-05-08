@@ -98,14 +98,6 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 - Typewriter **disabled** — randomly shows one subtitle on each refresh
 :::
 
-### Image Credit
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `common.credit.enable` | `boolean \| { desktop, mobile }` | Show credit text |
-| `common.credit.text` | `string \| { desktop, mobile }` | Credit text |
-| `common.credit.url` | `string \| { desktop, mobile }` | Original artwork URL |
-
 ### Navbar Transparency
 
 | Property | Type | Default | Description |
@@ -123,6 +115,20 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 
 ::: warning
 Wave animation affects page performance. Enable based on your needs.
+:::
+
+### Gradient Transition
+
+Automatically enabled when waves are disabled, providing a smooth gradient fade from the wallpaper bottom to the background color.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable gradient transition |
+| `common.gradient.height` | `string` | `"30vh"` | Gradient height |
+| `common.gradient.switchable` | `boolean` | `true` | Allow user toggle |
+
+::: info
+Gradient and waves are mutually exclusive: when waves are enabled, the gradient is automatically hidden; when waves are disabled, the gradient is automatically shown. Both can be independently toggled via the control panel.
 :::
 
 ## Banner Mode
