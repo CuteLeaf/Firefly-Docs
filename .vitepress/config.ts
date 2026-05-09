@@ -80,7 +80,7 @@ export default defineConfig({
             {
               text: '扩展功能',
               items: [
-                { text: '樱花特效', link: '/zh/guide/sakura' },
+                { text: '特效设置', link: '/zh/guide/effects' },
                 { text: '公告', link: '/zh/guide/announcement' },
                 { text: '页脚', link: '/zh/guide/footer' },
                 { text: '广告', link: '/zh/guide/ad' },
@@ -160,7 +160,7 @@ export default defineConfig({
             {
               text: 'Extended Features',
               items: [
-                { text: 'Sakura Effect', link: '/en/guide/sakura' },
+                { text: 'Effects', link: '/en/guide/effects' },
                 { text: 'Announcement', link: '/en/guide/announcement' },
                 { text: 'Footer', link: '/en/guide/footer' },
                 { text: 'Advertisement', link: '/en/guide/ad' },

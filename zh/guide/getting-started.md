@@ -68,7 +68,7 @@ Firefly/
 | `fontConfig.ts` | 字体配置 | [字体](./font.md) |
 | `coverImageConfig.ts` | 封面图片配置 | [封面图片](./cover-image.md) |
 | `expressiveCodeConfig.ts` | 代码块配置 | [代码块](./code-block.md) |
-| `sakuraConfig.ts` | 樱花特效配置 | [樱花特效](./sakura.md) |
+| `effectsConfig.ts` | 特效配置 | [特效设置](./effects.md) |
 | `announcementConfig.ts` | 公告配置 | [公告](./announcement.md) |
 | `footerConfig.ts` | 页脚配置 | [页脚](./footer.md) |
 | `licenseConfig.ts` | 许可证配置 | [许可证](./license.md) |

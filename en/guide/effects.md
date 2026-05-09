@@ -1,35 +1,40 @@
-# Sakura Effect
+# Effects
+
+Effects settings manage animation effects for the site. Currently supports sakura effect.
+
+## Sakura Effect
 
 The sakura effect adds falling cherry blossom animation to your site.
 
-## Config File
+### Config File
 
-`src/config/sakuraConfig.ts`
+`src/config/effectsConfig.ts`
 
-## Basic Configuration
+### Basic Configuration
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `enable` | `boolean` | `false` | Enable sakura effect |
+| `switchable` | `boolean` | `false` | Allow users to toggle in settings panel |
 | `sakuraNum` | `number` | `21` | Number of sakura petals |
 | `limitTimes` | `number` | `-1` | Out-of-bounds limit, `-1` for infinite |
 | `zIndex` | `number` | `100` | Z-index layer |
 
-## Size
+### Size
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `size.min` | `number` | `0.5` | Minimum size multiplier |
 | `size.max` | `number` | `1.1` | Maximum size multiplier |
 
-## Opacity
+### Opacity
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `opacity.min` | `number` | `0.3` | Minimum opacity |
 | `opacity.max` | `number` | `0.9` | Maximum opacity |
 
-## Speed
+### Speed
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
@@ -44,11 +49,12 @@ The sakura effect adds falling cherry blossom animation to your site.
 `fadeSpeed` should not exceed `opacity.min`, otherwise petals may disappear instantly.
 :::
 
-## Full Example
+### Full Example
 
 ```ts
 export const sakuraConfig: SakuraConfig = {
   enable: true,
+  switchable: true,
   sakuraNum: 21,
   limitTimes: -1,
   size: { min: 0.5, max: 1.1 },

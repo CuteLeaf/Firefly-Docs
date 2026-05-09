@@ -68,7 +68,7 @@ All configuration files are located in the `src/config/` directory:
 | `fontConfig.ts` | Font configuration | [Font](./font.md) |
 | `coverImageConfig.ts` | Cover image configuration | [Cover Image](./cover-image.md) |
 | `expressiveCodeConfig.ts` | Code block configuration | [Code Block](./code-block.md) |
-| `sakuraConfig.ts` | Sakura effect configuration | [Sakura](./sakura.md) |
+| `effectsConfig.ts` | Effects configuration | [Effects](./effects.md) |
 | `announcementConfig.ts` | Announcement configuration | [Announcement](./announcement.md) |
 | `footerConfig.ts` | Footer configuration | [Footer](./footer.md) |
 | `licenseConfig.ts` | License configuration | [License](./license.md) |
