@@ -65,6 +65,8 @@ Firefly supports displaying Live2D or Spine mascot models on the page. Choose on
 
 ## Live2D Model
 
+Live2D is implemented using [l2d-widget](https://github.com/hacxy/l2d-widget), supporting both Cubism 2 and Cubism 6 formats.
+
 ### Basic
 
 | Property | Type | Default | Description |
@@ -75,34 +77,66 @@ Firefly supports displaying Live2D or Spine mascot models on the page. Choose on
 
 | Property | Type | Description |
 |----------|------|-------------|
-| `model.path` | `string` | Live2D model file path (model.json) |
+| `model.path` | `string` | Live2D model file path (model.json or model3.json) |
+
+Supports passing an array for multiple models with automatic switch button in menu:
+
+```ts
+model: [
+  { path: "/models/cat-black/model.json" },
+  { path: "/models/cat-white/model.json" },
+]
+```
 
 ### Position
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `position.corner` | `string` | `"bottom-left"` | Display position |
-| `position.offsetX` | `number` | `0` | Horizontal offset |
-| `position.offsetY` | `number` | `0` | Vertical offset |
+| `position` | `string` | `"bottom-left"` | Position: `"bottom-left"` `"bottom-right"` |
 
 ### Size
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `size.width` | `number` | `135` | Container width |
-| `size.height` | `number` | `165` | Container height |
+| `size` | `number \| { width, height }` | `300` | Canvas size (px), number or object |
 
-### Interaction
+### Theme Color
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `interactive.enabled` | `boolean` | `true` | Enable interaction |
-| `interactive.clickMessages` | `string[]` | - | Click messages |
-| `interactive.messageDisplayTime` | `number` | `3000` | Message display time (ms) |
+| `primaryColor` | `string` | `"rgba(96,165,250,0.9)"` | Theme color for menu, status bar, etc. Supports CSS variables like `"var(--primary)"` |
 
-::: info
-Live2D model `motions` and `expressions` are automatically read from the model JSON file.
-:::
+### Animation
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `transitionDuration` | `number` | `1500` | Enter/exit animation duration (ms) |
+| `transitionType` | `"slide" \| "fade"` | `"slide"` | Enter/exit animation type |
+
+### Menu
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `menus.items` | `MenuItem[]` | Completely replace default menu items |
+| `menus.extraItems` | `MenuItem[]` | Append to default menu |
+| `menus.align` | `"left" \| "right"` | Menu alignment |
+
+`MenuItem` structure:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `icon` | `string` | Iconify icon name, e.g. `"mdi:home"` |
+| `label` | `string` | Menu item text |
+| `action` | `string` | Action identifier: `"home"` `"scrollToTop"` `"sleep"` `"github"` |
+
+### Tips
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `tips.welcomeMessage` | `string[]` | - | Welcome messages, shown randomly on first load |
+| `tips.messages` | `string[]` | - | Loop tip messages |
+| `tips.duration` | `number` | `3000` | Tip display duration (ms) |
+| `tips.interval` | `number` | `5000` | Tip loop interval (ms) |
 
 ### Responsive
 
@@ -135,6 +169,38 @@ export const spineModelConfig: SpineModelConfig = {
   responsive: { hideOnMobile: true, mobileBreakpoint: 768 },
   zIndex: 1000,
   opacity: 1.0,
+};
+```
+
+## Live2D Full Example
+
+```ts
+export const live2dWidgetConfig = {
+  enable: true,
+  model: {
+    path: "/pio/models/live2d/snow_miku/model.json",
+  },
+  position: "bottom-left",
+  size: { width: 200, height: 200 },
+  primaryColor: "var(--primary)",
+  transitionDuration: 1500,
+  transitionType: "slide",
+  menus: {
+    items: [
+      { icon: "mdi:home", label: "Home", action: "home" },
+      { icon: "mdi:arrow-up", label: "Top", action: "scrollToTop" },
+      { icon: "mdi:sleep", label: "Sleep", action: "sleep" },
+      { icon: "mdi:github", label: "GitHub", action: "github" },
+    ],
+    align: "right",
+  },
+  tips: {
+    welcomeMessage: ["Hello! I'm Miku~", "Welcome to my world!"],
+    messages: ["Need help?", "Nice weather today!", "Want to play a game?"],
+    duration: 3000,
+    interval: 6000,
+  },
+  responsive: { hideOnMobile: true, mobileBreakpoint: 768 },
 };
 ```
 
