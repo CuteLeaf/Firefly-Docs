@@ -23,12 +23,26 @@ Firefly 支持多种评论系统，包括 Twikoo、Waline、Giscus、Disqus 和 
 | `twikoo.envId` | `string` | - | Twikoo 环境 ID 或后端地址 |
 | `twikoo.lang` | `string` | `"zh-CN"` | 语言设置 |
 | `twikoo.visitorCount` | `boolean` | `true` | 是否启用文章访问量统计 |
+| `twikoo.jsUrl` | `string` | 见下方 | Twikoo JS 文件地址，支持 CDN 链接 |
+| `twikoo.cssUrl` | `string` | `"/assets/css/twikoo-custom.css"` | 自定义 CSS 文件地址，为空则不加载 |
+
+### CDN 推荐
+
+`jsUrl` 支持以下 CDN 源：
+
+| CDN | 地址 |
+|-----|------|
+| npm Mirror（国内推荐） | `https://registry.npmmirror.com/twikoo/1.7.9/files/dist/twikoo.min.js` |
+| zstatic（国内推荐） | `https://s4.zstatic.net/npm/twikoo@1.7.9/dist/twikoo.min.js` |
+| jsDelivr（国际推荐） | `https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js` |
 
 ```ts
 twikoo: {
   envId: "https://twikoo.vercel.app",
   lang: "zh-CN",
   visitorCount: true,
+  jsUrl: "https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js",
+  cssUrl: "/assets/css/twikoo-custom.css",
 },
 ```
 

@@ -75,9 +75,13 @@ Live2D is implemented using [l2d-widget](https://github.com/hacxy/l2d-widget), s
 
 ### Model
 
-| Property | Type | Description |
-|----------|------|-------------|
-| `model.path` | `string` | Live2D model file path (model.json or model3.json) |
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `model.path` | `string` | - | Live2D model file path (model.json or model3.json) |
+| `model.volume` | `number` | `0` | Action sound volume (0-1), default 0 (muted) |
+| `model.scale` | `number` | `1` | Model scale ratio |
+| `model.x` | `number` | `0` | X axis offset |
+| `model.y` | `number` | `0` | Y axis offset |
 
 Supports passing an array for multiple models with automatic switch button in menu:
 
@@ -133,10 +137,22 @@ model: [
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
+| `tips.enable` | `boolean` | `true` | Enable tips, set `false` to completely disable |
 | `tips.welcomeMessage` | `string[]` | - | Welcome messages, shown randomly on first load |
 | `tips.messages` | `string[]` | - | Loop tip messages |
 | `tips.duration` | `number` | `3000` | Tip display duration (ms) |
 | `tips.interval` | `number` | `5000` | Tip loop interval (ms) |
+| `tips.offset.x` | `number` | `0` | Horizontal offset (px), positive = right |
+| `tips.offset.y` | `number` | `0` | Vertical offset (px), positive = down |
+
+### Typing Animation
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `tips.typing.param` | `string` | - | Mouth parameter name, e.g. `"PARAM_MOUTH_OPEN_Y"`. If empty, only typing animation plays without mouth sync |
+| `tips.typing.speed` | `number` | `100` | Typing speed (ms/character) |
+| `tips.typing.minValue` | `number` | `0.5` | Minimum mouth open value (0-1) |
+| `tips.typing.maxValue` | `number` | `1` | Maximum mouth open value (0-1) |
 
 ### Responsive
 

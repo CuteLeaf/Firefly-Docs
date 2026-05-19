@@ -23,6 +23,28 @@ Set `type` to the desired comment system name to enable it, or `"none"` to disab
 | `twikoo.envId` | `string` | - | Twikoo environment ID or backend URL |
 | `twikoo.lang` | `string` | `"zh-CN"` | Language |
 | `twikoo.visitorCount` | `boolean` | `true` | Enable visitor count |
+| `twikoo.jsUrl` | `string` | See below | Twikoo JS file URL, supports CDN links |
+| `twikoo.cssUrl` | `string` | `"/assets/css/twikoo-custom.css"` | Custom CSS file URL, empty to skip loading |
+
+### CDN Recommendations
+
+`jsUrl` supports the following CDN sources:
+
+| CDN | URL |
+|-----|-----|
+| npm Mirror (China) | `https://registry.npmmirror.com/twikoo/1.7.9/files/dist/twikoo.min.js` |
+| zstatic (China) | `https://s4.zstatic.net/npm/twikoo@1.7.9/dist/twikoo.min.js` |
+| jsDelivr (Global) | `https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js` |
+
+```ts
+twikoo: {
+  envId: "https://twikoo.vercel.app",
+  lang: "zh-CN",
+  visitorCount: true,
+  jsUrl: "https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js",
+  cssUrl: "/assets/css/twikoo-custom.css",
+},
+```
 
 ## Waline
 
