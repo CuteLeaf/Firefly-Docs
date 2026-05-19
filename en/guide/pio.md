@@ -145,15 +145,6 @@ model: [
 | `tips.offset.x` | `number` | `0` | Horizontal offset (px), positive = right |
 | `tips.offset.y` | `number` | `0` | Vertical offset (px), positive = down |
 
-### Typing Animation
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `tips.typing.param` | `string` | - | Mouth parameter name, e.g. `"PARAM_MOUTH_OPEN_Y"`. If empty, only typing animation plays without mouth sync |
-| `tips.typing.speed` | `number` | `100` | Typing speed (ms/character) |
-| `tips.typing.minValue` | `number` | `0.5` | Minimum mouth open value (0-1) |
-| `tips.typing.maxValue` | `number` | `1` | Maximum mouth open value (0-1) |
-
 ### Responsive
 
 | Property | Type | Default | Description |

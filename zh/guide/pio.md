@@ -145,15 +145,6 @@ model: [
 | `tips.offset.x` | `number` | `0` | 水平偏移（px），正值右移，负值左移 |
 | `tips.offset.y` | `number` | `0` | 垂直偏移（px），正值下移，负值上移 |
 
-### 打字动画配置
-
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `tips.typing.param` | `string` | - | 嘴型参数名，如 `"PARAM_MOUTH_OPEN_Y"`，不填则只播放打字动画不驱动嘴型 |
-| `tips.typing.speed` | `number` | `100` | 打字速度（ms/字） |
-| `tips.typing.minValue` | `number` | `0.5` | 嘴型开合最小值（0-1） |
-| `tips.typing.maxValue` | `number` | `1` | 嘴型开合最大值（0-1） |
-
 ### 响应式配置
 
 | 属性 | 类型 | 默认值 | 说明 |
