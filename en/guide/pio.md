@@ -77,11 +77,11 @@ Live2D is implemented using [l2d-widget](https://github.com/hacxy/l2d-widget), s
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `model.path` | `string` | - | Live2D model file path (model.json or model3.json) |
+| `model.path` | `string` | - | Live2D model file path (model.json or model3.json), supports external URLs |
 | `model.volume` | `number` | `0` | Action sound volume (0-1), default 0 (muted) |
 | `model.scale` | `number` | `1` | Model scale ratio |
-| `model.x` | `number` | `0` | X axis offset |
-| `model.y` | `number` | `0` | Y axis offset |
+| `model.x` | `number` | `0` | X axis offset, range -2~2, positive = right |
+| `model.y` | `number` | `0` | Y axis offset, range -2~2, positive = up |
 
 Supports passing an array for multiple models with automatic switch button in menu:
 
@@ -131,7 +131,7 @@ model: [
 |----------|------|-------------|
 | `icon` | `string` | Iconify icon name, e.g. `"mdi:home"` |
 | `label` | `string` | Menu item text |
-| `action` | `string` | Action identifier: `"home"` `"scrollToTop"` `"sleep"` `"github"` |
+| `action` | `string` | Action identifier: `"home"` `"scrollToTop"` `"sleep"` `"switchModel"` `"github"` |
 
 ### Tips
 
