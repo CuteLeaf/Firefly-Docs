@@ -186,14 +186,15 @@ Bangumi 的数据为编译时获取，不是实时数据。`dev` 调试时只获
 | `analytics.googleAnalyticsId` | `string` | `""` | Google Analytics ID |
 | `analytics.microsoftClarityId` | `string` | `""` | Microsoft Clarity ID |
 | `analytics.umamiAnalytics.websiteId` | `string` | `""` | Umami 网站 ID |
-| `analytics.umamiAnalytics.scriptUrl` | `string` | `"https://cloud.umami.is/script.js"` | Umami 脚本地址（支持自建 Umami） |
+| `analytics.umamiAnalytics.scriptUrl` | `string` | `"https://cloud.umami.is/script.js"` | Umami 跟踪脚本地址（支持自建 Umami） |
+| `analytics.umamiAnalytics.replaysScriptUrl` | `string` | `"https://cloud.umami.is/recorder.js"` | Umami 会话回放脚本地址（支持自建 Umami） |
 | `analytics.umamiAnalytics.trackOutboundLinks` | `boolean` | `true` | 是否自动为站外链接添加 Umami 出站点击事件 |
 | `analytics.umamiAnalytics.collectWebVitals` | `boolean` | `false` | 是否开启 `data-performance="true"` 以收集核心网页指标 |
-| `analytics.umamiAnalytics.replay.enabled` | `boolean` | `false` | 是否开启 Umami 会话回放 |
-| `analytics.umamiAnalytics.replay.sampleRate` | `number` | `0.15` | 回放采样率，范围 `0` 到 `1`，例如 `0.15` 表示录制 15% 的会话 |
-| `analytics.umamiAnalytics.replay.maskLevel` | `"moderate" \| "strict"` | `"moderate"` | 隐私遮罩级别；`moderate` 遮罩输入框，`strict` 额外遮罩页面全部文本 |
-| `analytics.umamiAnalytics.replay.maxDuration` | `number` | `300000` | 单次录制最大时长（毫秒），默认 5 分钟 |
-| `analytics.umamiAnalytics.replay.blockSelector` | `string` | `""` | 要完全排除录制的元素 CSS 选择器；留空时不会输出该属性 |
+| `analytics.umamiAnalytics.replays.enabled` | `boolean` | `false` | 是否开启 Umami 会话回放 |
+| `analytics.umamiAnalytics.replays.sampleRate` | `number` | `0.15` | 回放采样率，范围 `0` 到 `1`，例如 `0.15` 表示录制 15% 的会话 |
+| `analytics.umamiAnalytics.replays.maskLevel` | `"moderate" \| "strict"` | `"moderate"` | 隐私遮罩级别；`moderate` 遮罩输入框，`strict` 额外遮罩页面全部文本 |
+| `analytics.umamiAnalytics.replays.maxDuration` | `number` | `300000` | 单次录制最大时长（毫秒），默认 5 分钟 |
+| `analytics.umamiAnalytics.replays.blockSelector` | `string` | `""` | 要完全排除录制的元素 CSS 选择器；留空时不会输出该属性 |
 | `analytics.la51Analytics.Id` | `string` | `""` | 51la 统计 ID |
 | `analytics.la51Analytics.sdkUrl` | `string` | `""` | 自定义 SDK 地址（留空使用默认地址） |
 | `analytics.la51Analytics.ck` | `string` | `""` | 多个统计 ID 的数据分离标识 |
@@ -208,9 +209,10 @@ analytics: {
   umamiAnalytics: {
     websiteId: "",
     scriptUrl: "https://cloud.umami.is/script.js",
+    replaysScriptUrl: "https://cloud.umami.is/recorder.js",
     trackOutboundLinks: true,
     collectWebVitals: false,
-    replay: {
+    replays: {
       enabled: false,
       sampleRate: 0.15,
       maskLevel: "moderate",
@@ -229,7 +231,7 @@ analytics: {
 },
 ```
 
-如果你使用自建 Umami，请将 `analytics.umamiAnalytics.scriptUrl` 改为你自己的脚本地址。
+如果你使用自建 Umami，请将 `analytics.umamiAnalytics.scriptUrl` 和 `analytics.umamiAnalytics.replaysScriptUrl` 改为你自己的脚本地址。
 
 ## 图像优化
 

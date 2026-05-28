@@ -178,14 +178,15 @@ Bangumi data is fetched at build time. During `dev` only one page of data is fet
 | `analytics.googleAnalyticsId` | `string` | `""` | Google Analytics ID |
 | `analytics.microsoftClarityId` | `string` | `""` | Microsoft Clarity ID |
 | `analytics.umamiAnalytics.websiteId` | `string` | `""` | Umami website ID |
-| `analytics.umamiAnalytics.scriptUrl` | `string` | `"https://cloud.umami.is/script.js"` | Umami script URL (supports self-hosted Umami) |
+| `analytics.umamiAnalytics.scriptUrl` | `string` | `"https://cloud.umami.is/script.js"` | Umami tracking script URL (supports self-hosted Umami) |
+| `analytics.umamiAnalytics.replaysScriptUrl` | `string` | `"https://cloud.umami.is/recorder.js"` | Umami session replay script URL (supports self-hosted Umami) |
 | `analytics.umamiAnalytics.trackOutboundLinks` | `boolean` | `true` | Automatically add Umami outbound click events to external links |
 | `analytics.umamiAnalytics.collectWebVitals` | `boolean` | `false` | Enable `data-performance="true"` to collect Core Web Vitals |
-| `analytics.umamiAnalytics.replay.enabled` | `boolean` | `false` | Enable Umami session replay |
-| `analytics.umamiAnalytics.replay.sampleRate` | `number` | `0.15` | Replay sampling rate from `0` to `1`; for example, `0.15` records 15% of sessions |
-| `analytics.umamiAnalytics.replay.maskLevel` | `"moderate" \| "strict"` | `"moderate"` | Privacy masking level; `moderate` masks inputs, `strict` also masks all page text |
-| `analytics.umamiAnalytics.replay.maxDuration` | `number` | `300000` | Maximum recording length in milliseconds, default 5 minutes |
-| `analytics.umamiAnalytics.replay.blockSelector` | `string` | `""` | CSS selector for elements to fully exclude from recording; omitted when empty |
+| `analytics.umamiAnalytics.replays.enabled` | `boolean` | `false` | Enable Umami session replay |
+| `analytics.umamiAnalytics.replays.sampleRate` | `number` | `0.15` | Replay sampling rate from `0` to `1`; for example, `0.15` records 15% of sessions |
+| `analytics.umamiAnalytics.replays.maskLevel` | `"moderate" \| "strict"` | `"moderate"` | Privacy masking level; `moderate` masks inputs, `strict` also masks all page text |
+| `analytics.umamiAnalytics.replays.maxDuration` | `number` | `300000` | Maximum recording length in milliseconds, default 5 minutes |
+| `analytics.umamiAnalytics.replays.blockSelector` | `string` | `""` | CSS selector for elements to fully exclude from recording; omitted when empty |
 | `analytics.la51Analytics.Id` | `string` | `""` | 51la analytics ID |
 | `analytics.la51Analytics.sdkUrl` | `string` | `""` | Custom SDK URL (leave empty to use default) |
 | `analytics.la51Analytics.ck` | `string` | `""` | Data separation identifier for multiple statistics IDs |
@@ -200,9 +201,10 @@ analytics: {
   umamiAnalytics: {
     websiteId: "",
     scriptUrl: "https://cloud.umami.is/script.js",
+    replaysScriptUrl: "https://cloud.umami.is/recorder.js",
     trackOutboundLinks: true,
     collectWebVitals: false,
-    replay: {
+    replays: {
       enabled: false,
       sampleRate: 0.15,
       maskLevel: "moderate",
@@ -221,7 +223,7 @@ analytics: {
 },
 ```
 
-If you use a self-hosted Umami instance, set `analytics.umamiAnalytics.scriptUrl` to your own script endpoint.
+If you use a self-hosted Umami instance, set `analytics.umamiAnalytics.scriptUrl` and `analytics.umamiAnalytics.replaysScriptUrl` to your own script endpoints.
 
 ## Image Optimization
 
