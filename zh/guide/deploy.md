@@ -148,32 +148,24 @@ export default defineConfig({
 
 ## Cloudflare Workers
 
-[Cloudflare Workers](https://workers.cloudflare.com)提供免费的 Serverless 边缘计算，其也能够托管静态站点。
+[Cloudflare Workers](https://workers.cloudflare.com) 提供免费的 Serverless 边缘计算，[Cloudflare Pages](https://pages.cloudflare.com/) 提供静态站点托管。两者都可以部署 Firefly。
 
-### 方法一：通过 Cloudflare 仪表盘
+项目已包含 `wrangler.jsonc` 配置文件，你只需修改 `name` 为你的项目名称，`compatibility_date` 更新为今日日期：
 
-1. 在项目根目录创建`wrangler.toml`：
-  ```toml
-  name = "firefly"
-  compatibility_date = "YYYY-MM-DD" # 更为今日
-  
-  [assets]
-  directory = "./dist"
-  
-  [vars]
-  NODE_VERSION = "22"
-  ```
-  又或`wrangler.jsonc`：
-  ```jsonc
-  {
-    "name": "firefly",
-    "compatibility_date": "YYYY-MM-DD", // 更为今日
-    "assets": {
-      "directory": "./dist",
-    },
+```jsonc
+{
+  "compatibility_date": "YYYY-MM-DD", // 更为今日
+  "compatibility_flags": ["nodejs_compat"],
+  "name": "your-project-name",        // 修改为你的项目名称
+  "assets": {
+    "directory": "./dist"
   }
-  ```
-2. 将你的项目推送到 GitHub / GitLab
+}
+```
+
+### 部署步骤
+
+1. 将你的项目推送到 GitHub / GitLab
 2. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
 3. 进入 **计算 → Workers 和 Pages → 创建应用程序 → Connect Github / GitLab**
 4. 选择你的仓库
@@ -182,19 +174,13 @@ export default defineConfig({
    - **部署命令**: `npx wrangler deploy`
 6. 点击 **部署**
 
-### 方法二：使用 Wrangler CLI
+::: tip 多平台部署
+项目通过 `process.env.CF_PAGES` 环境变量自动判断是否启用 Cloudflare 适配器。Cloudflare Pages 构建时会自动设置该变量，其他平台（Vercel、Netlify 等）不受影响。
+:::
 
-```bash
-# 安装 Wrangler
-pnpm add -g wrangler
-
-# 登录
-wrangler login
-
-# 构建并部署
-pnpm build
-wrangler deploy dist
-```
+::: 图片优化失效
+部署到 Cloudflare Workers 时，Astro 的图片优化功能会被禁用（`imageService: "passthrough"`）。这是因为 Cloudflare Workers 运行时不支持 `sharp` 等原生 Node.js 模块。图片将以原始格式直接提供，建议在构建前手动压缩图片，或将优化后的图片放在 `public/` 目录。
+:::
 
 ## Cloudflare Pages
 

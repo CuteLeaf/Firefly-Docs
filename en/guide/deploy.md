@@ -148,32 +148,24 @@ No editing needed for `base`, if the GitHub Pages set a custom domain or the rep
 
 ## Cloudflare Workers
 
-[Cloudflare Workers](https://workers.cloudflare.com) offers free serverless edge computing. That can also use to host static site.
+[Cloudflare Workers](https://workers.cloudflare.com) offers free serverless edge computing, and [Cloudflare Pages](https://pages.cloudflare.com/) provides static site hosting. Both can deploy Firefly.
 
-### Option 1: Via Cloudflare Dashboard
+The project already includes a `wrangler.jsonc` configuration file. You only need to update `name` to your project name and `compatibility_date` to today's date:
 
-1. Create `wrangler.toml` in the project root:
-  ```toml
-  name = "firefly"
-  compatibility_date = "YYYY-MM-DD" # edit to today
-  
-  [assets]
-  directory = "./dist"
-  
-  [vars]
-  NODE_VERSION = "22"
-  ```
-  or `wrangler.jsonc`:
-  ```jsonc
-  {
-    "name": "firefly",
-    "compatibility_date": "YYYY-MM-DD", // edit to today
-    "assets": {
-      "directory": "./dist",
-    },
+```jsonc
+{
+  "compatibility_date": "YYYY-MM-DD", // edit to today
+  "compatibility_flags": ["nodejs_compat"],
+  "name": "your-project-name",        // change to your project name
+  "assets": {
+    "directory": "./dist"
   }
-  ```
-2. Push your project to GitHub / GitLab
+}
+```
+
+### Deployment Steps
+
+1. Push your project to GitHub / GitLab
 2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
 3. Enter **Compute → Workers & Pages**, click **Create application → Connect Github / GitLab**
 4. Select your repository
@@ -182,19 +174,13 @@ No editing needed for `base`, if the GitHub Pages set a custom domain or the rep
    - **Deploy command**: `npx wrangler deploy`
 6. Click **Deploy**
 
-### Option 2: Using Wrangler CLI
+::: tip Multi-platform Deployment
+The project uses `process.env.CF_PAGES` environment variable to automatically detect whether to enable the Cloudflare adapter. Cloudflare Pages sets this variable during builds, so other platforms (Vercel, Netlify, etc.) are not affected.
+:::
 
-```bash
-# Install Wrangler
-pnpm add -g wrangler
-
-# Login
-wrangler login
-
-# Build & deploy
-pnpm build
-wrangler deploy dist
-```
+::: warning Image Optimization Disabled
+When deploying to Cloudflare Workers, Astro's image optimization is disabled (`imageService: "passthrough"`). This is because the Cloudflare Workers runtime does not support native Node.js modules like `sharp`. Images will be served in their original format. It is recommended to compress images before building, or place optimized images in the `public/` directory.
+:::
 
 ## Cloudflare Pages
 
