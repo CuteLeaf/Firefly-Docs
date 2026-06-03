@@ -146,7 +146,7 @@ export default defineConfig({
 若使用自定义域名，或仓库名为 `<username>.github.io`，`base` 都无需设置。
 :::
 
-## Cloudflare Workers
+## Cloudflare Workers / Pages
 
 [Cloudflare Workers](https://workers.cloudflare.com) 提供免费的 Serverless 边缘计算，[Cloudflare Pages](https://pages.cloudflare.com/) 提供静态站点托管。两者都可以部署 Firefly。
 
@@ -154,9 +154,10 @@ export default defineConfig({
 
 ```jsonc
 {
+    "name": "your-project-name",        // 修改为你的项目名称
   "compatibility_date": "YYYY-MM-DD", // 更为今日
   "compatibility_flags": ["nodejs_compat"],
-  "name": "your-project-name",        // 修改为你的项目名称
+
   "assets": {
     "directory": "./dist"
   }
@@ -175,43 +176,8 @@ export default defineConfig({
 6. 点击 **部署**
 
 ::: tip 多平台部署
-项目通过 `process.env.CF_PAGES` 环境变量自动判断是否启用 Cloudflare 适配器。Cloudflare Pages 构建时会自动设置该变量，其他平台（Vercel、Netlify 等）不受影响。
+Cloudflare Pages 部署时不需要 Astro 适配器，直接使用静态文件。项目通过 `process.env.CF_WORKERS` 环境变量判断是否启用适配器（仅 Workers SSR 部署时使用），Pages 和其他平台（Vercel、Netlify 等）不受影响。
 :::
-
-::: 图片优化失效
-部署到 Cloudflare Workers 时，Astro 的图片优化功能会被禁用（`imageService: "passthrough"`）。这是因为 Cloudflare Workers 运行时不支持 `sharp` 等原生 Node.js 模块。图片将以原始格式直接提供，建议在构建前手动压缩图片，或将优化后的图片放在 `public/` 目录。
-:::
-
-## Cloudflare Pages
-
-[Cloudflare Pages](https://pages.cloudflare.com/) 提供免费的静态站点托管。
-
-### 方法一：通过 Cloudflare 仪表盘
-
-1. 将你的项目推送到 GitHub / GitLab
-2. 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
-3. 进入 **计算** → Workers 和 Pages → 创建应用程序 → Pages → Connect to Git**
-4. 选择你的仓库
-5. 配置构建设置：
-   - **Framework preset**: `Astro`
-   - **Build command**: `pnpm build`
-   - **Build output directory**: `dist`
-6. 在 **Environment variables** 中设置 `NODE_VERSION` 为 `22`
-7. 点击 **Save and Deploy**
-
-### 方法二：使用 Wrangler CLI
-
-```bash
-# 安装 Wrangler
-pnpm add -g wrangler
-
-# 登录
-wrangler login
-
-# 构建并部署
-pnpm build
-wrangler pages deploy dist
-```
 
 ## EdgeOne Pages
 

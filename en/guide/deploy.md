@@ -146,7 +146,7 @@ export default defineConfig({
 No editing needed for `base`, if the GitHub Pages set a custom domain or the repo is named `<username>.github.io`
 :::
 
-## Cloudflare Workers
+## Cloudflare Workers / Pages
 
 [Cloudflare Workers](https://workers.cloudflare.com) offers free serverless edge computing, and [Cloudflare Pages](https://pages.cloudflare.com/) provides static site hosting. Both can deploy Firefly.
 
@@ -154,9 +154,9 @@ The project already includes a `wrangler.jsonc` configuration file. You only nee
 
 ```jsonc
 {
+  "name": "your-project-name",        // change to your project name
   "compatibility_date": "YYYY-MM-DD", // edit to today
   "compatibility_flags": ["nodejs_compat"],
-  "name": "your-project-name",        // change to your project name
   "assets": {
     "directory": "./dist"
   }
@@ -175,43 +175,8 @@ The project already includes a `wrangler.jsonc` configuration file. You only nee
 6. Click **Deploy**
 
 ::: tip Multi-platform Deployment
-The project uses `process.env.CF_PAGES` environment variable to automatically detect whether to enable the Cloudflare adapter. Cloudflare Pages sets this variable during builds, so other platforms (Vercel, Netlify, etc.) are not affected.
+Cloudflare Pages deployment does not require the Astro adapter — it serves static files directly. The project uses `process.env.CF_WORKERS` environment variable to determine whether to enable the adapter (only for Workers SSR deployment). Pages and other platforms (Vercel, Netlify, etc.) are not affected.
 :::
-
-::: warning Image Optimization Disabled
-When deploying to Cloudflare Workers, Astro's image optimization is disabled (`imageService: "passthrough"`). This is because the Cloudflare Workers runtime does not support native Node.js modules like `sharp`. Images will be served in their original format. It is recommended to compress images before building, or place optimized images in the `public/` directory.
-:::
-
-## Cloudflare Pages
-
-[Cloudflare Pages](https://pages.cloudflare.com/) offers free static site hosting.
-
-### Option 1: Via Cloudflare Dashboard
-
-1. Push your project to GitHub / GitLab
-2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-3. Enter **Compute → Workers & Pages**, click **Create application → Pages → Connect to Git**
-4. Select your repository
-5. Configure build settings:
-   - **Framework preset**: `Astro`
-   - **Build command**: `pnpm build`
-   - **Build output directory**: `dist`
-6. Set `NODE_VERSION` to `22` in **Environment variables**
-7. Click **Save and Deploy**
-
-### Option 2: Using Wrangler CLI
-
-```bash
-# Install Wrangler
-pnpm add -g wrangler
-
-# Login
-wrangler login
-
-# Build & deploy
-pnpm build
-wrangler pages deploy dist
-```
 
 ## EdgeOne Pages
 
