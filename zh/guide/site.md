@@ -174,9 +174,13 @@ favicon: [
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `bangumi.userId` | `string` | - | Bangumi 用户 ID |
+| `bangumi.mode` | `"static" \| "dynamic"` | `"static"` | 数据模式。`static` 在构建时获取数据并静态渲染；`dynamic` 在浏览器中实时请求 API，始终显示最新数据 |
+| `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API 地址 |
+| `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | 条目详情页地址 |
+| `bangumi.categoryOrder` | `string[]` | `[]` | 条目类型排序，数组中的类型将按顺序优先展示。可选值：`"anime"` `"book"` `"music"` `"game"` `"real"` |
 
 ::: tip
-Bangumi 的数据为编译时获取，不是实时数据。`dev` 调试时只获取一页数据，`build` 才会获取全部数据。
+`static` 模式下，`dev` 调试时只获取一页数据，`build` 才会获取全部数据。`dynamic` 模式下数据在浏览器中实时获取，始终为最新状态。
 :::
 
 ## 统计分析

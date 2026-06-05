@@ -166,9 +166,13 @@ Restart the dev server after changing this setting.
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `bangumi.userId` | `string` | - | Bangumi user ID |
+| `bangumi.mode` | `"static" \| "dynamic"` | `"static"` | Data mode. `static` fetches data at build time and renders statically; `dynamic` fetches data in the browser via API, always showing the latest data |
+| `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API URL |
+| `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | Subject detail page URL |
+| `bangumi.categoryOrder` | `string[]` | `[]` | Category display order. Available values: `"anime"` `"book"` `"music"` `"game"` `"real"` |
 
 ::: tip
-Bangumi data is fetched at build time. During `dev` only one page of data is fetched; `build` fetches all data.
+In `static` mode, `dev` only fetches one page of data; `build` fetches all data. In `dynamic` mode, data is fetched in real-time in the browser and is always up-to-date.
 :::
 
 ## Analytics
