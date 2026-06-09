@@ -36,6 +36,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 | `position` | `string` | 是 | 位置：`"top"` 固定顶部，`"sticky"` 粘性定位 |
 | `showOnPostPage` | `boolean` | 否 | 是否在文章详情页显示 |
 | `showOnNonPostPage` | `boolean` | 否 | 是否在非文章详情页显示 |
+| `showTitle` | `boolean` | 否 | 是否显示组件标题，默认 `true` |
 | `configId` | `string` | 否 | 配置 ID（广告组件使用） |
 | `responsive` | `object` | 否 | 响应式配置 |
 

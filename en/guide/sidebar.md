@@ -26,6 +26,7 @@ Each sidebar component supports:
 | `position` | `string` | Yes | Position: `"top"` fixed, `"sticky"` sticky |
 | `showOnPostPage` | `boolean` | No | Show on post detail pages |
 | `showOnNonPostPage` | `boolean` | No | Show on non-post pages |
+| `showTitle` | `boolean` | No | Show component title, default `true` |
 | `configId` | `string` | No | Config ID (for advertisement component) |
 | `responsive` | `object` | No | Responsive configuration |
 
