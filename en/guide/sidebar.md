@@ -27,8 +27,7 @@ Each sidebar component supports:
 | `showOnPostPage` | `boolean` | No | Show on post detail pages |
 | `showOnNonPostPage` | `boolean` | No | Show on non-post pages |
 | `showTitle` | `boolean` | No | Show component title, default `true` |
-| `configId` | `string` | No | Config ID (for advertisement component) |
-| `responsive` | `object` | No | Responsive configuration |
+| `specificConfig` | `object` | No | Component-specific configuration, varies by component type, see below |
 
 ### Available Component Types
 
@@ -40,6 +39,7 @@ Each sidebar component supports:
 | `"categories"` | Categories |
 | `"tags"` | Tags |
 | `"stats"` | Site statistics |
+| `"siteInfo"` | Site info (uptime, last updated, etc.) |
 | `"calendar"` | Calendar |
 | `"sidebarToc"` | Table of contents (post pages only) |
 | `"advertisement"` | Advertisement |
@@ -47,6 +47,42 @@ Each sidebar component supports:
 ::: tip
 Component rendering order depends on their position in the config array, but `position: "top"` components render before `position: "sticky"` components.
 :::
+
+### specificConfig Component-Specific Configuration
+
+Different component types support different `specificConfig` options:
+
+#### categories / tags Components
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `collapseThreshold` | `number` | Collapse threshold, auto-collapse when count exceeds this value |
+
+#### calendar Component
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `calendar.showHeatmap` | `boolean` | Show yearly post activity heatmap |
+
+#### advertisement Component
+
+The `specificConfig.ad` supports the following:
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `ad.image.src` | `string` | Ad image URL |
+| `ad.image.alt` | `string` | Image alt text |
+| `ad.image.link` | `string` | Click redirect URL |
+| `ad.image.external` | `boolean` | Whether link is external |
+| `ad.title` | `string` | Ad title |
+| `ad.content` | `string` | Ad content text |
+| `ad.link.text` | `string` | Link button text |
+| `ad.link.url` | `string` | Link URL |
+| `ad.link.external` | `boolean` | Whether link is external |
+| `ad.closable` | `boolean` | Allow closing the ad |
+| `ad.displayCount` | `number` | Display count limit, `-1` for unlimited |
+| `ad.expireDate` | `string` | Expiration date (`YYYY-MM-DD`), hidden after expiry |
+| `ad.padding.all` | `string` | Component padding |
 
 ## Left Sidebar Example
 
@@ -59,12 +95,33 @@ leftComponents: [
     showOnPostPage: true,
   },
   {
+    type: "announcement",
+    enable: true,
+    position: "top",
+    showOnPostPage: true,
+  },
+  {
+    type: "music",
+    enable: true,
+    position: "sticky",
+    showOnPostPage: true,
+  },
+  {
     type: "categories",
     enable: true,
     position: "sticky",
     showOnPostPage: true,
-    responsive: {
+    specificConfig: {
       collapseThreshold: 5,
+    },
+  },
+  {
+    type: "tags",
+    enable: true,
+    position: "sticky",
+    showOnPostPage: true,
+    specificConfig: {
+      collapseThreshold: 10,
     },
   },
 ],
@@ -79,6 +136,24 @@ rightComponents: [
     enable: true,
     position: "top",
     showOnPostPage: true,
+  },
+  {
+    type: "siteInfo",
+    enable: true,
+    position: "top",
+    showOnPostPage: true,
+  },
+  {
+    type: "calendar",
+    enable: true,
+    showTitle: false,
+    position: "sticky",
+    showOnPostPage: false,
+    specificConfig: {
+      calendar: {
+        showHeatmap: true,
+      },
+    },
   },
   {
     type: "sidebarToc",
@@ -97,8 +172,12 @@ On mobile (< 768px), sidebar components display at the bottom of the page. Confi
 ```ts
 mobileBottomComponents: [
   { type: "profile", enable: true, showOnPostPage: true },
-  { type: "categories", enable: true, showOnPostPage: true, responsive: { collapseThreshold: 5 } },
+  { type: "announcement", enable: true, showOnPostPage: true },
+  { type: "music", enable: true, showOnPostPage: true },
+  { type: "categories", enable: true, showOnPostPage: true, specificConfig: { collapseThreshold: 5 } },
+  { type: "tags", enable: true, showOnPostPage: true, specificConfig: { collapseThreshold: 10 } },
   { type: "stats", enable: true, showOnPostPage: true },
+  { type: "siteInfo", enable: true, showOnPostPage: true },
 ],
 ```
 

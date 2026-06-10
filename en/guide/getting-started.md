@@ -74,5 +74,7 @@ All configuration files are located in the `src/config/` directory:
 | `licenseConfig.ts` | License configuration | [License](./license.md) |
 | `friendsConfig.ts` | Friends links configuration | [Friends](./friends.md) |
 | `sponsorConfig.ts` | Sponsor configuration | [Sponsor](./sponsor.md) |
-| `adConfig.ts` | Advertisement configuration | [Advertisement](./ad.md) |
+| `analyticsConfig.ts` | Analytics configuration | [Site Config](./site.md#analytics) |
+| `galleryConfig.ts` | Gallery configuration | [Gallery](./gallery.md) |
+| `plantumlConfig.ts` | PlantUML diagram configuration | [PlantUML](./plantuml.md) |
 | `pioConfig.ts` | Live2D/Spine model configuration | [Live2D/Spine](./pio.md) |

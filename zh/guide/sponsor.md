@@ -54,6 +54,7 @@ methods: [
 | 属性 | 类型 | 必填 | 说明 |
 |------|------|------|------|
 | `name` | `string` | 是 | 赞助者名称 |
+| `avatar` | `string` | 否 | 赞助者头像 URL |
 | `amount` | `string` | 否 | 赞助金额 |
 | `date` | `string` | 否 | 赞助日期（ISO 格式） |
 

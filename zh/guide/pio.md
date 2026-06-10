@@ -102,7 +102,7 @@ model: [
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `size` | `number \| { width, height }` | `300` | 画布尺寸（px），可传数字或对象分别指定宽高 |
+| `size` | `number \| { width, height }` | `{ width: 200, height: 200 }` | 画布尺寸（px），可传数字或对象分别指定宽高 |
 
 ### 主题色
 
@@ -141,7 +141,7 @@ model: [
 | `tips.welcomeMessage` | `string[]` | - | 欢迎语，模型首次入场后随机取一条显示 |
 | `tips.messages` | `string[]` | - | 循环提示内容 |
 | `tips.duration` | `number` | `3000` | 每条提示展示时长（ms） |
-| `tips.interval` | `number` | `5000` | 提示循环间隔（ms） |
+| `tips.interval` | `number` | `6000` | 提示循环间隔（ms） |
 | `tips.offset.x` | `number` | `0` | 水平偏移（px），正值右移，负值左移 |
 | `tips.offset.y` | `number` | `0` | 垂直偏移（px），正值下移，负值上移 |
 
@@ -200,7 +200,7 @@ export const live2dWidgetConfig = {
     items: [
       { icon: "mdi:home", label: "返回主页", action: "home" },
       { icon: "mdi:arrow-up", label: "返回顶部", action: "scrollToTop" },
-      { icon: "mdi:sleep", label: "休眠", action: "sleep" },
+      { icon: "mdi:bed", label: "休眠", action: "sleep" },
       { icon: "mdi:github", label: "GitHub", action: "github" },
     ],
     align: "right",

@@ -4,7 +4,7 @@
 
 ## 配置文件
 
-`src/config/adConfig.ts`
+广告配置直接嵌入在 `src/config/sidebarConfig.ts` 的 `advertisement` 组件的 `specificConfig.ad` 中。
 
 ## 配置项
 
@@ -86,5 +86,5 @@ export const adConfig2: AdConfig = {
 ```
 
 ::: tip
-广告组件的显示/隐藏在 `sidebarConfig.ts` 中控制。通过设置 `advertisement` 组件的 `enable` 属性来开关，并使用 `configId` 指定使用哪个广告配置（如 `"ad1"` 或 `"ad2"`）。
+广告组件的显示/隐藏在 `sidebarConfig.ts` 中控制。通过设置 `advertisement` 组件的 `enable` 属性来开关，广告内容直接在 `specificConfig.ad` 中配置。每个 `advertisement` 组件实例可以有独立的广告内容。
 :::

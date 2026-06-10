@@ -67,6 +67,8 @@ public/gallery/japan-2025/
 | `location` | `string` | 否 | 拍摄地点 |
 | `tags` | `string[]` | 否 | 标签，用于首页筛选 |
 | `cover` | `string` | 否 | 手动指定封面图 URL |
+| `password` | `string` | 否 | 相册密码，设置后需要输入密码才能查看 |
+| `passwordHint` | `string` | 否 | 密码提示信息，帮助访客回忆密码 |
 
 ## 全局配置
 
@@ -96,7 +98,7 @@ public/gallery/japan-2025/
 ## 配置示例
 
 ```ts
-import type { GalleryConfig } from "@/types/config";
+import type { GalleryConfig } from "@/types/galleryConfig";
 
 export const galleryConfig: GalleryConfig = {
   albums: [

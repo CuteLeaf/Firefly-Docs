@@ -15,7 +15,7 @@ The sakura effect adds falling cherry blossom animation to your site.
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `enable` | `boolean` | `false` | Enable sakura effect |
-| `switchable` | `boolean` | `false` | Allow users to toggle in settings panel |
+| `switchable` | `boolean` | `true` | Allow users to toggle in settings panel |
 | `sakuraNum` | `number` | `21` | Number of sakura petals |
 | `limitTimes` | `number` | `-1` | Out-of-bounds limit, `-1` for infinite |
 | `zIndex` | `number` | `100` | Z-index layer |

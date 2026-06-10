@@ -60,12 +60,12 @@ pageWidth: 100,
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `card.border` | `boolean` | `false` | 是否开启卡片边框和阴影，开启后让网站更有立体感 |
+| `card.border` | `boolean` | `true` | 是否开启卡片边框和阴影，开启后让网站更有立体感 |
 | `card.followTheme` | `boolean` | `false` | 卡片背景是否在浅色模式下跟随主题色相 |
 
 ```ts
 card: {
-  border: false,
+  border: true,
   followTheme: false,
 },
 ```
@@ -127,6 +127,7 @@ favicon: [
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `rehypeCallouts.theme` | `string` | `"github"` | 提醒框主题：`"github"`、`"obsidian"`、`"vitepress"` |
+| `rehypeCallouts.enablePythonMarkdownAdmonitions` | `boolean` | `false` | 是否启用 Python Markdown 风格的提醒框语法（使用 `!!!` 代替 `> [!NOTE]`） |
 
 ::: tip
 修改此配置后需要重启开发服务器才能生效。
@@ -136,10 +137,10 @@ favicon: [
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `showLastModified` | `boolean` | `true` | 是否显示文章底部的"上次编辑时间"卡片 |
-| `outdatedThreshold` | `number` | `30` | 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片 |
-| `sharePoster` | `boolean` | `true` | 是否开启分享海报生成功能 |
-| `generateOgImages` | `boolean` | `false` | 是否生成 OpenGraph 图片（开启后构建时间较长） |
+| `post.showLastModified` | `boolean` | `true` | 是否显示文章底部的"上次编辑时间"卡片 |
+| `post.outdatedThreshold` | `number` | `30` | 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片 |
+| `post.sharePoster` | `boolean` | `true` | 是否开启分享海报生成功能 |
+| `post.generateOgImages` | `boolean` | `false` | 是否生成 OpenGraph 图片（开启后构建时间较长） |
 
 ## 文章列表布局
 
@@ -167,6 +168,7 @@ favicon: [
 | `pages.sponsor` | `boolean` | `true` | 赞助页面开关 |
 | `pages.guestbook` | `boolean` | `true` | 留言板页面开关（需配置评论系统） |
 | `pages.bangumi` | `boolean` | `true` | 番组计划页面开关 |
+| `pages.gallery` | `boolean` | `true` | 相册页面开关 |
 | `categoryBar` | `boolean` | `true` | 分类导航栏开关，在首页和归档页顶部显示分类快捷导航 |
 
 ## Bangumi 配置
@@ -174,10 +176,10 @@ favicon: [
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `bangumi.userId` | `string` | - | Bangumi 用户 ID |
-| `bangumi.mode` | `"static" \| "dynamic"` | `"static"` | 数据模式。`static` 在构建时获取数据并静态渲染；`dynamic` 在浏览器中实时请求 API，始终显示最新数据 |
+| `bangumi.mode` | `"static" \| "dynamic"` | `"dynamic"` | 数据模式。`static` 在构建时获取数据并静态渲染；`dynamic` 在浏览器中实时请求 API，始终显示最新数据 |
 | `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API 地址 |
 | `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | 条目详情页地址 |
-| `bangumi.categoryOrder` | `string[]` | `[]` | 条目类型排序，数组中的类型将按顺序优先展示。可选值：`"anime"` `"book"` `"music"` `"game"` `"real"` |
+| `bangumi.categoryOrder` | `string[]` | `["anime", "book", "music", "game"]` | 条目类型排序，数组中的类型将按顺序优先展示。可选值：`"anime"` `"book"` `"music"` `"game"` `"real"` |
 
 ::: tip
 `static` 模式下，`dev` 调试时只获取一页数据，`build` 才会获取全部数据。`dynamic` 模式下数据在浏览器中实时获取，始终为最新状态。

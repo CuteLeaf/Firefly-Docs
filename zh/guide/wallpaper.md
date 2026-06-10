@@ -126,7 +126,7 @@ src: {
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用渐变过渡 |
-| `common.gradient.height` | `string` | `"30vh"` | 渐变高度 |
+| `common.gradient.height` | `string` | `"15vh"` | 渐变高度 |
 | `common.gradient.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换 |
 
 ::: info

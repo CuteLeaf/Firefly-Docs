@@ -47,12 +47,12 @@ pluginCollapsible: {
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `pluginLanguageBadge.enable` | `boolean` | `true` | 是否启用语言徽章 |
+| `pluginLanguageBadge.enable` | `boolean` | `false` | 是否启用语言徽章 |
 
 ```ts
 // 语言徽章插件配置
 pluginLanguageBadge: {
-  enable: true, // 启用语言徽章
+  enable: false, // 启用语言徽章
 },
 ```
 

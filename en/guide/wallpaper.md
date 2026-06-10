@@ -124,7 +124,7 @@ Automatically enabled when waves are disabled, providing a smooth gradient fade 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable gradient transition |
-| `common.gradient.height` | `string` | `"30vh"` | Gradient height |
+| `common.gradient.height` | `string` | `"15vh"` | Gradient height |
 | `common.gradient.switchable` | `boolean` | `true` | Allow user toggle |
 
 ::: info

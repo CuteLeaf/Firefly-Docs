@@ -33,6 +33,7 @@ The sponsor configuration manages the sponsor page content, including donation m
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
 | `name` | `string` | Yes | Sponsor name |
+| `avatar` | `string` | No | Sponsor avatar URL |
 | `amount` | `string` | No | Donation amount |
 | `date` | `string` | No | Date (ISO format) |
 

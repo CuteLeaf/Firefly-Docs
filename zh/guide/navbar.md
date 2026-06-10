@@ -12,13 +12,16 @@ Firefly 提供了一组内置的导航链接预设，可以直接使用：
 
 | 预设 | 说明 |
 |------|------|
-| `LinkPreset.Home` | 主页 |
-| `LinkPreset.Archive` | 归档 |
-| `LinkPreset.About` | 关于 |
-| `LinkPreset.Friends` | 友链 |
-| `LinkPreset.Sponsor` | 赞助 |
-| `LinkPreset.Guestbook` | 留言板 |
-| `LinkPreset.Bangumi` | 番组计划 |
+| `LinkPresets.Home` | 主页 |
+| `LinkPresets.Archive` | 归档 |
+| `LinkPresets.Categories` | 分类 |
+| `LinkPresets.Tags` | 标签 |
+| `LinkPresets.Friends` | 友链 |
+| `LinkPresets.Sponsor` | 赞助 |
+| `LinkPresets.Guestbook` | 留言板 |
+| `LinkPresets.About` | 关于 |
+| `LinkPresets.Bangumi` | 番组计划 |
+| `LinkPresets.Gallery` | 相册 |
 
 ## 自定义链接
 
@@ -35,12 +38,13 @@ Firefly 提供了一组内置的导航链接预设，可以直接使用：
 ## 配置示例
 
 ```ts
-import { LinkPreset, type NavBarConfig, type NavBarLink } from "../types/config";
+import { type NavBarConfig, type NavBarLink } from "../types/navBarConfig";
+import { LinkPresets } from "../config/navBarConfig";
 
-const links: (NavBarLink | LinkPreset)[] = [
+const links: NavBarLink[] = [
   // 使用预设链接
-  LinkPreset.Home,
-  LinkPreset.Archive,
+  LinkPresets.Home,
+  LinkPresets.Archive,
 
   // 自定义链接（含子菜单）
   {
@@ -64,7 +68,7 @@ const links: (NavBarLink | LinkPreset)[] = [
   },
 
   // 更多预设链接
-  LinkPreset.Friends,
+  LinkPresets.Friends,
 ];
 ```
 

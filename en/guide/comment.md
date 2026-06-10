@@ -54,6 +54,7 @@ twikoo: {
 |----------|------|---------|-------------|
 | `waline.serverURL` | `string` | - | Waline backend URL |
 | `waline.lang` | `string` | `"zh-CN"` | Language |
+| `waline.emoji` | `string[]` | - | Custom emoji package URLs |
 | `waline.login` | `string` | `"enable"` | Login mode: `"enable"`, `"force"`, `"disable"` |
 | `waline.visitorCount` | `boolean` | `true` | Enable visitor count |
 

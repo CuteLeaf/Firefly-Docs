@@ -15,7 +15,7 @@
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `enable` | `boolean` | `false` | 是否启用樱花特效 |
-| `switchable` | `boolean` | `false` | 是否允许用户在设置面板中切换 |
+| `switchable` | `boolean` | `true` | 是否允许用户在设置面板中切换 |
 | `sakuraNum` | `number` | `21` | 樱花数量 |
 | `limitTimes` | `number` | `-1` | 越界限制次数，`-1` 为无限循环 |
 | `zIndex` | `number` | `100` | 层级 |

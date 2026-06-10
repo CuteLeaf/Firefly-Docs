@@ -102,7 +102,7 @@ model: [
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `size` | `number \| { width, height }` | `300` | Canvas size (px), number or object |
+| `size` | `number \| { width, height }` | `{ width: 200, height: 200 }` | Canvas size (px), number or object |
 
 ### Theme Color
 
@@ -141,7 +141,7 @@ model: [
 | `tips.welcomeMessage` | `string[]` | - | Welcome messages, shown randomly on first load |
 | `tips.messages` | `string[]` | - | Loop tip messages |
 | `tips.duration` | `number` | `3000` | Tip display duration (ms) |
-| `tips.interval` | `number` | `5000` | Tip loop interval (ms) |
+| `tips.interval` | `number` | `6000` | Tip loop interval (ms) |
 | `tips.offset.x` | `number` | `0` | Horizontal offset (px), positive = right |
 | `tips.offset.y` | `number` | `0` | Vertical offset (px), positive = down |
 
@@ -196,7 +196,7 @@ export const live2dWidgetConfig = {
     items: [
       { icon: "mdi:home", label: "Home", action: "home" },
       { icon: "mdi:arrow-up", label: "Top", action: "scrollToTop" },
-      { icon: "mdi:sleep", label: "Sleep", action: "sleep" },
+      { icon: "mdi:bed", label: "Sleep", action: "sleep" },
       { icon: "mdi:github", label: "GitHub", action: "github" },
     ],
     align: "right",

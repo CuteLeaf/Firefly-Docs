@@ -52,12 +52,12 @@ pageWidth: 100,
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `card.border` | `boolean` | `false` | Enable card border and shadow for a 3D effect |
+| `card.border` | `boolean` | `true` | Enable card border and shadow for a 3D effect |
 | `card.followTheme` | `boolean` | `false` | Whether card background follows theme hue in light mode |
 
 ```ts
 card: {
-  border: false,
+  border: true,
   followTheme: false,
 },
 ```
@@ -119,6 +119,7 @@ favicon: [
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `rehypeCallouts.theme` | `string` | `"github"` | Theme: `"github"`, `"obsidian"`, `"vitepress"` |
+| `rehypeCallouts.enablePythonMarkdownAdmonitions` | `boolean` | `false` | Enable Python Markdown style admonition syntax (using `!!!` instead of `> [!NOTE]`) |
 
 ::: tip
 Restart the dev server after changing this setting.
@@ -128,10 +129,10 @@ Restart the dev server after changing this setting.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `showLastModified` | `boolean` | `true` | Show "last modified" card at the bottom of posts |
-| `outdatedThreshold` | `number` | `30` | Days threshold for showing the "last modified" card |
-| `sharePoster` | `boolean` | `true` | Enable share poster generation |
-| `generateOgImages` | `boolean` | `false` | Generate OpenGraph images (increases build time) |
+| `post.showLastModified` | `boolean` | `true` | Show "last modified" card at the bottom of posts |
+| `post.outdatedThreshold` | `number` | `30` | Days threshold for showing the "last modified" card |
+| `post.sharePoster` | `boolean` | `true` | Enable share poster generation |
+| `post.generateOgImages` | `boolean` | `false` | Generate OpenGraph images (increases build time) |
 
 ## Post List Layout
 
@@ -159,6 +160,7 @@ Restart the dev server after changing this setting.
 | `pages.sponsor` | `boolean` | `true` | Sponsor page toggle |
 | `pages.guestbook` | `boolean` | `true` | Guestbook page toggle (requires comment system) |
 | `pages.bangumi` | `boolean` | `true` | Bangumi page toggle |
+| `pages.gallery` | `boolean` | `true` | Gallery page toggle |
 | `categoryBar` | `boolean` | `true` | Category navigation bar on homepage and archive page |
 
 ## Bangumi
@@ -166,10 +168,10 @@ Restart the dev server after changing this setting.
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `bangumi.userId` | `string` | - | Bangumi user ID |
-| `bangumi.mode` | `"static" \| "dynamic"` | `"static"` | Data mode. `static` fetches data at build time and renders statically; `dynamic` fetches data in the browser via API, always showing the latest data |
+| `bangumi.mode` | `"static" \| "dynamic"` | `"dynamic"` | Data mode. `static` fetches data at build time and renders statically; `dynamic` fetches data in the browser via API, always showing the latest data |
 | `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API URL |
 | `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | Subject detail page URL |
-| `bangumi.categoryOrder` | `string[]` | `[]` | Category display order. Available values: `"anime"` `"book"` `"music"` `"game"` `"real"` |
+| `bangumi.categoryOrder` | `string[]` | `["anime", "book", "music", "game"]` | Category display order. Available values: `"anime"` `"book"` `"music"` `"game"` `"real"` |
 
 ::: tip
 In `static` mode, `dev` only fetches one page of data; `build` fetches all data. In `dynamic` mode, data is fetched in real-time in the browser and is always up-to-date.

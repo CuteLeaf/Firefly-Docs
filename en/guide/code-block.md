@@ -40,12 +40,12 @@ pluginCollapsible: {
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `pluginLanguageBadge.enable` | `boolean` | `true` | Enable language badge |
+| `pluginLanguageBadge.enable` | `boolean` | `false` | Enable language badge |
 
 ```ts
 // Language Badge Plugin Config
 pluginLanguageBadge: {
-  enable: true, // Enable language badge
+  enable: false, // Enable language badge
 },
 ```
 

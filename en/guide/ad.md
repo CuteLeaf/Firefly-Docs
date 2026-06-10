@@ -4,7 +4,7 @@ The advertisement component displays in the sidebar, supporting image ads and te
 
 ## Config File
 
-`src/config/adConfig.ts`
+Ad configuration is embedded directly in `src/config/sidebarConfig.ts` within the `advertisement` component's `specificConfig.ad`.
 
 ## Properties
 
@@ -84,5 +84,5 @@ export const adConfig2: AdConfig = {
 ```
 
 ::: tip
-Ad visibility is controlled in `sidebarConfig.ts`. Set the `advertisement` component's `enable` property and use `configId` to specify which ad config to use (e.g., `"ad1"` or `"ad2"`).
+Ad visibility is controlled in `sidebarConfig.ts`. Set the `advertisement` component's `enable` property to toggle it. Ad content is configured directly in `specificConfig.ad`. Each `advertisement` component instance can have its own independent ad content.
 :::

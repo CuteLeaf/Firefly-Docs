@@ -67,6 +67,8 @@ All image files in the directory are automatically scanned at build time. Suppor
 | `location` | `string` | No | Photo location |
 | `tags` | `string[]` | No | Tags for filtering on the index page |
 | `cover` | `string` | No | Manually specify cover image URL |
+| `password` | `string` | No | Album password — requires password to view |
+| `passwordHint` | `string` | No | Password hint to help visitors recall the password |
 
 ## Global Configuration
 
@@ -96,7 +98,7 @@ Cover images are automatically selected by priority:
 ## Configuration Example
 
 ```ts
-import type { GalleryConfig } from "@/types/config";
+import type { GalleryConfig } from "@/types/galleryConfig";
 
 export const galleryConfig: GalleryConfig = {
   albums: [

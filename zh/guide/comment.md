@@ -54,6 +54,7 @@ twikoo: {
 |------|------|--------|------|
 | `waline.serverURL` | `string` | - | Waline 后端服务地址 |
 | `waline.lang` | `string` | `"zh-CN"` | 语言设置 |
+| `waline.emoji` | `string[]` | - | 自定义表情包地址列表 |
 | `waline.login` | `string` | `"enable"` | 登录模式：`"enable"` 允许匿名和登录、`"force"` 强制登录、`"disable"` 仅匿名 |
 | `waline.visitorCount` | `boolean` | `true` | 是否启用文章访问量统计 |
 
@@ -61,6 +62,11 @@ twikoo: {
 waline: {
   serverURL: "https://waline.vercel.app",
   lang: "zh-CN",
+  emoji: [
+    "https://unpkg.com/@waline/emojis@1.4.0/weibo",
+    "https://unpkg.com/@waline/emojis@1.4.0/bilibili",
+    "https://unpkg.com/@waline/emojis@1.4.0/bmoji",
+  ],
   login: "enable",
   visitorCount: true,
 },

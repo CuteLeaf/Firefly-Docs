@@ -12,13 +12,16 @@ Firefly provides built-in navigation link presets:
 
 | Preset | Description |
 |--------|-------------|
-| `LinkPreset.Home` | Home page |
-| `LinkPreset.Archive` | Archive |
-| `LinkPreset.About` | About |
-| `LinkPreset.Friends` | Friends |
-| `LinkPreset.Sponsor` | Sponsor |
-| `LinkPreset.Guestbook` | Guestbook |
-| `LinkPreset.Bangumi` | Bangumi |
+| `LinkPresets.Home` | Home page |
+| `LinkPresets.Archive` | Archive |
+| `LinkPresets.Categories` | Categories |
+| `LinkPresets.Tags` | Tags |
+| `LinkPresets.Friends` | Friends |
+| `LinkPresets.Sponsor` | Sponsor |
+| `LinkPresets.Guestbook` | Guestbook |
+| `LinkPresets.About` | About |
+| `LinkPresets.Bangumi` | Bangumi |
+| `LinkPresets.Gallery` | Gallery |
 
 ## Custom Links
 
@@ -35,11 +38,12 @@ Custom links support the following properties:
 ## Example
 
 ```ts
-import { LinkPreset, type NavBarLink } from "../types/config";
+import { type NavBarLink } from "../types/navBarConfig";
+import { LinkPresets } from "../config/navBarConfig";
 
-const links: (NavBarLink | LinkPreset)[] = [
-  LinkPreset.Home,
-  LinkPreset.Archive,
+const links: NavBarLink[] = [
+  LinkPresets.Home,
+  LinkPresets.Archive,
 
   // Custom link with submenu
   {
@@ -56,7 +60,7 @@ const links: (NavBarLink | LinkPreset)[] = [
     ],
   },
 
-  LinkPreset.Friends,
+  LinkPresets.Friends,
 ];
 ```
 
