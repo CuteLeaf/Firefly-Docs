@@ -263,6 +263,7 @@ stateDiagram-v2
 > 行动的负面潜在后果。
 ```
 
+
 ### Docusaurus 风格
 
 ```markdown
@@ -277,6 +278,53 @@ stateDiagram-v2
 
 ::: tip
 更改提醒框主题后需要重启开发服务器才能生效。
+:::
+
+### Python-Markdown
+
+Firefly 支持 Python-Markdown 和 MkDocs Material 的 admonition 语法（`!!!` 和 `???` 语法）。需要在 `siteConfig.ts` 中启用：
+
+```typescript
+// src/config/siteConfig.ts
+rehypeCallouts: {
+  theme: "obsidian", // 推荐使用 obsidian 主题以获得最佳兼容性
+  enablePythonMarkdownAdmonitions: true, // 启用 Python-Markdown 语法
+},
+```
+
+**注意：** 只有 `obsidian` 主题才能完美支持所有 admonition 类型
+
+#### 基本语法
+
+```markdown
+!!! note
+    这是一个提示信息。
+
+!!! tip "自定义标题"
+    这是一个有自定义标题的提示。
+
+!!! warning
+    这是一个警告信息。
+```
+
+#### 可折叠语法
+
+```markdown
+??? note "点击展开（默认关闭）"
+    这是默认关闭的可折叠内容。
+
+???+ tip "点击展开（默认展开）"
+    这是默认展开的可折叠内容。
+```
+
+#### 支持的类型
+
+- `note`、`tip`、`info`、`warning`、`danger` 等标准类型
+- 自定义类型（如 `custom`、`success`、`failure` 等）
+- 嵌套 admonition（会转换为嵌套的 blockquote）
+
+::: tip
+更改提醒框主题或启用 Python-Markdown 语法后需要重启开发服务器才能生效。
 :::
 
 ## GitHub 仓库卡片

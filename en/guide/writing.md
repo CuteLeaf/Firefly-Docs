@@ -277,6 +277,53 @@ This is a tip with a custom title.
 Restart the dev server after changing the admonition theme.
 :::
 
+### Python-Markdown
+
+Firefly supports Python-Markdown and MkDocs Material admonition syntax (`!!!` and `???` syntax). Enable it in `siteConfig.ts`:
+
+```typescript
+// src/config/siteConfig.ts
+rehypeCallouts: {
+  theme: "obsidian", // Recommended for best compatibility
+  enablePythonMarkdownAdmonitions: true, // Enable Python-Markdown syntax
+},
+```
+
+**Note:** Only the `obsidian` theme fully supports all admonition types. 
+
+#### Basic Syntax
+
+```markdown
+!!! note
+    This is a note.
+
+!!! tip "Custom Title"
+    This is a tip with a custom title.
+
+!!! warning
+    This is a warning.
+```
+
+#### Collapsible Syntax
+
+```markdown
+??? note "Click to expand (closed by default)"
+    This is collapsed by default.
+
+???+ tip "Click to expand (open by default)"
+    This is expanded by default.
+```
+
+#### Supported Types
+
+- Standard types: `note`, `tip`, `info`, `warning`, `danger`
+- Custom types: `custom`, `success`, `failure`, etc.
+- Nested admonitions (converted to nested blockquotes)
+
+::: tip
+Restart the dev server after changing the admonition theme or enabling Python-Markdown syntax.
+:::
+
 ## GitHub Repository Card
 
 Embed a GitHub repository info card (data fetched dynamically from GitHub API):
