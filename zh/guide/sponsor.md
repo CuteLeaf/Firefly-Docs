@@ -1,6 +1,6 @@
-# 赞助
+# 打赏
 
-赞助配置管理赞助页面的展示内容，包括赞助方式和赞助者列表。
+打赏配置管理打赏页面的展示内容，包括打赏方式和打赏者列表。
 
 ## 配置文件
 
@@ -12,19 +12,19 @@
 |------|------|--------|------|
 | `title` | `string` | `""` | 页面标题（留空使用 i18n 翻译） |
 | `description` | `string` | `""` | 页面描述文本（留空使用 i18n 翻译） |
-| `usage` | `string` | - | 赞助用途说明 |
-| `showSponsorsList` | `boolean` | `true` | 是否显示赞助者列表 |
-| `showComment` | `boolean` | `true` | 是否显示赞助页评论区（需先启用评论系统） |
-| `showButtonInPost` | `boolean` | `true` | 是否在文章详情页底部显示赞助按钮 |
+| `usage` | `string` | - | 打赏用途说明 |
+| `showSponsorsList` | `boolean` | `true` | 是否显示打赏者列表 |
+| `showComment` | `boolean` | `true` | 是否显示打赏页评论区（需先启用评论系统） |
+| `showButtonInPost` | `boolean` | `true` | 是否在文章详情页底部显示打赏按钮 |
 
-## 赞助方式
+## 打赏方式
 
 | 属性 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `name` | `string` | 是 | 赞助方式名称 |
+| `name` | `string` | 是 | 打赏方式名称 |
 | `icon` | `string` | 否 | 图标（Iconify 格式） |
 | `qrCode` | `string` | 否 | 收款码图片路径（相对于 public 目录） |
-| `link` | `string` | 否 | 赞助链接 URL |
+| `link` | `string` | 否 | 打赏链接 URL |
 | `description` | `string` | 否 | 描述文本 |
 | `enabled` | `boolean` | 是 | 是否启用 |
 
@@ -35,7 +35,7 @@ methods: [
     icon: "fa7-brands:alipay",
     qrCode: "/assets/images/sponsor/alipay.png",
     link: "",
-    description: "使用支付宝扫码赞助",
+    description: "使用支付宝扫码打赏",
     enabled: true,
   },
   {
@@ -49,14 +49,14 @@ methods: [
 ],
 ```
 
-## 赞助者列表
+## 打赏者列表
 
 | 属性 | 类型 | 必填 | 说明 |
 |------|------|------|------|
-| `name` | `string` | 是 | 赞助者名称 |
-| `avatar` | `string` | 否 | 赞助者头像 URL |
-| `amount` | `string` | 否 | 赞助金额 |
-| `date` | `string` | 否 | 赞助日期（ISO 格式） |
+| `name` | `string` | 是 | 打赏者名称 |
+| `avatar` | `string` | 否 | 打赏者头像 URL |
+| `amount` | `string` | 否 | 打赏金额 |
+| `date` | `string` | 否 | 打赏日期（ISO 格式） |
 
 ```ts
 sponsors: [
@@ -74,7 +74,7 @@ sponsors: [
 ```
 
 ::: tip
-需要在 `siteConfig.ts` 中将 `pages.sponsor` 设为 `true` 才能访问赞助页面。
+需要在 `siteConfig.ts` 中将 `pages.sponsor` 设为 `true` 才能访问打赏页面。
 
-赞助页评论区基于固定路径 `/sponsor/`，不需要创建 `src/content/spec/sponsor.md` 等内容文件。
+打赏页评论区基于固定路径 `/sponsor/`，不需要创建 `src/content/spec/sponsor.md` 等内容文件。
 :::

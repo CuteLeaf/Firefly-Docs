@@ -73,7 +73,7 @@ Firefly/
 | `footerConfig.ts` | 页脚配置 | [页脚](./footer.md) |
 | `licenseConfig.ts` | 许可证配置 | [许可证](./license.md) |
 | `friendsConfig.ts` | 友链配置 | [友链](./friends.md) |
-| `sponsorConfig.ts` | 赞助配置 | [赞助](./sponsor.md) |
+| `sponsorConfig.ts` | 打赏配置 | [打赏](./sponsor.md) |
 | `analyticsConfig.ts` | 统计分析配置 | [站点配置](./site.md#统计分析) |
 | `galleryConfig.ts` | 相册配置 | [相册](./gallery.md) |
 | `plantumlConfig.ts` | PlantUML 图表配置 | [PlantUML 图表](./plantuml.md) |

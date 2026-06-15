@@ -17,7 +17,7 @@ Firefly 提供了一组内置的导航链接预设，可以直接使用：
 | `LinkPresets.Categories` | 分类 |
 | `LinkPresets.Tags` | 标签 |
 | `LinkPresets.Friends` | 友链 |
-| `LinkPresets.Sponsor` | 赞助 |
+| `LinkPresets.Sponsor` | 打赏 |
 | `LinkPresets.Guestbook` | 留言板 |
 | `LinkPresets.About` | 关于 |
 | `LinkPresets.Bangumi` | 番组计划 |
@@ -91,7 +91,7 @@ export const navBarSearchConfig: NavBarSearchConfig = {
 导航栏会根据 `siteConfig` 中的页面开关配置（`pages`）自动调整显示内容。例如：
 
 - 当 `siteConfig.pages.guestbook` 为 `false` 时，留言板链接不会出现在导航栏
-- 当 `siteConfig.pages.sponsor` 为 `false` 时，赞助链接不会出现在导航栏
+- 当 `siteConfig.pages.sponsor` 为 `false` 时，打赏链接不会出现在导航栏
 - 当 `siteConfig.pages.bangumi` 为 `false` 时，番组计划链接不会出现在导航栏
 
 ::: tip

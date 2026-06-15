@@ -74,7 +74,7 @@ export default defineConfig({
               items: [
                 { text: '友链', link: '/zh/guide/friends' },
                 { text: '相册', link: '/zh/guide/gallery' },
-                { text: '赞助', link: '/zh/guide/sponsor' },
+                { text: '打赏', link: '/zh/guide/sponsor' },
               ],
             },
             {

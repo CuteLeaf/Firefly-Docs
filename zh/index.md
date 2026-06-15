@@ -13,7 +13,7 @@ hero:
       text: 快速开始
       link: /zh/guide/getting-started
     - theme: alt
-      text: 赞助
+      text: 打赏
       link: https://blog.cuteleaf.cn/sponsor/
     - theme: alt
       text: QQ群

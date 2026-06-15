@@ -165,7 +165,7 @@ favicon: [
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `pages.friends` | `boolean` | `true` | 友链页面开关 |
-| `pages.sponsor` | `boolean` | `true` | 赞助页面开关 |
+| `pages.sponsor` | `boolean` | `true` | 打赏页面开关 |
 | `pages.guestbook` | `boolean` | `true` | 留言板页面开关（需配置评论系统） |
 | `pages.bangumi` | `boolean` | `true` | 番组计划页面开关 |
 | `pages.gallery` | `boolean` | `true` | 相册页面开关 |
