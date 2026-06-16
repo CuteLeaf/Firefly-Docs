@@ -242,7 +242,7 @@ stateDiagram-v2
 
 ## 提醒框 (Admonitions)
 
-支持 GitHub、Obsidian、VitePress 三种风格（在 `siteConfig.ts` 的 `rehypeCallouts.theme` 中配置）。
+支持 GitHub、Obsidian、VitePress、Docusaurus 四种风格（在 `siteConfig.ts` 的 `rehypeCallouts.theme` 中配置）。
 
 ### GitHub / VitePress 风格
 
@@ -266,9 +266,27 @@ stateDiagram-v2
 
 ### Docusaurus 风格
 
+支持以下类型：`note` `tip` `info` `warning` `danger`
+
 ```markdown
 :::note
 这是一个提示信息。
+:::
+
+:::tip
+实用技巧。
+:::
+
+:::info
+一般信息。
+:::
+
+:::warning
+警告信息。
+:::
+
+:::danger
+危险警告。
 :::
 
 :::tip[自定义标题]

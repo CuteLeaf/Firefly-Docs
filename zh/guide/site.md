@@ -126,7 +126,7 @@ favicon: [
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `rehypeCallouts.theme` | `string` | `"github"` | 提醒框主题：`"github"`、`"obsidian"`、`"vitepress"` |
+| `rehypeCallouts.theme` | `string` | `"github"` | 提醒框主题：`"github"`、`"obsidian"`、`"vitepress"`、`"docusaurus"` |
 | `rehypeCallouts.enablePythonMarkdownAdmonitions` | `boolean` | `false` | 是否启用 Python Markdown 风格的提醒框语法（使用 `!!!` 代替 `> [!NOTE]`） |
 
 ::: tip

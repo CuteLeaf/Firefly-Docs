@@ -34,6 +34,7 @@ Custom links support the following properties:
 | `icon` | `string` | No | Icon (Iconify format) |
 | `external` | `boolean` | No | External link |
 | `children` | `array` | No | Submenu items (supports nesting) |
+| `pageKey` | `string` | No | Key in `siteConfig.pages`, used to dynamically show/hide the link |
 
 ## Example
 
@@ -72,11 +73,45 @@ const links: NavBarLink[] = [
 
 ## Dynamic Navbar
 
-The navbar automatically adjusts based on `siteConfig.pages` settings:
+The navbar automatically adjusts based on `siteConfig.pages` settings. Set the `pageKey` property on a link to connect it to a page toggle.
 
-- `pages.guestbook: false` — hides Guestbook link
-- `pages.sponsor: false` — hides Sponsor link
-- `pages.bangumi: false` — hides Bangumi link
+### How It Works
+
+Set `pageKey` on a `NavBarLink` to match a key in `siteConfig.pages`:
+
+```ts
+// siteConfig.ts
+pages: {
+  friends: true,    // Friends page enabled
+  guestbook: false, // Guestbook page disabled
+  bangumi: true,    // Bangumi enabled
+  gallery: false,   // Gallery disabled
+  sponsor: true,    // Sponsor enabled
+}
+```
+
+```ts
+// navBarConfig.ts - set pageKey
+LinkPresets.Friends    // pageKey: "friends"
+LinkPresets.Guestbook  // pageKey: "guestbook"
+LinkPresets.Bangumi    // pageKey: "bangumi"
+```
+
+When a page is disabled (`false`):
+
+- The corresponding navbar link is hidden
+- If all children of a parent menu are hidden, the parent menu is also hidden
+- If only one child remains, it is shown directly (parent wrapper removed)
+
+### Examples
+
+| Config | Effect |
+|--------|--------|
+| `siteConfig.pages.guestbook = false` | Guestbook link hidden |
+| `siteConfig.pages.sponsor = false` | Sponsor link hidden |
+| `siteConfig.pages.bangumi = false` | Bangumi link hidden |
+| `siteConfig.pages.gallery = false` | Gallery link hidden |
+| `pages.gallery = false` and `pages.bangumi = false` | "My" entire menu hidden |
 
 ::: tip
 Pre-installed icon sets: `fa7-brands`, `fa7-regular`, `fa7-solid`, `material-symbols`, `simple-icons`. Visit [icones.js.org](https://icones.js.org/) for icon codes. Install additional sets with: `pnpm add @iconify-json/<icon-set-name>`.

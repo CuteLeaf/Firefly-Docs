@@ -240,7 +240,7 @@ stateDiagram-v2
 
 ## Admonitions
 
-Supports GitHub, Obsidian, and VitePress styles (configured via `siteConfig.ts` → `rehypeCallouts.theme`).
+Supports GitHub, Obsidian, VitePress, and Docusaurus styles (configured via `siteConfig.ts` → `rehypeCallouts.theme`).
 
 ### GitHub / VitePress Style
 
@@ -263,9 +263,27 @@ Supports GitHub, Obsidian, and VitePress styles (configured via `siteConfig.ts` 
 
 ### Docusaurus Style
 
+Supported types: `note` `tip` `info` `warning` `danger`
+
 ```markdown
 :::note
 This is a note.
+:::
+
+:::tip
+A useful tip.
+:::
+
+:::info
+General information.
+:::
+
+:::warning
+A warning.
+:::
+
+:::danger
+Dangerous operation.
 :::
 
 :::tip[Custom Title]

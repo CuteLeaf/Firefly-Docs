@@ -118,7 +118,7 @@ favicon: [
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `rehypeCallouts.theme` | `string` | `"github"` | Theme: `"github"`, `"obsidian"`, `"vitepress"` |
+| `rehypeCallouts.theme` | `string` | `"github"` | Theme: `"github"`, `"obsidian"`, `"vitepress"`, `"docusaurus"` |
 | `rehypeCallouts.enablePythonMarkdownAdmonitions` | `boolean` | `false` | Enable Python Markdown style admonition syntax (using `!!!` instead of `> [!NOTE]`) |
 
 ::: tip
