@@ -65,6 +65,40 @@ src: {
 建议不要替换 `d1-d6`、`m1-m6` 这些默认示例图片的名称。使用自己的图片时请命名为其他名称，避免以后更新时被覆盖。
 :::
 
+## 背景视频播放器
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `playerEnable` | `boolean` | `false` | 是否启用背景视频播放，启用后导航栏会显示播放按钮 |
+| `src.playerUrl` | `string \| string[]` | - | 视频地址，支持单个视频路径或数组（多视频列表循环） |
+| `common.playerMode` | `"order" \| "random"` | `"order"` | 多视频播放模式：`"order"` 顺序循环，`"random"` 随机切换 |
+
+```ts
+export const backgroundWallpaper = {
+  playerEnable: true,
+  src: {
+    desktop: [...],
+    mobile: [...],
+    // 单个视频
+    // playerUrl: "/assets/videos/firefly.mp4",
+    // 多个视频
+    playerUrl: [
+      "/assets/videos/video1.mp4",
+      "/assets/videos/video2.mp4",
+    ],
+  },
+  common: {
+    playerMode: "random",
+  },
+};
+```
+
+::: tip
+- 本地视频请放在 `public/assets/videos/` 目录下
+- 纯色背景模式（`mode: "none"`）下播放按钮会自动隐藏
+- 多视频模式下，如果某个视频加载失败会自动尝试播放下一个，全部失败时会显示加载失败提示
+:::
+
 ## 通用配置（Banner 和 Fullscreen 共享）
 
 `common` 下的配置在横幅壁纸和全屏壁纸模式下共享。

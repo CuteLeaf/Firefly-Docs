@@ -63,6 +63,40 @@ Image path formats:
 Avoid renaming your custom images to `d1-d6` or `m1-m6`, as these default sample image names may be overwritten during updates.
 :::
 
+## Background Video Player
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `playerEnable` | `boolean` | `false` | Enable background video player. When enabled, a play button will appear in the navbar |
+| `src.playerUrl` | `string \| string[]` | - | Video URL(s). Supports a single path or an array for multi-video cycling |
+| `common.playerMode` | `"order" \| "random"` | `"order"` | Multi-video playback mode: `"order"` sequential loop, `"random"` random shuffle |
+
+```ts
+export const backgroundWallpaper = {
+  playerEnable: true,
+  src: {
+    desktop: [...],
+    mobile: [...],
+    // Single video
+    // playerUrl: "/assets/videos/firefly.mp4",
+    // Multiple videos
+    playerUrl: [
+      "/assets/videos/video1.mp4",
+      "/assets/videos/video2.mp4",
+    ],
+  },
+  common: {
+    playerMode: "random",
+  },
+};
+```
+
+::: tip
+- Place local videos in the `public/assets/videos/` directory
+- The play button is automatically hidden in solid color mode (`mode: "none"`)
+- In multi-video mode, if a video fails to load, the player automatically tries the next one. A failure toast is shown when all videos fail
+:::
+
 ## Common Configuration (Shared by Banner and Fullscreen)
 
 Settings under `common` are shared between banner wallpaper and fullscreen wallpaper modes.
