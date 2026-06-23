@@ -56,6 +56,23 @@ public/gallery/japan-2025/
 
 构建时会自动扫描目录中所有图片文件，支持 `jpg`、`png`、`webp`、`avif`、`gif` 格式。
 
+如果需要引用外部图片，可以在相册目录下创建 `urls.txt` 文件，每行一个图片 URL（`#` 开头的行为注释）：
+
+```
+public/gallery/japan-2025/
+  ├── cover.jpg
+  ├── 01.jpg
+  └── urls.txt
+```
+
+```txt title="urls.txt"
+# 以下为远程图片
+https://example.com/photo1.jpg
+https://example.com/photo2.png
+```
+
+本地图片和远程图片会在构建时合并，统一在瀑布流中展示。
+
 ## 相册属性
 
 | 属性 | 类型 | 必填 | 说明 |
@@ -66,7 +83,7 @@ public/gallery/japan-2025/
 | `date` | `string` | 否 | 日期，格式 `YYYY-MM-DD` |
 | `location` | `string` | 否 | 拍摄地点 |
 | `tags` | `string[]` | 否 | 标签，用于首页筛选 |
-| `cover` | `string` | 否 | 手动指定封面图 URL |
+| `cover` | `string` | 否 | 手动指定封面图，支持本地路径（如 `/gallery/album/cover.jpg`）和外部链接（如 `https://example.com/cover.jpg`） |
 | `password` | `string` | 否 | 相册密码，设置后需要输入密码才能查看 |
 | `passwordHint` | `string` | 否 | 密码提示信息，帮助访客回忆密码 |
 
@@ -129,4 +146,5 @@ export const galleryConfig: GalleryConfig = {
 - 相册详情页的照片点击后会打开 FancyBox 灯箱预览，支持左右切换浏览
 - 相册首页的标签筛选基于各相册的 `tags` 属性自动生成
 - 图片使用浏览器原生懒加载，无需额外配置
+- `cover` 属性和 `urls.txt` 均支持外部图片链接（`https://...`）
 :::

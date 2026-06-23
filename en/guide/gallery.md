@@ -56,6 +56,23 @@ public/gallery/japan-2025/
 
 All image files in the directory are automatically scanned at build time. Supported formats: `jpg`, `png`, `webp`, `avif`, `gif`.
 
+To include remote images, create a `urls.txt` file in the album directory with one image URL per line (lines starting with `#` are comments):
+
+```
+public/gallery/japan-2025/
+  ├── cover.jpg
+  ├── 01.jpg
+  └── urls.txt
+```
+
+```txt title="urls.txt"
+# Remote images
+https://example.com/photo1.jpg
+https://example.com/photo2.png
+```
+
+Local and remote images are merged at build time and displayed together in the masonry layout.
+
 ## Album Properties
 
 | Property | Type | Required | Description |
@@ -66,7 +83,7 @@ All image files in the directory are automatically scanned at build time. Suppor
 | `date` | `string` | No | Date in `YYYY-MM-DD` format |
 | `location` | `string` | No | Photo location |
 | `tags` | `string[]` | No | Tags for filtering on the index page |
-| `cover` | `string` | No | Manually specify cover image URL |
+| `cover` | `string` | No | Manually specify cover image — supports local paths (e.g. `/gallery/album/cover.jpg`) and external URLs (e.g. `https://example.com/cover.jpg`) |
 | `password` | `string` | No | Album password — requires password to view |
 | `passwordHint` | `string` | No | Password hint to help visitors recall the password |
 
@@ -129,4 +146,5 @@ export const galleryConfig: GalleryConfig = {
 - Clicking a photo in the album detail page opens a FancyBox lightbox with left/right navigation
 - Tag filtering on the gallery index is automatically generated from each album's `tags` property
 - Images use native browser lazy loading — no extra configuration needed
+- Both the `cover` property and `urls.txt` support external image URLs (`https://...`)
 :::
