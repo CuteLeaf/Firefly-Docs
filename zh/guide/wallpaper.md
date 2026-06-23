@@ -181,12 +181,31 @@ export const backgroundWallpaper = {
 |------|------|--------|------|
 | `banner.carousel.enable` | `boolean` | `false` | 是否启用横幅图片轮播；关闭时保持每次刷新随机显示一张 |
 | `banner.carousel.interval` | `number` | `5000` | 轮播切换间隔（毫秒） |
+| `banner.carousel.transitionEffect` | `string` | `"fade"` | 过渡效果：`"fade"` 渐变、`"zoom"` 缩放、`"slide"` 滑动、`"kenburns"` 旋转木马 |
 | `banner.carousel.switchable` | `boolean` | `false` | 是否允许用户通过控制面板切换横幅轮播 |
+
+```ts
+banner: {
+  carousel: {
+    enable: true,
+    interval: 5000,
+    transitionEffect: "kenburns", // "fade" | "zoom" | "slide" | "kenburns"
+    switchable: true,
+  },
+},
+```
+
+**过渡效果说明：**
+
+| 效果 | 说明 |
+|------|------|
+| `fade` | 交叉渐变，两张图片淡入淡出过渡 |
+| `zoom` | 缩放切换，新图从小到大出现 |
+| `slide` | 滑动切换，新图从右侧滑入 |
+| `kenburns` | 旋转木马（推荐），图片缓慢放大的同时通过 LQIP 模糊预览桥接切换，效果最自然 |
 
 ::: tip
 横幅轮播仅在 `src.desktop` 或 `src.mobile` 配置多张图片时生效。
-
-开启轮播时，为了图片之间的切换自然，图片会在下一张加载完成后当前图片才会消失，过渡时可能有重影。如果觉得效果不理想，可以关闭轮播保持每次刷新随机显示。
 :::
 
 ## Fullscreen 模式配置

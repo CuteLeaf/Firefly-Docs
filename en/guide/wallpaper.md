@@ -179,12 +179,31 @@ Gradient and waves are mutually exclusive: when waves are enabled, the gradient 
 |----------|------|---------|-------------|
 | `banner.carousel.enable` | `boolean` | `false` | Enable banner image carousel. If disabled, one image is randomly chosen on page refresh |
 | `banner.carousel.interval` | `number` | `5000` | Carousel interval in milliseconds |
+| `banner.carousel.transitionEffect` | `string` | `"fade"` | Transition effect: `"fade"`, `"zoom"`, `"slide"`, `"kenburns"` |
 | `banner.carousel.switchable` | `boolean` | `false` | Allow users to toggle carousel in the control panel |
+
+```ts
+banner: {
+  carousel: {
+    enable: true,
+    interval: 5000,
+    transitionEffect: "kenburns", // "fade" | "zoom" | "slide" | "kenburns"
+    switchable: true,
+  },
+},
+```
+
+**Transition effects:**
+
+| Effect | Description |
+|--------|-------------|
+| `fade` | Cross-fade between images |
+| `zoom` | New image scales up from small to full size |
+| `slide` | New image slides in from the right |
+| `kenburns` | Ken Burns (recommended) — image slowly zooms in while transitioning via LQIP blurred preview bridge for the smoothest effect |
 
 ::: tip
 Banner carousel only works when multiple images are configured in `src.desktop` or `src.mobile`.
-
-When enabled, transitions are natural — the current image stays until the next one loads, which may cause a brief ghosting effect. If this doesn't look right, disable carousel and keep the random-per-refresh behavior.
 :::
 
 ## Fullscreen Mode
