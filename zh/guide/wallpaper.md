@@ -167,25 +167,19 @@ export const backgroundWallpaper = {
 渐变过渡与水波纹互斥：水波纹开启时渐变自动隐藏，水波纹关闭时渐变自动显示。两者都可通过控制面板独立切换。
 :::
 
-## Banner 模式配置
+### 壁纸轮播
 
-### 图片位置
-
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `banner.position` | `string` | `"0% 20%"` | CSS `object-position` 值。支持 `'center'`、`'top'`、`'bottom'`、`'left'`、`'right'`、百分比等 |
-
-### 横幅图片轮播
+横幅壁纸和全屏壁纸共享的轮播配置，仅在配置多张图片时生效。
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `banner.carousel.enable` | `boolean` | `false` | 是否启用横幅图片轮播；关闭时保持每次刷新随机显示一张 |
-| `banner.carousel.interval` | `number` | `5000` | 轮播切换间隔（毫秒） |
-| `banner.carousel.transitionEffect` | `string` | `"fade"` | 过渡效果：`"fade"` 渐变、`"zoom"` 缩放、`"slide"` 滑动、`"kenburns"` 旋转木马 |
-| `banner.carousel.switchable` | `boolean` | `false` | 是否允许用户通过控制面板切换横幅轮播 |
+| `common.carousel.enable` | `boolean` | `false` | 是否启用壁纸轮播；关闭时保持每次刷新随机显示一张 |
+| `common.carousel.interval` | `number` | `5000` | 轮播切换间隔（毫秒） |
+| `common.carousel.transitionEffect` | `string` | `"fade"` | 过渡效果：`"fade"` 渐变、`"zoom"` 缩放、`"slide"` 滑动、`"kenburns"` 旋转木马 |
+| `common.carousel.switchable` | `boolean` | `false` | 是否允许用户通过控制面板切换壁纸轮播 |
 
 ```ts
-banner: {
+common: {
   carousel: {
     enable: true,
     interval: 5000,
@@ -204,9 +198,13 @@ banner: {
 | `slide` | 滑动切换，新图从右侧滑入 |
 | `kenburns` | 旋转木马（推荐），图片缓慢放大的同时通过 LQIP 模糊预览桥接切换，效果最自然 |
 
-::: tip
-横幅轮播仅在 `src.desktop` 或 `src.mobile` 配置多张图片时生效。
-:::
+## Banner 模式配置
+
+### 图片位置
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.position` | `string` | `"0% 20%"` | CSS `object-position` 值。支持 `'center'`、`'top'`、`'bottom'`、`'left'`、`'right'`、百分比等 |
 
 ## Fullscreen 模式配置
 

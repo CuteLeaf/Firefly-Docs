@@ -165,25 +165,19 @@ Automatically enabled when waves are disabled, providing a smooth gradient fade 
 Gradient and waves are mutually exclusive: when waves are enabled, the gradient is automatically hidden; when waves are disabled, the gradient is automatically shown. Both can be independently toggled via the control panel.
 :::
 
-## Banner Mode
+### Wallpaper Carousel
 
-### Image Position
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `banner.position` | `string` | `"0% 20%"` | CSS `object-position` value. Supports `'center'`, `'top'`, `'bottom'`, `'left'`, `'right'`, percentages, etc. |
-
-### Banner Carousel
+Shared carousel configuration for both banner and fullscreen modes. Only works when multiple images are configured.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `banner.carousel.enable` | `boolean` | `false` | Enable banner image carousel. If disabled, one image is randomly chosen on page refresh |
-| `banner.carousel.interval` | `number` | `5000` | Carousel interval in milliseconds |
-| `banner.carousel.transitionEffect` | `string` | `"fade"` | Transition effect: `"fade"`, `"zoom"`, `"slide"`, `"kenburns"` |
-| `banner.carousel.switchable` | `boolean` | `false` | Allow users to toggle carousel in the control panel |
+| `common.carousel.enable` | `boolean` | `false` | Enable wallpaper carousel. If disabled, one image is randomly chosen on page refresh |
+| `common.carousel.interval` | `number` | `5000` | Carousel interval in milliseconds |
+| `common.carousel.transitionEffect` | `string` | `"fade"` | Transition effect: `"fade"`, `"zoom"`, `"slide"`, `"kenburns"` |
+| `common.carousel.switchable` | `boolean` | `false` | Allow users to toggle carousel in the control panel |
 
 ```ts
-banner: {
+common: {
   carousel: {
     enable: true,
     interval: 5000,
@@ -202,9 +196,13 @@ banner: {
 | `slide` | New image slides in from the right |
 | `kenburns` | Ken Burns (recommended) — image slowly zooms in while transitioning via LQIP blurred preview bridge for the smoothest effect |
 
-::: tip
-Banner carousel only works when multiple images are configured in `src.desktop` or `src.mobile`.
-:::
+## Banner Mode
+
+### Image Position
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `banner.position` | `string` | `"0% 20%"` | CSS `object-position` value. Supports `'center'`, `'top'`, `'bottom'`, `'left'`, `'right'`, percentages, etc. |
 
 ## Fullscreen Mode
 
