@@ -37,47 +37,26 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 | `showOnPostPage` | `boolean` | 否 | 是否在文章详情页显示 |
 | `hideOnNonPostPage` | `boolean` | 否 | 是否在非文章详情页隐藏（`true` = 仅文章详情页显示） |
 | `showTitle` | `boolean` | 否 | 是否显示组件标题，默认 `true` |
-| `specificConfig` | `object` | 否 | 组件专属配置，不同组件类型的配置项不同，详见下方说明 |
+| `specificConfig` | `object` | 否 | 组件专属配置，不同组件类型的配置项不同，详见 [侧边栏小组件](/zh/guide/widgets#组件专属配置) |
+
+### 可用组件类型
+
+| 类型 | 说明 |
+|------|------|
+| `"profile"` | 用户资料卡片（头像、名称、简介、社交链接） |
+| `"announcement"` | 公告栏 |
+| `"music"` | 音乐播放器 |
+| `"categories"` | 文章分类列表 |
+| `"tags"` | 标签云 |
+| `"stats"` | 站点统计（文章数、字数、运行天数等） |
+| `"siteInfo"` | 站点信息（构建平台、版本、系统等） |
+| `"calendar"` | 文章日历（可选热力图） |
+| `"sidebarToc"` | 文章目录（仅文章详情页可用） |
+| `"advertisement"` | 广告栏（支持多个实例） |
 
 ::: tip
 组件的渲染顺序取决于它们在配置数组中的顺序，但 `position: "top"` 的组件会优先于 `position: "sticky"` 的组件渲染。
 :::
-
-### specificConfig 组件专属配置
-
-不同组件类型支持不同的 `specificConfig` 配置项：
-
-#### categories / tags 组件
-
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `collapseThreshold` | `number` | 折叠阈值，超过此数量时自动折叠 |
-
-#### calendar 组件
-
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `calendar.showHeatmap` | `boolean` | 是否显示年度文章热力图 |
-
-#### advertisement 组件
-
-广告组件的 `specificConfig.ad` 支持以下配置：
-
-| 属性 | 类型 | 说明 |
-|------|------|------|
-| `ad.image.src` | `string` | 广告图片地址 |
-| `ad.image.alt` | `string` | 图片替代文本 |
-| `ad.image.link` | `string` | 点击跳转链接 |
-| `ad.image.external` | `boolean` | 是否外部链接 |
-| `ad.title` | `string` | 广告标题 |
-| `ad.content` | `string` | 广告内容文本 |
-| `ad.link.text` | `string` | 链接按钮文本 |
-| `ad.link.url` | `string` | 链接地址 |
-| `ad.link.external` | `boolean` | 是否外部链接 |
-| `ad.closable` | `boolean` | 是否允许关闭广告 |
-| `ad.displayCount` | `number` | 显示次数限制，`-1` 为无限制 |
-| `ad.expireDate` | `string` | 过期日期（`YYYY-MM-DD`），过期后不再显示 |
-| `ad.padding.all` | `string` | 组件内边距 |
 
 ## 左侧边栏配置示例
 

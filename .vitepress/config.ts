@@ -50,10 +50,11 @@ export default defineConfig({
               text: '基础配置',
               items: [
                 { text: '站点配置', link: '/zh/guide/site' },
-                { text: '导航栏', link: '/zh/guide/navbar' },
-                { text: '侧边栏', link: '/zh/guide/sidebar' },
                 { text: '个人资料', link: '/zh/guide/profile' },
                 { text: '背景壁纸', link: '/zh/guide/wallpaper' },
+                { text: '导航栏', link: '/zh/guide/navbar' },
+                { text: '侧边栏', link: '/zh/guide/sidebar' },
+                { text: '侧边栏小组件', link: '/zh/guide/widgets' },
               ],
             },
             {
@@ -130,10 +131,10 @@ export default defineConfig({
               text: 'Basic Configuration',
               items: [
                 { text: 'Site Config', link: '/en/guide/site' },
+                { text: 'Profile', link: '/en/guide/profile' },
                 { text: 'Navbar', link: '/en/guide/navbar' },
                 { text: 'Sidebar', link: '/en/guide/sidebar' },
-                { text: 'Profile', link: '/en/guide/profile' },
-                { text: 'Wallpaper', link: '/en/guide/wallpaper' },
+                { text: 'Sidebar Widgets', link: '/en/guide/widgets' },
               ],
             },
             {

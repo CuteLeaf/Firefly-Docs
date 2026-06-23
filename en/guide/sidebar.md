@@ -27,62 +27,26 @@ Each sidebar component supports:
 | `showOnPostPage` | `boolean` | No | Show on post detail pages |
 | `hideOnNonPostPage` | `boolean` | No | Hide on non-post pages (`true` = show only on post detail pages) |
 | `showTitle` | `boolean` | No | Show component title, default `true` |
-| `specificConfig` | `object` | No | Component-specific configuration, varies by component type, see below |
+| `specificConfig` | `object` | No | Component-specific configuration, varies by type, see [Sidebar Widgets](/en/guide/widgets#widget-specific-configuration) |
 
 ### Available Component Types
 
 | Type | Description |
 |------|-------------|
-| `"profile"` | User profile |
-| `"announcement"` | Announcement |
+| `"profile"` | User profile card (avatar, name, bio, social links) |
+| `"announcement"` | Announcement banner |
 | `"music"` | Music player |
-| `"categories"` | Categories |
-| `"tags"` | Tags |
-| `"stats"` | Site statistics |
-| `"siteInfo"` | Site info (uptime, last updated, etc.) |
-| `"calendar"` | Calendar |
-| `"sidebarToc"` | Table of contents (post pages only) |
-| `"advertisement"` | Advertisement |
+| `"categories"` | Post category list |
+| `"tags"` | Tag cloud |
+| `"stats"` | Site statistics (post count, word count, running days, etc.) |
+| `"siteInfo"` | Site info (build platform, versions, system, etc.) |
+| `"calendar"` | Post calendar with optional heatmap |
+| `"sidebarToc"` | Table of contents (post detail pages only) |
+| `"advertisement"` | Advertisement widget (supports multiple instances) |
 
 ::: tip
 Component rendering order depends on their position in the config array, but `position: "top"` components render before `position: "sticky"` components.
 :::
-
-### specificConfig Component-Specific Configuration
-
-Different component types support different `specificConfig` options:
-
-#### categories / tags Components
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `collapseThreshold` | `number` | Collapse threshold, auto-collapse when count exceeds this value |
-
-#### calendar Component
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `calendar.showHeatmap` | `boolean` | Show yearly post activity heatmap |
-
-#### advertisement Component
-
-The `specificConfig.ad` supports the following:
-
-| Property | Type | Description |
-|----------|------|-------------|
-| `ad.image.src` | `string` | Ad image URL |
-| `ad.image.alt` | `string` | Image alt text |
-| `ad.image.link` | `string` | Click redirect URL |
-| `ad.image.external` | `boolean` | Whether link is external |
-| `ad.title` | `string` | Ad title |
-| `ad.content` | `string` | Ad content text |
-| `ad.link.text` | `string` | Link button text |
-| `ad.link.url` | `string` | Link URL |
-| `ad.link.external` | `boolean` | Whether link is external |
-| `ad.closable` | `boolean` | Allow closing the ad |
-| `ad.displayCount` | `number` | Display count limit, `-1` for unlimited |
-| `ad.expireDate` | `string` | Expiration date (`YYYY-MM-DD`), hidden after expiry |
-| `ad.padding.all` | `string` | Component padding |
 
 ## Left Sidebar Example
 
