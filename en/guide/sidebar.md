@@ -25,7 +25,7 @@ Each sidebar component supports:
 | `enable` | `boolean` | Yes | Whether enabled |
 | `position` | `string` | Yes | Position: `"top"` fixed, `"sticky"` sticky |
 | `showOnPostPage` | `boolean` | No | Show on post detail pages |
-| `showOnNonPostPage` | `boolean` | No | Show on non-post pages |
+| `hideOnNonPostPage` | `boolean` | No | Hide on non-post pages (`true` = show only on post detail pages) |
 | `showTitle` | `boolean` | No | Show component title, default `true` |
 | `specificConfig` | `object` | No | Component-specific configuration, varies by component type, see below |
 
@@ -160,7 +160,7 @@ rightComponents: [
     enable: true,
     position: "sticky",
     showOnPostPage: true,
-    showOnNonPostPage: false,
+    hideOnNonPostPage: true,
   },
 ],
 ```

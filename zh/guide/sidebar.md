@@ -35,7 +35,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
 | `enable` | `boolean` | 是 | 是否启用 |
 | `position` | `string` | 是 | 位置：`"top"` 固定顶部，`"sticky"` 粘性定位 |
 | `showOnPostPage` | `boolean` | 否 | 是否在文章详情页显示 |
-| `showOnNonPostPage` | `boolean` | 否 | 是否在非文章详情页显示 |
+| `hideOnNonPostPage` | `boolean` | 否 | 是否在非文章详情页隐藏（`true` = 仅文章详情页显示） |
 | `showTitle` | `boolean` | 否 | 是否显示组件标题，默认 `true` |
 | `specificConfig` | `object` | 否 | 组件专属配置，不同组件类型的配置项不同，详见下方说明 |
 
@@ -155,7 +155,7 @@ rightComponents: [
     enable: true,
     position: "sticky",
     showOnPostPage: true,
-    showOnNonPostPage: false,
+    hideOnNonPostPage: true,
   },
 ],
 ```
