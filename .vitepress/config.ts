@@ -75,9 +75,9 @@ export default defineConfig({
               items: [
                 { text: '友链', link: '/zh/guide/friends' },
                 { text: '相册', link: '/zh/guide/gallery' },
-                { text: '番组计划', link: '/zh/guide/bangumi' },
                 { text: '追番', link: '/zh/guide/anime' },
                 { text: '打赏', link: '/zh/guide/sponsor' },
+                { text: '番组计划', link: '/zh/guide/bangumi' },
               ],
             },
             {
@@ -158,9 +158,9 @@ export default defineConfig({
               items: [
                 { text: 'Friends', link: '/en/guide/friends' },
                 { text: 'Gallery', link: '/en/guide/gallery' },
-                { text: 'Bangumi', link: '/en/guide/bangumi' },
                 { text: 'Anime', link: '/en/guide/anime' },
                 { text: 'Sponsor', link: '/en/guide/sponsor' },
+                { text: 'Bangumi', link: '/en/guide/bangumi' },
               ],
             },
             {
