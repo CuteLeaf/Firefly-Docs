@@ -1,144 +1,190 @@
 # Font
 
-Firefly supports custom font configuration using CDN fonts or local font files. You can set different fonts for different areas (banner title, banner subtitle, navbar title), and local fonts can be automatically subsetted for optimal performance.
+Firefly uses [Astro Font API](https://docs.astro.build/en/guides/fonts/) to manage fonts, supporting Google Fonts, Fontsource, local fonts, and more. You can set different fonts for different areas (banner title, banner subtitle, navbar title, code blocks), and local fonts can be automatically subsetted for optimal performance.
 
-## Config File
+## Config Files
 
-`src/config/fontConfig.ts`
+- `src/config/fontConfig.ts` — Font definitions and selection configuration
+- `src/types/fontConfig.ts` — Type definitions
 
 ## Basic Configuration
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `enable` | `boolean` | `false` | Enable custom fonts |
-| `preload` | `boolean` | `true` | Preload font files |
-| `selected` | `string \| string[]` | `["misans-regular"]` | Selected font ID(s) |
-| `bannerTitleFont` | `string` | `""` | Banner title font ID, falls back to global `selected` if empty |
-| `bannerSubtitleFont` | `string` | `""` | Banner subtitle font ID, falls back to global `selected` if empty |
-| `navbarTitleFont` | `string` | `""` | Navbar title font ID, falls back to global `selected` if empty |
-| `fallback` | `string[]` | `["system-ui", ...]` | Global font fallback list |
+| `enable` | `boolean` | `true` | Enable custom font feature |
+| `selected` | `string \| string[]` | `["system"]` | Selected font CSS variable name(s), `"system"` for system fonts |
+| `bannerTitleFont` | `string` | `""` | Banner title font CSS variable, falls back to global `selected` if empty |
+| `bannerSubtitleFont` | `string` | `""` | Banner subtitle font CSS variable, falls back to global `selected` if empty |
+| `navbarTitleFont` | `string` | `""` | Navbar title font CSS variable, falls back to global `selected` if empty |
+| `codeFont` | `string` | `""` | Code block font CSS variable, for syntax highlighting and monospace scenarios |
 
 ```ts
-export const fontConfig = {
-  enable: false,
-  preload: true,
-  selected: ["misans-regular"],
-  bannerTitleFont: "",      // Banner title font
-  bannerSubtitleFont: "",   // Banner subtitle font
-  navbarTitleFont: "",      // Navbar title font
-  fallback: [
-    "system-ui",
-    "-apple-system",
-    "BlinkMacSystemFont",
-    "Segoe UI",
-    "Roboto",
-    "sans-serif",
-  ],
+export const fontConfig: FontSelectionConfig = {
+  enable: true,
+  selected: ["system"],
+  bannerTitleFont: "--font-zen-maru-gothic",
+  bannerSubtitleFont: "--font-inter",
+  navbarTitleFont: "",
+  codeFont: "--font-jetbrains-mono",
 };
 ```
 
-## Per-Region Fonts
+## Font Definitions (fontsList)
 
-Use `bannerTitleFont`, `bannerSubtitleFont`, and `navbarTitleFont` to assign different fonts to the banner title, banner subtitle, and navbar title respectively.
-
-```ts
-selected: ["misans-regular"],       // Global font
-bannerTitleFont: "zen-maru-gothic", // Banner title uses Zen Maru Gothic
-bannerSubtitleFont: "inter",        // Banner subtitle uses Inter
-navbarTitleFont: "misans-semibold", // Navbar title uses MiSans Semibold
-```
-
-When left empty, the region inherits the global `selected` font.
-
-## Font Item Properties
+Define available fonts in the `fontsList` array. Each font item uses the Astro Font API configuration format:
 
 | Property | Type | Required | Description |
 |----------|------|----------|-------------|
-| `id` | `string` | Yes | Unique font identifier |
-| `name` | `string` | Yes | Display name |
-| `src` | `string` | Yes | Font file path or URL |
-| `family` | `string` | Yes | CSS `font-family` name |
-| `weight` | `string \| number` | No | Font weight |
-| `style` | `string` | No | Font style: `"normal"`, `"italic"`, `"oblique"` |
-| `display` | `string` | No | `font-display`: `"auto"`, `"block"`, `"swap"`, `"fallback"`, `"optional"` |
-| `subset` | `boolean` | No | Enable font subsetting (local fonts only) |
-| `subsetExtraChars` | `string` | No | Extra characters to include in the subset for dynamic content |
+| `name` | `string` | Yes | Font name |
+| `cssVariable` | `string` | Yes | CSS variable name (e.g. `"--font-inter"`) |
+| `provider` | `string \| object` | Yes | Font provider: `"google"`, `"fontsource"`, `"local"`, `"bunny"`, `"fontshare"`, `"npm"`, or custom provider |
+| `weights` | `string[]` | No | Font weights, e.g. `["400", "700"]` |
+| `styles` | `string[]` | No | Font styles, e.g. `["normal"]` |
+| `subsets` | `string[]` | No | Character subsets, e.g. `["latin", "cyrillic"]` |
+| `fallbacks` | `string[]` | No | Fallback font list |
+| `display` | `string` | No | Font display strategy: `"auto"`, `"swap"`, `"block"`, etc. |
+| `options` | `object` | No | Extra options for local fonts (e.g. `variants` definition) |
 
 ## Built-in Fonts
 
-| ID | Name | Source |
-|----|------|--------|
-| `system` | System Font | Built-in |
-| `zen-maru-gothic` | Zen Maru Gothic | Google Fonts |
-| `inter` | Inter | Google Fonts |
-| `misans-normal` | MiSans Normal | unpkg CDN |
-| `misans-regular` | MiSans Regular | unpkg CDN |
-| `misans-semibold` | MiSans Semibold | unpkg CDN |
+Firefly includes these pre-configured fonts:
+
+| CSS Variable | Name | Provider | Usage |
+|--------------|------|----------|-------|
+| `--font-zen-maru-gothic` | Zen Maru Gothic | Fontsource | Japanese rounded font, suitable for titles |
+| `--font-inter` | Inter | Fontsource | English sans-serif font |
+| `--font-jetbrains-mono` | JetBrains Mono | Fontsource | Monospace font for code blocks |
+| `--font-greatvibes` | GreatVibes | Local | Decorative font example |
+
+Use `"system"` for the system font stack (no custom fonts loaded).
 
 ## Adding Custom Fonts
 
 ### CDN Fonts (Recommended)
 
+Example with Fontsource:
+
 ```ts
-fonts: {
-  "my-font": {
-    id: "my-font",
-    name: "My Custom Font",
-    src: "https://fonts.googleapis.com/css2?family=My+Font&display=swap",
-    family: "My Font",
-    display: "swap",
+// 1. Add font definition to fontsList
+export const fontsList: FontDefinition[] = [
+  // ... other fonts
+  {
+    name: "Noto Sans SC",
+    cssVariable: "--font-noto-sans-sc",
+    provider: "fontsource",
+    weights: ["400", "700"],
+    styles: ["normal"],
+    subsets: ["latin", "chinese-simplified"],
+    fallbacks: ["sans-serif"],
   },
-},
+];
+
+// 2. Reference in fontConfig
+export const fontConfig: FontSelectionConfig = {
+  selected: ["--font-noto-sans-sc"],
+};
 ```
 
-Then add it to `selected`:
+### Google Fonts
 
 ```ts
-selected: ["my-font"],
+{
+  name: "Roboto",
+  cssVariable: "--font-roboto",
+  provider: "google",
+  weights: ["400", "700"],
+  styles: ["normal", "italic"],
+  subsets: ["latin"],
+  fallbacks: ["sans-serif"],
+},
 ```
 
 ### Local Fonts with Subsetting
 
-Local font files are typically large (several MB) and will significantly slow down page loading. Firefly includes an automatic subsetting feature: during build, it scans all characters actually used in your pages and generates lightweight woff2 subset files (usually only a few hundred KB).
+Local font files are typically large (several MB) and will significantly slow down page loading. Firefly includes an automatic subsetting feature: during build, it scans all characters actually used in your pages and generates lightweight woff2 subset files.
 
 **Steps:**
 
-1. Place your TTF/OTF/WOFF2 font file in the `public/fonts/` directory
-2. Add the font config with `subset: true`
-3. Run `pnpm build` — the script automatically generates subset files
+1. Place your TTF/OTF/WOFF2 font file in the `public/assets/fonts/` directory
+2. Add font definition to `fontsList` with `provider: "local"`
+3. Configure subsetting options in `fontConfig.subsetFonts`
 
 ```ts
-fonts: {
-  "my-font": {
-    id: "my-font",
-    name: "My Font",
-    src: "/fonts/my-font.ttf",  // Font file in public/fonts/
-    family: "MyFont",
-    weight: 400,
-    display: "swap",
-    subset: true,               // Enable subsetting
-    subsetExtraChars: "",       // Extra characters for dynamic content
+// 1. Font definition
+{
+  name: "My Custom Font",
+  cssVariable: "--font-my-custom",
+  provider: "local",
+  options: {
+    variants: [
+      {
+        src: ["./public/assets/fonts/MyCustomFont.otf"],
+      },
+    ],
+  },
+  fallbacks: ["sans-serif"],
+},
+
+// 2. Subsetting configuration
+subsetFonts: {
+  "--font-my-custom": {
+    extraChars: "", // Extra characters for dynamic content
   },
 },
 ```
 
-The subsetting script outputs compression info, e.g.:
+The subsetting script runs automatically during build and outputs compression info:
 
 ```
-⏳ Generating subset for 'my-font' (MyFont)...
-   ✔ 460b7258db8ba482.woff2 (14.3 KB, original: 34.4 KB, saved 58.5%)
-```
-
-You can also run the subset command independently:
-
-```bash
-pnpm subset
+🔤 Font subsetting started...
+   Found 1 font(s) to subset: my-custom-font-default
+🔍 Collecting characters from dist/...
+   Collected 1234 unique characters.
+⏳ Generating subset for 'my-custom-font-default' (My Custom Font)...
+   ✔ a1b2c3d4e5f6g7h8.woff2 (14.3 KB, original: 344.0 KB, saved 95.8%)
+✨ Font subsetting completed!
 ```
 
 ::: warning Dynamic Content Font Missing
 Subsetting only includes characters present in pages at build time. If you use comments, Bangumi, or other dynamically loaded content, some characters may be missing.
 
 **Workarounds:**
-- Use `subsetExtraChars` to include additional characters
+- Use `extraChars` in `subsetFonts` to include additional characters
 - Avoid subsetting fonts used in body text; only subset fonts for titles and static text
 :::
+
+## Per-Region Fonts
+
+Use `bannerTitleFont`, `bannerSubtitleFont`, `navbarTitleFont`, and `codeFont` to assign different fonts to specific regions:
+
+```ts
+export const fontConfig: FontSelectionConfig = {
+  selected: ["system"],                    // Global: system fonts
+  bannerTitleFont: "--font-zen-maru-gothic", // Banner title: Zen Maru Gothic
+  bannerSubtitleFont: "--font-inter",        // Banner subtitle: Inter
+  navbarTitleFont: "",                       // Navbar: inherits global
+  codeFont: "--font-jetbrains-mono",         // Code blocks: JetBrains Mono
+};
+```
+
+When left empty, the region inherits the global `selected` font.
+
+## Font CSS Variables
+
+When fonts are enabled, the following CSS variables are automatically set on `:root`:
+
+```css
+:root {
+  --font-banner-title: var(--font-zen-maru-gothic, inherit);
+  --font-banner-subtitle: var(--font-inter, inherit);
+  --font-navbar-title: inherit;
+}
+```
+
+You can use these variables in your custom CSS:
+
+```css
+.my-element {
+  font-family: var(--font-banner-title);
+}
+```
