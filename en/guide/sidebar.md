@@ -13,7 +13,8 @@ The sidebar layout configuration controls the sidebar display position and compo
 | `enable` | `boolean` | `true` | Enable sidebar |
 | `position` | `string` | `"both"` | Sidebar position: `"left"`, `"right"`, `"both"` |
 | `tabletSidebar` | `string` | `"left"` | Which sidebar to show on tablet (769-1279px), only for `"both"` |
-| `showBothSidebarsOnPostPage` | `boolean` | `true` | Show both sidebars on post pages when using single sidebar |
+| `hideSidebarOnPostPage` | `boolean` | `false` | Hide sidebar on post detail pages, set to `true` to show only on non-post pages like home |
+| `showBothSidebarsOnPostPage` | `boolean` | `true` | Show both sidebars on post pages when using single sidebar (requires `hideSidebarOnPostPage` to be `false`) |
 
 ## Component Configuration
 

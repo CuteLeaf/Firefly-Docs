@@ -13,13 +13,15 @@
 | `enable` | `boolean` | `true` | 是否启用侧边栏 |
 | `position` | `string` | `"both"` | 侧边栏位置：`"left"` 左侧、`"right"` 右侧、`"both"` 双侧 |
 | `tabletSidebar` | `string` | `"left"` | 平板端(769-1279px)显示哪侧，仅 `position` 为 `"both"` 时生效 |
-| `showBothSidebarsOnPostPage` | `boolean` | `true` | 单侧栏时，是否在文章详情页显示双侧边栏 |
+| `hideSidebarOnPostPage` | `boolean` | `false` | 文章详情页隐藏侧边栏，设为 `true` 则只在首页等非文章页显示 |
+| `showBothSidebarsOnPostPage` | `boolean` | `true` | 单侧栏时，是否在文章详情页显示双侧边栏（需 `hideSidebarOnPostPage` 为 `false`） |
 
 ```ts
 export const sidebarLayoutConfig: SidebarLayoutConfig = {
   enable: true,
   position: "both",
   tabletSidebar: "left",
+  hideSidebarOnPostPage: false,
   showBothSidebarsOnPostPage: true,
   // ...
 };
