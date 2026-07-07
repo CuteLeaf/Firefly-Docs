@@ -141,8 +141,10 @@ Restart the dev server after changing this setting.
 | `postListLayout.defaultMode` | `string` | `"list"` | Default layout: `"list"` or `"grid"` |
 | `postListLayout.mobileDefaultMode` | `string` | `-` | Mobile default layout: `"list"` or `"grid"`. If not set, it follows `defaultMode` |
 | `postListLayout.showTags` | `boolean` | `true` | Show tags in post list cards |
+| `postListLayout.tagCount` | `number` | `2` | Maximum number of tags to display per post card |
 | `postListLayout.descriptionLines` | `number` | `2` | Number of lines for post excerpts. Set to `0` to disable truncation |
 | `postListLayout.allowSwitch` | `boolean` | `true` | Allow users to switch layout |
+| `postListLayout.showStatsIcons` | `boolean` | `false` | Show icons in the post card footer stats (published date, word count, reading time) |
 | `postListLayout.grid.masonry` | `boolean` | `false` | Enable masonry layout |
 | `postListLayout.grid.columnWidth` | `number` | `320` | Minimum card width in grid mode (px). The browser automatically calculates column count based on container width |
 

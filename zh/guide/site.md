@@ -149,8 +149,10 @@ favicon: [
 | `postListLayout.defaultMode` | `string` | `"list"` | 默认布局：`"list"` 列表模式，`"grid"` 网格模式 |
 | `postListLayout.mobileDefaultMode` | `string` | `-` | 移动端默认布局：`"list"` 或 `"grid"`，不设置时跟随 `defaultMode` |
 | `postListLayout.showTags` | `boolean` | `true` | 是否在文章列表中显示标签 |
+| `postListLayout.tagCount` | `number` | `2` | 文章列表中每张卡片最多显示的标签数量 |
 | `postListLayout.descriptionLines` | `number` | `2` | 文章简介显示行数，设为 `0` 则不截断 |
 | `postListLayout.allowSwitch` | `boolean` | `true` | 是否允许用户切换布局 |
+| `postListLayout.showStatsIcons` | `boolean` | `false` | 文章卡片底部统计（发布日期、字数、阅读时长）是否显示图标 |
 | `postListLayout.grid.masonry` | `boolean` | `false` | 是否开启瀑布流布局 |
 | `postListLayout.grid.columnWidth` | `number` | `320` | 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数 |
 
