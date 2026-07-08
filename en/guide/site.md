@@ -140,13 +140,35 @@ Restart the dev server after changing this setting.
 |----------|------|---------|-------------|
 | `postListLayout.defaultMode` | `string` | `"list"` | Default layout: `"list"` or `"grid"` |
 | `postListLayout.mobileDefaultMode` | `string` | `-` | Mobile default layout: `"list"` or `"grid"`. If not set, it follows `defaultMode` |
-| `postListLayout.showTags` | `boolean` | `true` | Show tags in post list cards |
-| `postListLayout.tagCount` | `number` | `2` | Maximum number of tags to display per post card |
-| `postListLayout.descriptionLines` | `number` | `2` | Number of lines for post excerpts. Set to `0` to disable truncation |
 | `postListLayout.allowSwitch` | `boolean` | `true` | Allow users to switch layout |
-| `postListLayout.showStatsIcons` | `boolean` | `false` | Show icons in the post card footer stats (published date, word count, reading time) |
+| `postListLayout.descriptionLines` | `number` | `2` | Number of lines for post excerpts. Set to `0` to disable truncation |
+| `postListLayout.showStatsIcons` | `boolean` | `true` | Show icons in the post card footer stats (published date, word count, reading time) |
+| `postListLayout.tagsPosition` | `string` | `"meta"` | Tag display position: `"meta"` shows in the metadata row below the title, `"bottom"` shows at the card bottom (replaces stats display, only one can be chosen) |
 | `postListLayout.grid.masonry` | `boolean` | `false` | Enable masonry layout |
 | `postListLayout.grid.columnWidth` | `number` | `320` | Minimum card width in grid mode (px). The browser automatically calculates column count based on container width |
+
+### PostMeta Display Control
+
+Controls the display of each element in the metadata row below the post card title.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `postListLayout.meta.showPublished` | `boolean` | `true` | Show published date |
+| `postListLayout.meta.showCategory` | `boolean` | `true` | Show category |
+| `postListLayout.meta.showTags` | `boolean` | `true` | Show tags |
+| `postListLayout.meta.tagCount` | `number` | `1` | Number of tags to display. Set to `0` for no limit |
+| `postListLayout.meta.showWords` | `boolean` | `true` | Show word count |
+| `postListLayout.meta.showReadingTime` | `boolean` | `true` | Show reading time |
+
+### PostStats Display Control
+
+Controls the display of each element in the post card footer stats bar. When `tagsPosition` is set to `"bottom"`, stats will not be displayed.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `postListLayout.stats.showPublished` | `boolean` | `true` | Show published date |
+| `postListLayout.stats.showWords` | `boolean` | `true` | Show word count |
+| `postListLayout.stats.showReadingTime` | `boolean` | `true` | Show reading time |
 
 ## Pagination
 
