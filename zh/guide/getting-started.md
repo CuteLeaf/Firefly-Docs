@@ -76,5 +76,6 @@ Firefly/
 | `sponsorConfig.ts` | 打赏配置 | [打赏](./sponsor.md) |
 | `analyticsConfig.ts` | 统计分析配置 | [站点配置](./site.md#统计分析) |
 | `galleryConfig.ts` | 相册配置 | [相册](./gallery.md) |
+| `mermaidConfig.ts` | Mermaid 图表配置 | [Mermaid 图表](./mermaid.md) |
 | `plantumlConfig.ts` | PlantUML 图表配置 | [PlantUML 图表](./plantuml.md) |
 | `pioConfig.ts` | Live2D/Spine 模型配置 | [看板娘](./pio.md) |

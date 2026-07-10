@@ -76,5 +76,6 @@ All configuration files are located in the `src/config/` directory:
 | `sponsorConfig.ts` | Sponsor configuration | [Sponsor](./sponsor.md) |
 | `analyticsConfig.ts` | Analytics configuration | [Site Config](./site.md#analytics) |
 | `galleryConfig.ts` | Gallery configuration | [Gallery](./gallery.md) |
+| `mermaidConfig.ts` | Mermaid diagram configuration | [Mermaid](./mermaid.md) |
 | `plantumlConfig.ts` | PlantUML diagram configuration | [PlantUML](./plantuml.md) |
 | `pioConfig.ts` | Live2D/Spine model configuration | [Live2D/Spine](./pio.md) |

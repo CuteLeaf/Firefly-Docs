@@ -152,7 +152,7 @@ See [KaTeX Supported Functions](https://katex.org/docs/supported.html) for full 
 
 ## Mermaid Diagrams
 
-Firefly supports Mermaid diagrams. Use `mermaid` as the code block language.
+Firefly supports Mermaid diagrams, rendered as static SVG at build time. Use `mermaid` as the code block language. See [Mermaid Diagram](./mermaid.md) for configuration and supported types.
 
 ### Flowchart
 
@@ -179,31 +179,22 @@ sequenceDiagram
 ```
 ````
 
-### Gantt Chart
+### ER Diagram
 
 ````markdown
 ```mermaid
-gantt
-    title Project Timeline
-    dateFormat YYYY-MM-DD
-    section Design
-    Requirements :a1, 2025-01-01, 7d
-    UI Design   :a2, after a1, 10d
-    section Development
-    Frontend :b1, after a2, 15d
-    Backend  :b2, after a2, 18d
-```
-````
-
-### Pie Chart
-
-````markdown
-```mermaid
-pie title Traffic Sources
-    "Search Engines" : 45.6
-    "Direct" : 30.1
-    "Social Media" : 15.3
-    "Other" : 9.0
+erDiagram
+    USER {
+        int id PK
+        string username
+        string email
+    }
+    ARTICLE {
+        int id PK
+        string title
+        text content
+    }
+    USER ||--o{ ARTICLE : writes
 ```
 ````
 
@@ -235,6 +226,18 @@ stateDiagram-v2
     Review --> Published : Approve
     Review --> Draft : Reject
     Published --> [*]
+```
+````
+
+### XY Chart
+
+````markdown
+```mermaid
+xychart-beta
+    title "Monthly Traffic"
+    x-axis [Jan, Feb, Mar, Apr, May, Jun]
+    y-axis "Visits" 0 --> 5000
+    bar [2500, 3200, 4100, 3800, 4500, 4800]
 ```
 ````
 

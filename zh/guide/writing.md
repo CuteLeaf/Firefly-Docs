@@ -154,7 +154,7 @@ $$
 
 ## Mermaid 图表
 
-Firefly 支持 Mermaid 图表，在代码块中指定 `mermaid` 语言即可。
+Firefly 支持 Mermaid 图表，在构建时渲染为静态 SVG。在代码块中指定 `mermaid` 语言即可。详见 [Mermaid 图表](./mermaid.md)了解配置和支持的类型。
 
 ### 流程图
 
@@ -181,31 +181,22 @@ sequenceDiagram
 ```
 ````
 
-### 甘特图
+### ER 图示例
 
 ````markdown
 ```mermaid
-gantt
-    title 项目时间线
-    dateFormat YYYY-MM-DD
-    section 设计
-    需求分析 :a1, 2025-01-01, 7d
-    UI设计   :a2, after a1, 10d
-    section 开发
-    前端开发 :b1, after a2, 15d
-    后端开发 :b2, after a2, 18d
-```
-````
-
-### 饼图
-
-````markdown
-```mermaid
-pie title 流量来源
-    "搜索引擎" : 45.6
-    "直接访问" : 30.1
-    "社交媒体" : 15.3
-    "其他" : 9.0
+erDiagram
+    USER {
+        int id PK
+        string username
+        string email
+    }
+    ARTICLE {
+        int id PK
+        string title
+        text content
+    }
+    USER ||--o{ ARTICLE : 写作
 ```
 ````
 
@@ -237,6 +228,18 @@ stateDiagram-v2
     审核中 --> 已发布 : 批准
     审核中 --> 草稿 : 拒绝
     已发布 --> [*]
+```
+````
+
+### XY 图示例
+
+````markdown
+```mermaid
+xychart-beta
+    title "月度访问量"
+    x-axis [1月, 2月, 3月, 4月, 5月, 6月]
+    y-axis "访问量" 0 --> 5000
+    bar [2500, 3200, 4100, 3800, 4500, 4800]
 ```
 ````
 

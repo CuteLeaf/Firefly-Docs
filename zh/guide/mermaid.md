@@ -1,55 +1,64 @@
 # Mermaid 图表
 
-Mermaid 是基于文本语法的图表工具，适合在 Markdown 中快速绘制流程图、时序图、状态图等。
+Mermaid 是基于文本语法的图表工具。在 Firefly 中，Mermaid 图表在**构建时渲染为静态 SVG**，使用 [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid)，无需客户端 JavaScript。
 
-在 Firefly 中，Mermaid 为内置能力，无需额外配置文件；只要在文章中使用 `mermaid` 代码块即可渲染。
+## 配置文件
+
+`src/config/mermaidConfig.ts`
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `lightTheme` | `string` | `"github-light"` | 亮色模式主题 |
+| `darkTheme` | `string` | `"github-dark"` | 暗色模式主题 |
+
+```ts
+export const mermaidConfig: MermaidConfig = {
+  lightTheme: "github-light",
+  darkTheme: "github-dark",
+};
+```
+
+### 可用主题
+
+**亮色主题：** `zinc-light`、`tokyo-night-light`、`catppuccin-latte`、`nord-light`、`github-light`、`solarized-light`
+
+**暗色主题：** `zinc-dark`、`tokyo-night`、`tokyo-night-storm`、`catppuccin-mocha`、`nord`、`dracula`、`github-dark`、`solarized-dark`、`one-dark`
 
 ## 使用方式
 
-```md
+在文章中使用 `mermaid` 代码块即可：
+
+````md
 ```mermaid
 graph TD
   A[开始] --> B{条件判断}
   B -->|是| C[继续处理]
   B -->|否| D[结束]
 ```
-```
+````
 
-## 常见图表示例
+## 支持的图表类型
 
-### 流程图
+| 类型 | 语法 |
+|------|------|
+| 流程图 | `graph TD` / `graph LR` / `flowchart` |
+| 时序图 | `sequenceDiagram` |
+| 类图 | `classDiagram` |
+| 状态图 | `stateDiagram-v2` |
+| ER 图 | `erDiagram` |
+| XY 图表 | `xychart-beta` |
 
-```mermaid
-graph LR
-  User[用户] --> Web[前端]
-  Web --> API[后端接口]
-  API --> DB[(数据库)]
-```
-
-### 时序图
-
-```mermaid
-sequenceDiagram
-  participant U as 用户
-  participant S as 服务端
-  U->>S: 请求数据
-  S-->>U: 返回结果
-```
-
-### 状态图
-
-```mermaid
-stateDiagram-v2
-  [*] --> 草稿
-  草稿 --> 已发布 : 发布
-  已发布 --> 已归档 : 归档
-  已归档 --> [*]
-```
+::: warning
+beautiful-mermaid **不支持**甘特图、饼图、思维导图和时间线。这些类型会显示错误信息和原始代码。
+:::
 
 ## 说明
 
-- Mermaid 图表会在页面端渲染。
-- 代码块语言必须是 `mermaid`。
-- 图表语法错误时，页面会显示渲染失败信息，请先检查 Mermaid 语法。
+- 图表在 Astro 构建阶段渲染为静态 SVG，不依赖 CDN 或客户端 JS。
+- 同时生成亮色和深色两套 SVG，CSS 根据当前主题自动切换。
+- 渲染失败时，构建日志会输出错误详情，页面显示原始代码作为降级。
+- pan-zoom 和全屏控制由共享插件提供（PlantUML 同样使用）。
 
-更多语法请参考 [Mermaid 官方文档](https://mermaid.js.org/intro/).
+另见：[PlantUML 图表](./plantuml.md)
+
+更多详情请参考 [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid)。

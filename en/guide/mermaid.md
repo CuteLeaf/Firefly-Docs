@@ -1,55 +1,64 @@
 # Mermaid Diagram
 
-Mermaid is a text-based diagram tool for Markdown, useful for flowcharts, sequence diagrams, state diagrams, and more.
+Mermaid is a text-based diagram tool for Markdown. In Firefly, Mermaid diagrams are **rendered as static SVG at build time** using [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid) — no client-side JavaScript is needed.
 
-In Firefly, Mermaid support is built-in and does not require a dedicated config file. Use a `mermaid` fenced code block directly in posts.
+## Config File
+
+`src/config/mermaidConfig.ts`
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `lightTheme` | `string` | `"github-light"` | Theme used in light mode |
+| `darkTheme` | `string` | `"github-dark"` | Theme used in dark mode |
+
+```ts
+export const mermaidConfig: MermaidConfig = {
+  lightTheme: "github-light",
+  darkTheme: "github-dark",
+};
+```
+
+### Available Themes
+
+**Light themes:** `zinc-light`, `tokyo-night-light`, `catppuccin-latte`, `nord-light`, `github-light`, `solarized-light`
+
+**Dark themes:** `zinc-dark`, `tokyo-night`, `tokyo-night-storm`, `catppuccin-mocha`, `nord`, `dracula`, `github-dark`, `solarized-dark`, `one-dark`
 
 ## Usage
 
-```md
+Use a `mermaid` fenced code block directly in posts:
+
+````md
 ```mermaid
 graph TD
   A[Start] --> B{Condition}
   B -->|Yes| C[Continue]
   B -->|No| D[End]
 ```
-```
+````
 
-## Common Examples
+## Supported Diagram Types
 
-### Flowchart
+| Type | Syntax |
+|------|--------|
+| Flowchart | `graph TD` / `graph LR` / `flowchart` |
+| Sequence Diagram | `sequenceDiagram` |
+| Class Diagram | `classDiagram` |
+| State Diagram | `stateDiagram-v2` |
+| ER Diagram | `erDiagram` |
+| XY Chart | `xychart-beta` |
 
-```mermaid
-graph LR
-  User[User] --> Web[Frontend]
-  Web --> API[Backend API]
-  API --> DB[(Database)]
-```
-
-### Sequence Diagram
-
-```mermaid
-sequenceDiagram
-  participant U as User
-  participant S as Server
-  U->>S: Request data
-  S-->>U: Return result
-```
-
-### State Diagram
-
-```mermaid
-stateDiagram-v2
-  [*] --> Draft
-  Draft --> Published : Publish
-  Published --> Archived : Archive
-  Archived --> [*]
-```
+::: warning
+Gantt charts, pie charts, mindmaps, and timelines are **not supported** by beautiful-mermaid. These will show an error message with the original source code.
+:::
 
 ## Notes
 
-- Mermaid diagrams are rendered on the client side.
-- The fenced code block language must be `mermaid`.
-- If rendering fails, validate Mermaid syntax first.
+- Diagrams are rendered as static SVG during the Astro build — no CDN or client-side JS.
+- Light and dark SVGs are generated simultaneously; CSS automatically switches based on the current theme.
+- If rendering fails, the build log shows the error details and the page displays a fallback with the original code.
+- Pan-zoom and fullscreen controls are provided by a shared plugin (also used by PlantUML).
 
-See [Mermaid Official Docs](https://mermaid.js.org/intro/).
+See also: [PlantUML Diagram](./plantuml.md)
+
+See [beautiful-mermaid](https://github.com/lukilabs/beautiful-mermaid) for more details.
