@@ -167,11 +167,16 @@ The project already includes a `wrangler.jsonc` configuration file. You only nee
 
 1. Push your project to GitHub / GitLab
 2. Log in to [Cloudflare Dashboard](https://dash.cloudflare.com/)
-3. Enter **Compute → Workers & Pages**, click **Create application → Connect Github / GitLab**
+3. Enter **Compute → Workers & Pages**,
+   - if Workers:
+     click **Create application → Connect Github / GitLab**
+   - if Pages:
+     click **Create application → *Looking to deploy Pages?* Get started → Import an existing Git repository**
 4. Select your repository
 5. Configure build settings:
    - **Build command**: `pnpm build`
-   - **Deploy command**: `npx wrangler deploy`
+   - **Deploy command** (Workers): `npx wrangler deploy`
+   - **Build output directory** (Pages): `dist`
 6. Click **Deploy**
 
 ::: tip Multi-platform Deployment
@@ -186,7 +191,7 @@ Cloudflare Pages deployment does not require the Astro adapter — it serves sta
 
 1. Push your project to GitHub / GitLab / Gitee / CNB
 2. Log in to [EdgeOne Console](https://console.tencentcloud.com/edgeone)
-3. Go to **Service Dashboard → Pages**, click **Create project**
+3. Go to **Service Dashboard → Makers**, click **Create project**
 4. Select **Import Git repository**, connect your repository
 5. Configure build settings:
    - **Preset framework**: `Astro`
