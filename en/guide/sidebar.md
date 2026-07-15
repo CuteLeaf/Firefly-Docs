@@ -6,6 +6,8 @@ The sidebar layout configuration controls the sidebar display position and compo
 
 `src/config/sidebarConfig.ts`
 
+The Moments sidebar follows the `siteConfig.pages.dynamic` toggle and is hidden automatically when the Moments page is disabled. Control whether the music player appears in the sidebar with `musicPlayerConfig.showInSidebar` in `src/config/musicConfig.ts`; you do not need to change its `enable` value here.
+
 ## Layout Configuration
 
 | Property | Type | Default | Description |

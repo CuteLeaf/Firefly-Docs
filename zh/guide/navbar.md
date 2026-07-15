@@ -102,6 +102,7 @@ pages: {
   guestbook: false, // 留言板页面关闭
   bangumi: true,    // 番组计划开启
   gallery: false,   // 相册页面关闭
+  dynamic: true,     // 动态页面开启
   sponsor: true,    // 打赏页面开启
 }
 ```
@@ -127,6 +128,7 @@ LinkPresets.Bangumi    // pageKey: "bangumi"
 | `siteConfig.pages.sponsor = false` | 打赏链接不显示 |
 | `siteConfig.pages.bangumi = false` | 番组计划链接不显示 |
 | `siteConfig.pages.gallery = false` | 相册链接不显示 |
+| `siteConfig.pages.dynamic = false` | 动态链接不显示 |
 | `pages.gallery = false` 且 `pages.bangumi = false` | "我的"整个菜单不显示 |
 
 ::: tip

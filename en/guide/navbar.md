@@ -86,6 +86,7 @@ pages: {
   guestbook: false, // Guestbook page disabled
   bangumi: true,    // Bangumi enabled
   gallery: false,   // Gallery disabled
+  dynamic: true,    // Moments enabled
   sponsor: true,    // Sponsor enabled
 }
 ```
@@ -111,6 +112,7 @@ When a page is disabled (`false`):
 | `siteConfig.pages.sponsor = false` | Sponsor link hidden |
 | `siteConfig.pages.bangumi = false` | Bangumi link hidden |
 | `siteConfig.pages.gallery = false` | Gallery link hidden |
+| `siteConfig.pages.dynamic = false` | Moments link hidden |
 | `pages.gallery = false` and `pages.bangumi = false` | "My" entire menu hidden |
 
 ::: tip

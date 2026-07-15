@@ -6,6 +6,8 @@
 
 `src/config/sidebarConfig.ts`
 
+动态侧边栏会跟随 `siteConfig.pages.dynamic` 开关：关闭动态页面后，动态侧边栏组件也会自动隐藏。音乐播放器是否显示在侧边栏，则通过 `src/config/musicConfig.ts` 中的 `musicPlayerConfig.showInSidebar` 控制，不需要修改这里的 `enable`。
+
 ## 布局配置
 
 | 属性 | 类型 | 默认值 | 说明 |

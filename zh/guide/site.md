@@ -193,6 +193,7 @@ favicon: [
 | `pages.guestbook` | `boolean` | `true` | 留言板页面开关（需配置评论系统） |
 | `pages.bangumi` | `boolean` | `true` | 番组计划页面开关 |
 | `pages.gallery` | `boolean` | `true` | 相册页面开关 |
+| `pages.dynamic` | `boolean` | `true` | 动态页面开关，同时控制动态导航入口和动态侧边栏 |
 | `categoryBar` | `boolean` | `true` | 分类导航栏开关，在首页和归档页顶部显示分类快捷导航 |
 
 ## Bangumi 配置

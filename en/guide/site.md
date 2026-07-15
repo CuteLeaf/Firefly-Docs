@@ -185,6 +185,7 @@ Controls the display of each element in the post card footer stats bar. When `ta
 | `pages.guestbook` | `boolean` | `true` | Guestbook page toggle (requires comment system) |
 | `pages.bangumi` | `boolean` | `true` | Bangumi page toggle |
 | `pages.gallery` | `boolean` | `true` | Gallery page toggle |
+| `pages.dynamic` | `boolean` | `true` | Moments page toggle, including its navigation link and sidebar widget |
 | `categoryBar` | `boolean` | `true` | Category navigation bar on homepage and archive page |
 
 ## Bangumi
