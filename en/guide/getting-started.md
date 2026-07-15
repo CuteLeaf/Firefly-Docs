@@ -59,6 +59,7 @@ All configuration files are located in the `src/config/` directory:
 | Config File | Description | Docs |
 |------------|-------------|------|
 | `siteConfig.ts` | Site basic configuration | [Site Config](./site.md) |
+| `dynamicConfig.ts` | Moments page configuration | [Moments](./dynamic.md) |
 | `navBarConfig.ts` | Navbar configuration | [Navbar](./navbar.md) |
 | `sidebarConfig.ts` | Sidebar layout configuration | [Sidebar](./sidebar.md) |
 | `profileConfig.ts` | Profile configuration | [Profile](./profile.md) |

@@ -59,6 +59,7 @@ Firefly/
 | 配置文件 | 说明 | 文档 |
 |---------|------|------|
 | `siteConfig.ts` | 站点基础配置 | [站点配置](./site.md) |
+| `dynamicConfig.ts` | 动态页面配置 | [动态](./dynamic.md) |
 | `navBarConfig.ts` | 导航栏配置 | [导航栏](./navbar.md) |
 | `sidebarConfig.ts` | 侧边栏布局配置 | [侧边栏](./sidebar.md) |
 | `profileConfig.ts` | 个人资料配置 | [个人资料](./profile.md) |
