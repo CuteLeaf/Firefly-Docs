@@ -73,6 +73,7 @@ export default defineConfig({
             {
               text: '页面配置',
               items: [
+                { text: '动态', link: '/zh/guide/dynamic' },
                 { text: '友链', link: '/zh/guide/friends' },
                 { text: '相册', link: '/zh/guide/gallery' },
                 { text: '追番', link: '/zh/guide/anime' },
@@ -156,6 +157,7 @@ export default defineConfig({
             {
               text: 'Page Configuration',
               items: [
+                { text: 'Dynamic', link: '/en/guide/dynamic' },
                 { text: 'Friends', link: '/en/guide/friends' },
                 { text: 'Gallery', link: '/en/guide/gallery' },
                 { text: 'Anime', link: '/en/guide/anime' },
