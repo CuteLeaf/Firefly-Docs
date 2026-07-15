@@ -11,6 +11,7 @@ Firefly includes a built-in music player supporting Meting API (online platforms
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `showInNavbar` | `boolean` | `true` | Show music player entry in navbar |
+| `showInSidebar` | `boolean` | `true` | Show music player component in the sidebar |
 | `mode` | `string` | `"meting"` | Mode: `"meting"` online, `"local"` local files |
 | `volume` | `number` | `0.7` | Default volume (0-1) |
 | `playMode` | `string` | `"list"` | Play mode: `"list"` loop, `"one"` repeat, `"random"` shuffle |
@@ -18,7 +19,7 @@ Firefly includes a built-in music player supporting Meting API (online platforms
 
 ::: tip
 The music player has two display locations:
-1. **Sidebar**: Disable by setting the music component `enable` to `false` in `sidebarConfig.ts`
+1. **Sidebar**: Disable by setting `showInSidebar` to `false`
 2. **Navbar**: Disable by setting `showInNavbar` to `false`
 :::
 
