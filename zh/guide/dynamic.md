@@ -35,6 +35,7 @@ export const dynamicConfig = {
 	description: "",
 	showComment: true,
 	itemsPerPage: 10,
+	apiUrl: "/api/dynamic.json",
 };
 ```
 
@@ -44,6 +45,34 @@ export const dynamicConfig = {
 | `description` | 页面描述。留空时使用 i18n 翻译 |
 | `showComment` | 是否为每条动态显示评论入口 |
 | `itemsPerPage` | 每页显示的动态数量 |
+| `apiUrl` | 动态数据 API 地址，默认 `/api/dynamic.json`。可改为第三方接口地址 |
+
+### 自定义 API 地址
+
+`apiUrl` 支持两种格式：
+
+- **相对路径**（默认）：`"/api/dynamic.json"` — 使用本地构建生成的 JSON 文件
+- **绝对 URL**：`"https://firefly.cuteleaf.cn/api/dynamic.json"` — 使用第三方接口
+
+第三方接口需返回以下 JSON 结构：
+
+```json
+[
+  {
+    "id": "dynamic-id",
+    "published": 1721059200000,
+    "html": "<p>动态内容 HTML</p>",
+    "images": [
+      { "alt": "图片描述", "src": "/path/to/image.jpg" }
+    ],
+    "searchText": "纯文本搜索内容"
+  }
+]
+```
+
+::: tip
+侧边栏的「最新动态」组件也会从该地址获取数据，方便接入统一的第三方后端。
+:::
 
 动态页总开关位于 `src/config/siteConfig.ts`：
 

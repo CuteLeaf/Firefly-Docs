@@ -35,6 +35,7 @@ export const dynamicConfig = {
 	description: "",
 	showComment: true,
 	itemsPerPage: 10,
+	apiUrl: "/api/dynamic.json",
 };
 ```
 
@@ -44,6 +45,34 @@ export const dynamicConfig = {
 | `description` | Page description. Uses the i18n translation when empty |
 | `showComment` | Whether to show a comment entry for each moment |
 | `itemsPerPage` | Number of moments shown per page |
+| `apiUrl` | Moments data API URL. Defaults to `/api/dynamic.json`. Can be set to a third-party endpoint |
+
+### Custom API URL
+
+`apiUrl` supports two formats:
+
+- **Relative path** (default): `"/api/dynamic.json"` — uses the locally built JSON file
+- **Absolute URL**: `"https://firefly.cuteleaf.cn/api/dynamic.json"` — uses a third-party endpoint
+
+The third-party endpoint must return the following JSON structure:
+
+```json
+[
+  {
+    "id": "dynamic-id",
+    "published": 1721059200000,
+    "html": "<p>Moment content HTML</p>",
+    "images": [
+      { "alt": "Image description", "src": "/path/to/image.jpg" }
+    ],
+    "searchText": "Plain text for search"
+  }
+]
+```
+
+::: tip
+The sidebar "Latest Moments" widget also fetches data from this URL, making it easy to integrate with a unified third-party backend.
+:::
 
 The page switch is in `src/config/siteConfig.ts`:
 
