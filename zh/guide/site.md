@@ -33,13 +33,11 @@ export const siteConfig: SiteConfig = {
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `themeColor.hue` | `number` | `165` | 主题色色相，范围 0-360。红色：0，青色：200，蓝绿色：250，粉色：345 |
-| `themeColor.fixed` | `boolean` | `false` | 是否对访问者隐藏主题色选择器 |
 | `themeColor.defaultMode` | `string` | `"system"` | 默认模式：`"light"` 亮色、`"dark"` 暗色、`"system"` 跟随系统 |
 
 ```ts
 themeColor: {
   hue: 165,
-  fixed: false,
   defaultMode: "system",
 },
 ```
@@ -148,7 +146,6 @@ favicon: [
 |------|------|--------|------|
 | `postListLayout.defaultMode` | `string` | `"list"` | 默认布局：`"list"` 列表模式，`"grid"` 网格模式 |
 | `postListLayout.mobileDefaultMode` | `string` | `-` | 移动端默认布局：`"list"` 或 `"grid"`，不设置时跟随 `defaultMode` |
-| `postListLayout.allowSwitch` | `boolean` | `true` | 是否允许用户切换布局 |
 | `postListLayout.descriptionLines` | `number` | `2` | 文章简介显示行数，设为 `0` 则不截断 |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | 文章卡片底部统计（发布日期、字数、阅读时长）是否显示图标 |
 | `postListLayout.tagsPosition` | `string` | `"meta"` | 标签显示位置：`"meta"` 显示在标题下的元数据行，`"bottom"` 显示在卡片底部（将替换 stats 显示，二者只能选其一） |
@@ -195,6 +192,12 @@ favicon: [
 | `pages.gallery` | `boolean` | `true` | 相册页面开关 |
 | `pages.dynamic` | `boolean` | `true` | 动态页面开关，同时控制动态导航入口和动态侧边栏 |
 | `categoryBar` | `boolean` | `true` | 分类导航栏开关，在首页和归档页顶部显示分类快捷导航 |
+
+## 显示设置面板
+
+显示设置面板是导航栏中的齿轮图标打开的设置面板，允许访客自定义主题色、壁纸模式、卡片样式等。
+
+详见 [显示设置面板](./display-settings.md)。
 
 ## Bangumi 配置
 

@@ -50,6 +50,7 @@ export default defineConfig({
               text: '基础配置',
               items: [
                 { text: '站点配置', link: '/zh/guide/site' },
+                { text: '设置面板', link: '/zh/guide/display-settings' },
                 { text: '个人资料', link: '/zh/guide/profile' },
                 { text: '背景壁纸', link: '/zh/guide/wallpaper' },
                 { text: '导航栏', link: '/zh/guide/navbar' },
@@ -134,6 +135,7 @@ export default defineConfig({
               text: 'Basic Configuration',
               items: [
                 { text: 'Site Config', link: '/en/guide/site' },
+                { text: 'Display Settings Panel', link: '/en/guide/display-settings' },
                 { text: 'Profile', link: '/en/guide/profile' },
                 { text: 'Background Wallpaper', link: '/en/guide/wallpaper' },
                 { text: 'Navbar', link: '/en/guide/navbar' },

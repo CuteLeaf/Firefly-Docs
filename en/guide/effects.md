@@ -15,10 +15,13 @@ The sakura effect adds falling cherry blossom animation to your site.
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `enable` | `boolean` | `false` | Enable sakura effect |
-| `switchable` | `boolean` | `true` | Allow users to toggle in settings panel |
 | `sakuraNum` | `number` | `21` | Number of sakura petals |
 | `limitTimes` | `number` | `-1` | Out-of-bounds limit, `-1` for infinite |
 | `zIndex` | `number` | `100` | Z-index layer |
+
+::: tip
+The sakura effect user toggle has been moved to `displaySettingsConfig.sakuraSwitchable`. See [Display Settings Panel](./site.md#display-settings-panel).
+:::
 
 ### Size
 
@@ -54,7 +57,6 @@ The sakura effect adds falling cherry blossom animation to your site.
 ```ts
 export const sakuraConfig: SakuraConfig = {
   enable: true,
-  switchable: true,
   sakuraNum: 21,
   limitTimes: -1,
   size: { min: 0.5, max: 1.1 },

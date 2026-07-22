@@ -11,10 +11,9 @@ The background wallpaper configuration controls the site's background image disp
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `mode` | `string` | `"banner"` | Mode: `"banner"` banner, `"fullscreen"` full-screen, `"overlay"` full-screen transparent, `"none"` solid color |
-| `switchable` | `boolean` | `true` | Allow users to switch wallpaper mode via navbar |
 
 ::: tip
-Set to `false` to improve performance (only renders the current mode). It's recommended to pick your preferred mode and disable switching.
+The wallpaper mode switch toggle has been moved to `displaySettingsConfig.wallpaperModeSwitchable`. See [Display Settings Panel](./site.md#display-settings-panel).
 :::
 
 ## Image Configuration
@@ -112,7 +111,6 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `common.homeText.enable` | `boolean` | `true` | Enable banner text |
-| `common.homeText.switchable` | `boolean` | `true` | Allow user toggle via control panel |
 | `common.homeText.title` | `string` | `"Lovely firefly!"` | Main title |
 | `common.homeText.titleSize` | `string` | `"3.8rem"` | Title font size |
 | `common.homeText.subtitle` | `string \| string[]` | - | Subtitle(s) |
@@ -145,10 +143,13 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `common.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable wave animation |
-| `common.waves.switchable` | `boolean` | `true` | Allow user toggle |
 
 ::: warning
 Wave animation affects page performance. Enable based on your needs.
+:::
+
+::: tip
+The wave animation user toggle has been moved to `displaySettingsConfig.wavesSwitchable`. See [Display Settings Panel](./site.md#display-settings-panel).
 :::
 
 ### Gradient Transition
@@ -159,10 +160,9 @@ Automatically enabled when waves are disabled, providing a smooth gradient fade 
 |----------|------|---------|-------------|
 | `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable gradient transition |
 | `common.gradient.height` | `string` | `"15vh"` | Gradient height |
-| `common.gradient.switchable` | `boolean` | `true` | Allow user toggle |
 
 ::: info
-Gradient and waves are mutually exclusive: when waves are enabled, the gradient is automatically hidden; when waves are disabled, the gradient is automatically shown. Both can be independently toggled via the control panel.
+Gradient and waves are mutually exclusive: when waves are enabled, the gradient is automatically hidden; when waves are disabled, the gradient is automatically shown. Both user toggles have been moved to `displaySettingsConfig`. See [Display Settings Panel](./site.md#display-settings-panel).
 :::
 
 ### Wallpaper Carousel
@@ -174,7 +174,6 @@ Shared carousel configuration for both banner and fullscreen modes. Only works w
 | `common.carousel.enable` | `boolean` | `false` | Enable wallpaper carousel. If disabled, one image is randomly chosen on page refresh |
 | `common.carousel.interval` | `number` | `5000` | Carousel interval in milliseconds |
 | `common.carousel.transitionEffect` | `string` | `"fade"` | Transition effect: `"fade"`, `"zoom"`, `"slide"`, `"kenburns"` |
-| `common.carousel.switchable` | `boolean` | `false` | Allow users to toggle carousel in the control panel |
 
 ```ts
 common: {
@@ -182,10 +181,13 @@ common: {
     enable: true,
     interval: 5000,
     transitionEffect: "kenburns", // "fade" | "zoom" | "slide" | "kenburns"
-    switchable: true,
   },
 },
 ```
+
+::: tip
+The wallpaper carousel user toggle has been moved to `displaySettingsConfig.bannerCarouselSwitchable`. See [Display Settings Panel](./site.md#display-settings-panel).
+:::
 
 **Transition effects:**
 
@@ -216,24 +218,11 @@ Fullscreen wallpaper mode fills the entire screen with the background image.
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `overlay.switchable` | `boolean \| { opacity, blur, cardOpacity }` | - | Whether users can adjust overlay settings in the display panel. Can be a single switch or per-item switches |
 | `overlay.zIndex` | `number` | `-1` | Z-index, ensures wallpaper stays in background layer |
 | `overlay.opacity` | `number` | `0.8` | Wallpaper opacity (0-1) |
 | `overlay.blur` | `number` | `10` | Background blur (px) |
 | `overlay.cardOpacity` | `number` | `0.5` | Card background opacity (0-1). Lower values make cards more transparent |
 
-You can control switching behavior in two ways:
-
-```ts
-overlay: {
-  // Option 1: one switch for all overlay settings
-  switchable: true,
-
-  // Option 2: per-item control
-  // switchable: {
-  //   opacity: true,
-  //   blur: true,
-  //   cardOpacity: true,
-  // },
-}
-```
+::: tip
+The overlay parameter adjustment toggle has been moved to `displaySettingsConfig.overlaySwitchable`, supporting master toggle or per-item toggles. See [Display Settings Panel](./site.md#display-settings-panel).
+:::

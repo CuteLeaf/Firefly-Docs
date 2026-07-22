@@ -33,7 +33,6 @@ export const siteConfig: SiteConfig = {
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `themeColor.hue` | `number` | `165` | Theme color hue (0-360). Red: 0, Cyan: 200, Teal: 250, Pink: 345 |
-| `themeColor.fixed` | `boolean` | `false` | Hide theme color picker from visitors |
 | `themeColor.defaultMode` | `string` | `"system"` | Default mode: `"light"`, `"dark"`, `"system"` |
 
 ## Page Width
@@ -140,7 +139,6 @@ Restart the dev server after changing this setting.
 |----------|------|---------|-------------|
 | `postListLayout.defaultMode` | `string` | `"list"` | Default layout: `"list"` or `"grid"` |
 | `postListLayout.mobileDefaultMode` | `string` | `-` | Mobile default layout: `"list"` or `"grid"`. If not set, it follows `defaultMode` |
-| `postListLayout.allowSwitch` | `boolean` | `true` | Allow users to switch layout |
 | `postListLayout.descriptionLines` | `number` | `2` | Number of lines for post excerpts. Set to `0` to disable truncation |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | Show icons in the post card footer stats (published date, word count, reading time) |
 | `postListLayout.tagsPosition` | `string` | `"meta"` | Tag display position: `"meta"` shows in the metadata row below the title, `"bottom"` shows at the card bottom (replaces stats display, only one can be chosen) |
@@ -187,6 +185,12 @@ Controls the display of each element in the post card footer stats bar. When `ta
 | `pages.gallery` | `boolean` | `true` | Gallery page toggle |
 | `pages.dynamic` | `boolean` | `true` | Moments page toggle, including its navigation link and sidebar widget |
 | `categoryBar` | `boolean` | `true` | Category navigation bar on homepage and archive page |
+
+## Display Settings Panel
+
+The display settings panel is opened via the gear icon in the navbar, allowing visitors to customize theme color, wallpaper mode, card style, and more.
+
+See [Display Settings Panel](./display-settings.md) for details.
 
 ## Bangumi
 

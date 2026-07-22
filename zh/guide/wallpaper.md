@@ -11,10 +11,9 @@
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `mode` | `string` | `"banner"` | 壁纸模式：`"banner"` 横幅、`"fullscreen"` 全屏、`"overlay"` 全屏透明、`"none"` 纯色背景 |
-| `switchable` | `boolean` | `true` | 是否允许用户通过导航栏切换壁纸模式 |
 
 ::: tip
-设为 `false` 可提升性能（只渲染当前模式）。推荐只选择自己喜欢的模式并关闭切换功能。
+壁纸模式的切换开关已移至 `displaySettingsConfig.wallpaperModeSwitchable`，详见 [显示设置面板](./site.md#显示设置面板)。
 :::
 
 ## 图片配置
@@ -114,7 +113,6 @@ export const backgroundWallpaper = {
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `common.homeText.enable` | `boolean` | `true` | 是否启用横幅文字 |
-| `common.homeText.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换显示 |
 | `common.homeText.title` | `string` | `"Lovely firefly!"` | 主标题 |
 | `common.homeText.titleSize` | `string` | `"3.8rem"` | 主标题字体大小 |
 | `common.homeText.subtitle` | `string \| string[]` | - | 副标题，支持单个或多个 |
@@ -147,10 +145,13 @@ export const backgroundWallpaper = {
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `common.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用水波纹动画 |
-| `common.waves.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换 |
 
 ::: warning
 水波纹动画会影响页面性能，请根据需要开启。
+:::
+
+::: tip
+水波纹的用户切换开关已移至 `displaySettingsConfig.wavesSwitchable`，详见 [显示设置面板](./site.md#显示设置面板)。
 :::
 
 ### 渐变过渡
@@ -161,10 +162,9 @@ export const backgroundWallpaper = {
 |------|------|--------|------|
 | `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用渐变过渡 |
 | `common.gradient.height` | `string` | `"15vh"` | 渐变高度 |
-| `common.gradient.switchable` | `boolean` | `true` | 是否允许用户通过控制面板切换 |
 
 ::: info
-渐变过渡与水波纹互斥：水波纹开启时渐变自动隐藏，水波纹关闭时渐变自动显示。两者都可通过控制面板独立切换。
+渐变过渡与水波纹互斥：水波纹开启时渐变自动隐藏，水波纹关闭时渐变自动显示。两者的用户切换开关已移至 `displaySettingsConfig`，详见 [显示设置面板](./site.md#显示设置面板)。
 :::
 
 ### 壁纸轮播
@@ -176,7 +176,6 @@ export const backgroundWallpaper = {
 | `common.carousel.enable` | `boolean` | `false` | 是否启用壁纸轮播；关闭时保持每次刷新随机显示一张 |
 | `common.carousel.interval` | `number` | `5000` | 轮播切换间隔（毫秒） |
 | `common.carousel.transitionEffect` | `string` | `"fade"` | 过渡效果：`"fade"` 渐变、`"zoom"` 缩放、`"slide"` 滑动、`"kenburns"` 旋转木马 |
-| `common.carousel.switchable` | `boolean` | `false` | 是否允许用户通过控制面板切换壁纸轮播 |
 
 ```ts
 common: {
@@ -184,10 +183,13 @@ common: {
     enable: true,
     interval: 5000,
     transitionEffect: "kenburns", // "fade" | "zoom" | "slide" | "kenburns"
-    switchable: true,
   },
 },
 ```
+
+::: tip
+壁纸轮播的用户切换开关已移至 `displaySettingsConfig.bannerCarouselSwitchable`，详见 [显示设置面板](./site.md#显示设置面板)。
+:::
 
 **过渡效果说明：**
 
@@ -218,24 +220,11 @@ common: {
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `overlay.switchable` | `boolean \| { opacity, blur, cardOpacity }` | - | 是否允许访客在显示设置面板中调整透明模式参数。支持总开关或分项开关 |
 | `overlay.zIndex` | `number` | `-1` | 层级，确保壁纸在背景层 |
 | `overlay.opacity` | `number` | `0.8` | 壁纸透明度（0-1） |
 | `overlay.blur` | `number` | `10` | 背景模糊度（px） |
 | `overlay.cardOpacity` | `number` | `0.5` | 卡片背景透明度（0-1），值越小卡片越透明 |
 
-`overlay.switchable` 支持两种写法：
-
-```ts
-overlay: {
-  // 方式1：整体开关，控制所有透明设置项
-  switchable: true,
-
-  // 方式2：分项开关，分别控制每个设置项
-  // switchable: {
-  //   opacity: true,
-  //   blur: true,
-  //   cardOpacity: true,
-  // },
-}
-```
+::: tip
+透明模式参数的用户调节开关已移至 `displaySettingsConfig.overlaySwitchable`，支持总开关或分项开关，详见 [显示设置面板](./site.md#显示设置面板)。
+:::

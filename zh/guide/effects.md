@@ -15,10 +15,13 @@
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `enable` | `boolean` | `false` | 是否启用樱花特效 |
-| `switchable` | `boolean` | `true` | 是否允许用户在设置面板中切换 |
 | `sakuraNum` | `number` | `21` | 樱花数量 |
 | `limitTimes` | `number` | `-1` | 越界限制次数，`-1` 为无限循环 |
 | `zIndex` | `number` | `100` | 层级 |
+
+::: tip
+樱花特效的用户切换开关已移至 `displaySettingsConfig.sakuraSwitchable`，详见 [显示设置面板](./site.md#显示设置面板)。
+:::
 
 ### 尺寸配置
 
@@ -54,7 +57,6 @@
 ```ts
 export const sakuraConfig: SakuraConfig = {
   enable: true,
-  switchable: true,
   sakuraNum: 21,
   limitTimes: -1,
   size: { min: 0.5, max: 1.1 },
