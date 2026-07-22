@@ -25,6 +25,19 @@ pnpm new-d 今天也要好好生活
 
 动态支持普通 Markdown 语法。动态中的图片会自动整理到内容底部，并支持图片网格、轮播和灯箱查看。
 
+### 置顶动态
+
+在 frontmatter 中添加 `pinned: true` 即可置顶该动态，置顶动态会优先显示：
+
+```yaml
+---
+published: 2026-07-15 16:15:29
+pinned: true
+---
+
+这是一条置顶动态。
+```
+
 ## 动态配置
 
 在 `src/config/dynamicConfig.ts` 中配置：
@@ -34,8 +47,13 @@ export const dynamicConfig = {
 	title: "",
 	description: "",
 	showComment: true,
-	itemsPerPage: 10,
+	itemsPerPage: 20,
 	apiUrl: "/api/dynamic.json",
+	memos: {
+		enable: false,
+		apiUrl: "https://memos.example.com",
+		parent: "users/your-username",
+	},
 };
 ```
 
@@ -45,7 +63,28 @@ export const dynamicConfig = {
 | `description` | 页面描述。留空时使用 i18n 翻译 |
 | `showComment` | 是否为每条动态显示评论入口 |
 | `itemsPerPage` | 每页显示的动态数量 |
-| `apiUrl` | 动态数据 API 地址，默认 `/api/dynamic.json`。可改为第三方接口地址 |
+| `apiUrl` | 动态数据 API 地址，默认 `/api/dynamic.json`。当 `memos.enable` 为 true 时忽略 |
+
+### Memos 数据源
+
+支持对接 [Memos](https://www.usememos.com/) 实例，实时获取数据：
+
+```ts
+memos: {
+	enable: true,
+	apiUrl: "https://memos.example.com",
+	parent: "users/xiaye",
+},
+```
+
+| 配置项 | 说明 |
+| --- | --- |
+| `enable` | 是否启用 Memos 数据源 |
+| `apiUrl` | Memos 实例地址 |
+| `parent` | 用户标识，用于过滤指定用户的动态 |
+
+启用后，客户端会直接从 Memos API 实时获取数据，支持置顶同步、图片附件展示等功能。
+
 
 ### 自定义 API 地址
 
@@ -65,7 +104,8 @@ export const dynamicConfig = {
     "images": [
       { "alt": "图片描述", "src": "/path/to/image.jpg" }
     ],
-    "searchText": "纯文本搜索内容"
+    "searchText": "纯文本搜索内容",
+    "pinned": false
   }
 ]
 ```

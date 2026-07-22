@@ -25,6 +25,19 @@ pnpm new-d A quiet evening at home
 
 Moments support regular Markdown syntax. Images are automatically arranged at the bottom of the content and support grid, carousel, and lightbox views.
 
+### Pinned Moments
+
+Add `pinned: true` to the frontmatter to pin a moment. Pinned moments are displayed first:
+
+```yaml
+---
+published: 2026-07-15 16:15:29
+pinned: true
+---
+
+This is a pinned moment.
+```
+
 ## Moment Configuration
 
 Configure the page in `src/config/dynamicConfig.ts`:
@@ -34,8 +47,13 @@ export const dynamicConfig = {
 	title: "",
 	description: "",
 	showComment: true,
-	itemsPerPage: 10,
+	itemsPerPage: 20,
 	apiUrl: "/api/dynamic.json",
+	memos: {
+		enable: false,
+		apiUrl: "https://memos.example.com",
+		parent: "users/your-username",
+	},
 };
 ```
 
@@ -45,7 +63,28 @@ export const dynamicConfig = {
 | `description` | Page description. Uses the i18n translation when empty |
 | `showComment` | Whether to show a comment entry for each moment |
 | `itemsPerPage` | Number of moments shown per page |
-| `apiUrl` | Moments data API URL. Defaults to `/api/dynamic.json`. Can be set to a third-party endpoint |
+| `apiUrl` | Moments data API URL. Defaults to `/api/dynamic.json`. Ignored when `memos.enable` is true |
+
+### Memos Data Source
+
+Supports connecting to a [Memos](https://www.usememos.com/) instance for real-time data:
+
+```ts
+memos: {
+	enable: true,
+	apiUrl: "https://memos.example.com",
+	parent: "users/xiaye",
+},
+```
+
+| Option | Description |
+| --- | --- |
+| `enable` | Whether to enable Memos data source |
+| `apiUrl` | Memos instance URL |
+| `parent` | User identifier to filter moments for a specific user |
+
+When enabled, the client fetches data directly from the Memos API in real-time, supporting pinned sync, image attachments, and more.
+
 
 ### Custom API URL
 
@@ -65,7 +104,8 @@ The third-party endpoint must return the following JSON structure:
     "images": [
       { "alt": "Image description", "src": "/path/to/image.jpg" }
     ],
-    "searchText": "Plain text for search"
+    "searchText": "Plain text for search",
+    "pinned": false
   }
 ]
 ```
