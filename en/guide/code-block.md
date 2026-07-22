@@ -38,14 +38,40 @@ pluginCollapsible: {
 
 ## Language Badge
 
+Displays the language name as text in the top-right corner of the code block.
+
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `pluginLanguageBadge.enable` | `boolean` | `false` | Enable language badge |
 
 ```ts
-// Language Badge Plugin Config
 pluginLanguageBadge: {
-  enable: false, // Enable language badge
+  enable: false,
+},
+```
+
+## Language Logo
+
+Displays a language icon in the bottom-right corner of the code block (powered by [ec-lang-logo](https://github.com/DerTimonius/ec-lang-logo)).
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `pluginLanguageLogo.enable` | `boolean` | `false` | Enable language logo |
+| `pluginLanguageLogo.color` | `"mono" \| "original" \| "theme" \| "#hex"` | `"mono"` | Logo color mode |
+| `pluginLanguageLogo.excludedLangs` | `string[]` | `[]` | Languages to exclude from showing logos |
+
+**Color modes:**
+
+- `"mono"` — Monochrome, auto-adapts to light/dark theme (light: `#111`, dark: `#fff`)
+- `"original"` — Uses each language's original brand color (e.g. JS yellow, TS blue)
+- `"theme"` — Uses the code block's foreground color
+- `"#ff6600"` — Custom hex color value
+
+```ts
+pluginLanguageLogo: {
+  enable: false,
+  color: "mono",
+  excludedLangs: [],
 },
 ```
 

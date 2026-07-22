@@ -45,14 +45,40 @@ pluginCollapsible: {
 
 ## 语言徽章
 
+在代码块右上角显示语言名称文本。
+
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `pluginLanguageBadge.enable` | `boolean` | `false` | 是否启用语言徽章 |
 
 ```ts
-// 语言徽章插件配置
 pluginLanguageBadge: {
-  enable: false, // 启用语言徽章
+  enable: false,
+},
+```
+
+## 语言 Logo
+
+在代码块右下角显示语言图标（基于 [ec-lang-logo](https://github.com/DerTimonius/ec-lang-logo)）。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `pluginLanguageLogo.enable` | `boolean` | `false` | 是否启用语言 Logo |
+| `pluginLanguageLogo.color` | `"mono" \| "original" \| "theme" \| "#hex"` | `"mono"` | Logo 颜色模式 |
+| `pluginLanguageLogo.excludedLangs` | `string[]` | `[]` | 不显示 Logo 的语言列表 |
+
+**颜色模式说明：**
+
+- `"mono"` — 单色模式，自动适配亮暗色主题（亮色 `#111`，暗色 `#fff`）
+- `"original"` — 使用各语言图标的原始品牌色（如 JS 黄色、TS 蓝色等）
+- `"theme"` — 使用代码块前景色
+- `"#ff6600"` — 自定义十六进制颜色值
+
+```ts
+pluginLanguageLogo: {
+  enable: false,
+  color: "mono",
+  excludedLangs: [],
 },
 ```
 
