@@ -11,6 +11,7 @@
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `enableInPost` | `boolean` | `true` | 是否在文章详情页显示封面图 |
+| `enableInPostOverlay` | `boolean` | `true` | 是否将标题和元数据叠加显示在详情页封面上；关闭后使用传统布局 |
 | `showLoading` | `boolean` | `false` | 是否显示加载动画 |
 | `randomCoverImage.enable` | `boolean` | `false` | 是否启用随机封面图功能 |
 | `randomCoverImage.apis` | `string[]` | - | 随机图 API 列表 |
@@ -21,6 +22,7 @@
 ```ts
 export const coverImageConfig: CoverImageConfig = {
   enableInPost: true,
+  enableInPostOverlay: true,
   showLoading: false,
   randomCoverImage: {
     enable: false,

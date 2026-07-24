@@ -11,6 +11,7 @@ The cover image configuration controls post cover display and random cover image
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `enableInPost` | `boolean` | `true` | Show cover image on post detail pages |
+| `enableInPostOverlay` | `boolean` | `true` | Overlay the title and metadata on the post cover; disable it to use the classic layout |
 | `showLoading` | `boolean` | `false` | Show loading animation |
 | `randomCoverImage.enable` | `boolean` | `false` | Enable random cover image |
 | `randomCoverImage.apis` | `string[]` | - | Random image API list |
@@ -21,6 +22,7 @@ The cover image configuration controls post cover display and random cover image
 ```ts
 export const coverImageConfig: CoverImageConfig = {
   enableInPost: true,
+  enableInPostOverlay: true,
   showLoading: false,
   randomCoverImage: {
     enable: false,
