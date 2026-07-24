@@ -106,6 +106,12 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 |----------|------|---------|-------------|
 | `common.dimOpacity` | `number` | `0.2` | Banner text overlay darkness, 0-1, higher values = darker |
 
+### Post Banner Information
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `common.postInfo.mode` | `"description" \| "meta"` | `"description"` | Post banner information mode: `"description"` shows the post description, while `"meta"` shows published/updated dates, word count, and reading time |
+
 ### Home Banner Text
 
 | Property | Type | Default | Description |

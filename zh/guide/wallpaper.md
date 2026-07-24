@@ -108,6 +108,12 @@ export const backgroundWallpaper = {
 |------|------|--------|------|
 | `common.dimOpacity` | `number` | `0.2` | 横幅文字遮罩暗度，0-1 之间，值越大越暗 |
 
+### 文章横幅信息
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `common.postInfo.mode` | `"description" \| "meta"` | `"description"` | 文章详情页横幅信息模式：`"description"` 显示文章描述，`"meta"` 显示发布日期、更新日期、字数和阅读时长 |
+
 ### 首页横幅文字
 
 | 属性 | 类型 | 默认值 | 说明 |

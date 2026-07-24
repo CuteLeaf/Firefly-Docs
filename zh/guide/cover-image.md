@@ -11,16 +11,17 @@
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `enableInPost` | `boolean` | `true` | 是否在文章详情页显示封面图 |
+| `showLoading` | `boolean` | `false` | 是否显示加载动画 |
 | `randomCoverImage.enable` | `boolean` | `false` | 是否启用随机封面图功能 |
 | `randomCoverImage.apis` | `string[]` | - | 随机图 API 列表 |
 | `randomCoverImage.fallback` | `string` | `"assets/images/cover.avif"` | API 失败时的回退图片 |
-| `randomCoverImage.showLoading` | `boolean` | `false` | 是否显示加载动画 |
 
 ## 配置示例
 
 ```ts
 export const coverImageConfig: CoverImageConfig = {
   enableInPost: true,
+  showLoading: false,
   randomCoverImage: {
     enable: false,
     apis: [
@@ -29,7 +30,6 @@ export const coverImageConfig: CoverImageConfig = {
       "https://uapis.cn/api/v1/random/image?category=acg&type=pc",
     ],
     fallback: "assets/images/cover.avif",
-    showLoading: false,
   },
 };
 ```

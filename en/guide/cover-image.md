@@ -11,16 +11,17 @@ The cover image configuration controls post cover display and random cover image
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `enableInPost` | `boolean` | `true` | Show cover image on post detail pages |
+| `showLoading` | `boolean` | `false` | Show loading animation |
 | `randomCoverImage.enable` | `boolean` | `false` | Enable random cover image |
 | `randomCoverImage.apis` | `string[]` | - | Random image API list |
 | `randomCoverImage.fallback` | `string` | `"assets/images/cover.avif"` | Fallback image when APIs fail |
-| `randomCoverImage.showLoading` | `boolean` | `false` | Show loading animation |
 
 ## Example
 
 ```ts
 export const coverImageConfig: CoverImageConfig = {
   enableInPost: true,
+  showLoading: false,
   randomCoverImage: {
     enable: false,
     apis: [
@@ -29,7 +30,6 @@ export const coverImageConfig: CoverImageConfig = {
       "https://uapis.cn/api/v1/random/image?category=acg&type=pc",
     ],
     fallback: "assets/images/cover.avif",
-    showLoading: false,
   },
 };
 ```
