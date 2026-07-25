@@ -4,17 +4,18 @@ The Moments page is for short thoughts and images. It is intended for quick dail
 
 ## Publishing a Moment
 
-Store moment files in `src/content/dynamic/`. Each Markdown file becomes one moment. The only required frontmatter field is `published`:
+Store moment files in `src/content/dynamic/`. Each Markdown file becomes one moment. The only required frontmatter field is `published`; use `location` to add an optional place:
 
 ```yaml
 ---
 published: 2026-07-15 16:15:29
+location: China
 ---
 
 The weather is great today, so I went out for hot pot.
 ```
 
-The time is displayed as written in frontmatter. A timezone label calculated from `siteConfig.timezone` is appended after the date.
+The time is displayed as written in frontmatter. A timezone label calculated from `siteConfig.timezone` is appended after the date. When provided, `location` is shown beside the published time.
 
 You can also create a moment from the command line:
 
@@ -46,6 +47,7 @@ Configure the page in `src/config/dynamicConfig.ts`:
 export const dynamicConfig = {
 	title: "",
 	description: "",
+	profileUrl: "/about/",
 	showComment: true,
 	itemsPerPage: 20,
 	apiUrl: "/api/dynamic.json",
@@ -61,6 +63,7 @@ export const dynamicConfig = {
 | --- | --- |
 | `title` | Page title. Uses the i18n translation when empty |
 | `description` | Page description. Uses the i18n translation when empty |
+| `profileUrl` | Destination shared by the moment avatar and name; supports local paths and full URLs |
 | `showComment` | Whether to show a comment entry for each moment |
 | `itemsPerPage` | Number of moments shown per page |
 | `apiUrl` | Moments data API URL. Defaults to `/api/dynamic.json`. Ignored when `memos.enable` is true |
@@ -83,7 +86,7 @@ memos: {
 | `apiUrl` | Memos instance URL |
 | `parent` | User identifier to filter moments for a specific user |
 
-When enabled, the client fetches data directly from the Memos API in real-time, supporting pinned sync, image attachments, and more.
+When enabled, the client fetches data directly from the Memos API in real-time, supporting pinned sync and image attachments. Memos `location.placeholder` is mapped to the moment location.
 
 
 ### Custom API URL
@@ -105,7 +108,8 @@ The third-party endpoint must return the following JSON structure:
       { "alt": "Image description", "src": "/path/to/image.jpg" }
     ],
     "searchText": "Plain text for search",
-    "pinned": false
+    "pinned": false,
+    "location": "Guangxi"
   }
 ]
 ```

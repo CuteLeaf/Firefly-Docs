@@ -4,17 +4,18 @@
 
 ## 发布动态
 
-动态文件保存在 `src/content/dynamic/`，一个 Markdown 文件对应一条动态。Frontmatter 只需要填写 `published`：
+动态文件保存在 `src/content/dynamic/`，一个 Markdown 文件对应一条动态。Frontmatter 只需要填写 `published`，也可以通过 `location` 添加位置：
 
 ```yaml
 ---
 published: 2026-07-15 16:15:29
+location: 广西
 ---
 
 今天的天气真不错，出去吃了一顿火锅。
 ```
 
-时间会按照填写的字面值显示，日期后会追加由 `siteConfig.timezone` 计算出的时区标识。
+时间会按照填写的字面值显示，日期后会追加由 `siteConfig.timezone` 计算出的时区标识。填写 `location` 后，位置会显示在发布时间旁。
 
 也可以使用命令快速创建：
 
@@ -46,6 +47,7 @@ pinned: true
 export const dynamicConfig = {
 	title: "",
 	description: "",
+	profileUrl: "/about/",
 	showComment: true,
 	itemsPerPage: 20,
 	apiUrl: "/api/dynamic.json",
@@ -61,6 +63,7 @@ export const dynamicConfig = {
 | --- | --- |
 | `title` | 页面标题。留空时使用 i18n 翻译 |
 | `description` | 页面描述。留空时使用 i18n 翻译 |
+| `profileUrl` | 动态头像和名称的跳转地址，支持站内路径或完整 URL |
 | `showComment` | 是否为每条动态显示评论入口 |
 | `itemsPerPage` | 每页显示的动态数量 |
 | `apiUrl` | 动态数据 API 地址，默认 `/api/dynamic.json`。当 `memos.enable` 为 true 时忽略 |
@@ -83,7 +86,7 @@ memos: {
 | `apiUrl` | Memos 实例地址 |
 | `parent` | 用户标识，用于过滤指定用户的动态 |
 
-启用后，客户端会直接从 Memos API 实时获取数据，支持置顶同步、图片附件展示等功能。
+启用后，客户端会直接从 Memos API 实时获取数据，支持置顶同步、图片附件展示，并将 `location.placeholder` 映射为动态位置。
 
 
 ### 自定义 API 地址
@@ -105,7 +108,8 @@ memos: {
       { "alt": "图片描述", "src": "/path/to/image.jpg" }
     ],
     "searchText": "纯文本搜索内容",
-    "pinned": false
+    "pinned": false,
+    "location": "广西"
   }
 ]
 ```
