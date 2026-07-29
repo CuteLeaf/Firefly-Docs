@@ -79,11 +79,22 @@ Logo supports four types:
 3. **src directory image** (auto-optimized, recommended): `{ type: "image", value: "assets/images/logo.webp", alt: "Logo" }`
 4. **Remote image**: `{ type: "url", value: "https://example.com/logo.png", alt: "Logo" }`
 
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `logo.type` | `string` | - | `"icon"`, `"image"` or `"url"` |
+| `logo.value` | `string` | - | Icon name, image path or image URL |
+| `logo.valueDark` | `string` | - | A different image for dark mode. Only applies to `image` and `url` types |
+| `logo.alt` | `string` | - | Alt text for the image |
+
+With `valueDark` set, light and dark mode each show their own image and switching themes takes effect instantly. If omitted, both modes share `value`. Icon library logos (`type: "icon"`) follow the text color, so no separate dark variant is needed.
+
 ```ts
 navbar: {
   logo: {
     type: "image",
     value: "assets/images/firefly.png",
+    // Use a different image in dark mode (optional)
+    valueDark: "assets/images/firefly-dark.png",
     alt: "🍀",
   },
   title: "Firefly",
@@ -93,6 +104,10 @@ navbar: {
   stickyNavbar: true,
 },
 ```
+
+::: tip
+The share poster header shows the navbar logo and the site title. Since the poster background is always white, the poster always uses the light-mode logo.
+:::
 
 ## Favicon
 
@@ -130,7 +145,7 @@ Restart the dev server after changing this setting.
 |----------|------|---------|-------------|
 | `post.showLastModified` | `boolean` | `true` | Show "last modified" card at the bottom of posts |
 | `post.outdatedThreshold` | `number` | `30` | Days threshold for showing the "last modified" card |
-| `post.sharePoster` | `boolean` | `true` | Enable share poster generation |
+| `post.sharePoster` | `boolean` | `true` | Enable share poster generation. The poster header shows the site logo and title |
 | `post.generateOgImages` | `boolean` | `false` | Generate OpenGraph images (increases build time) |
 
 ## Post List Layout

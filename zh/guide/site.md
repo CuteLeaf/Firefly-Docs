@@ -86,11 +86,22 @@ Logo 支持四种类型：
 3. **src 目录图片**（自动优化，推荐）：`{ type: "image", value: "assets/images/logo.webp", alt: "Logo" }`
 4. **网络图片**：`{ type: "url", value: "https://example.com/logo.png", alt: "Logo" }`
 
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `logo.type` | `string` | - | `"icon"`、`"image"` 或 `"url"` |
+| `logo.value` | `string` | - | 图标名、图片路径或图片 URL |
+| `logo.valueDark` | `string` | - | 暗色模式下使用的另一张图片，仅 `image` 和 `url` 类型生效 |
+| `logo.alt` | `string` | - | 图片的 alt 文本 |
+
+设置 `valueDark` 后，亮色和暗色模式会分别显示两张不同的图片，切换主题时即时生效；不设置则两种模式共用 `value`。图标库（`type: "icon"`）会跟随文字颜色，无需单独配置暗色版本。
+
 ```ts
 navbar: {
   logo: {
     type: "image",
     value: "assets/images/firefly.png",
+    // 暗色模式下换用另一张图片（可选）
+    valueDark: "assets/images/firefly-dark.png",
     alt: "🍀",
   },
   title: "Firefly",
@@ -100,6 +111,10 @@ navbar: {
   stickyNavbar: true,
 },
 ```
+
+::: tip
+分享海报顶部会显示导航栏的 Logo 和站点标题。由于海报背景固定为白色，海报中始终使用亮色版本的 Logo。
+:::
 
 ## Favicon
 
@@ -137,7 +152,7 @@ favicon: [
 |------|------|--------|------|
 | `post.showLastModified` | `boolean` | `true` | 是否显示文章底部的"上次编辑时间"卡片 |
 | `post.outdatedThreshold` | `number` | `30` | 文章过期阈值（天数），超过此天数才显示"上次编辑"卡片 |
-| `post.sharePoster` | `boolean` | `true` | 是否开启分享海报生成功能 |
+| `post.sharePoster` | `boolean` | `true` | 是否开启分享海报生成功能，海报顶部显示站点 Logo 与标题 |
 | `post.generateOgImages` | `boolean` | `false` | 是否生成 OpenGraph 图片（开启后构建时间较长） |
 
 ## 文章列表布局
