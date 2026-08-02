@@ -141,8 +141,13 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `common.navbar.transparentMode` | `string` | `"semi"` | Mode: `"semi"` semi-transparent, `"full"` fully transparent, `"semifull"` dynamic |
-| `common.navbar.enableBlur` | `boolean` | `true` | Enable frosted glass blur |
-| `common.navbar.blur` | `number` | `5` | Blur intensity |
+| `common.navbar.blur` | `number` | `5` | Blur intensity; `0` disables the navbar's frosted glass |
+
+::: info
+The navbar's dropdown menus and float panels (search, display settings, light/dark, music, mobile menu) always keep a frosted glass. Its blur follows `common.navbar.blur` with a minimum of `2px`.
+
+So setting `blur` to `0` only disables the frosted glass on the navbar itself — the panels are unaffected. In pure-color mode (`mode: "none"`) the panels stay opaque.
+:::
 
 ### Wave Animation
 

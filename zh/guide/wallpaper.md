@@ -143,8 +143,14 @@ export const backgroundWallpaper = {
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `common.navbar.transparentMode` | `string` | `"semi"` | 透明模式：`"semi"` 半透明、`"full"` 完全透明、`"semifull"` 动态透明 |
-| `common.navbar.enableBlur` | `boolean` | `true` | 是否开启毛玻璃模糊效果 |
-| `common.navbar.blur` | `number` | `5` | 毛玻璃模糊度 |
+| `common.navbar.blur` | `number` | `5` | 毛玻璃模糊度，`0` 即关闭导航栏毛玻璃 |
+
+::: info
+导航栏的子菜单与浮动面板（搜索、显示设置、亮暗色、音乐、移动端菜单）始终保留毛玻璃，模糊度跟随 `common.navbar.blur`，但有 `2px` 的最小值。
+
+所以把 `blur` 设为 `0` 只会关闭导航栏自身的毛玻璃，面板不受影响；纯色背景模式（`mode: "none"`）下面板保持不透明。
+:::
+
 
 ### 水波纹动画
 
