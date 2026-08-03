@@ -161,6 +161,7 @@ favicon: [
 |------|------|--------|------|
 | `postListLayout.defaultMode` | `string` | `"list"` | 默认布局：`"list"` 列表模式，`"grid"` 网格模式 |
 | `postListLayout.mobileDefaultMode` | `string` | `-` | 移动端默认布局：`"list"` 或 `"grid"`，不设置时跟随 `defaultMode` |
+| `postListLayout.coverPosition` | `string` | `"right"` | 列表模式下封面图位置：`"right"` 右侧，`"left"` 左侧。网格模式封面固定在卡片顶部，不受此项影响 |
 | `postListLayout.descriptionLines` | `number` | `2` | 文章简介显示行数，设为 `0` 则不截断 |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | 文章卡片底部统计（发布日期、字数、阅读时长）是否显示图标 |
 | `postListLayout.tagsPosition` | `string` | `"meta"` | 标签显示位置：`"meta"` 显示在标题下的元数据行，`"bottom"` 显示在卡片底部（将替换 stats 显示，二者只能选其一） |

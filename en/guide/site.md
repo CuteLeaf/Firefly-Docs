@@ -154,6 +154,7 @@ Restart the dev server after changing this setting.
 |----------|------|---------|-------------|
 | `postListLayout.defaultMode` | `string` | `"list"` | Default layout: `"list"` or `"grid"` |
 | `postListLayout.mobileDefaultMode` | `string` | `-` | Mobile default layout: `"list"` or `"grid"`. If not set, it follows `defaultMode` |
+| `postListLayout.coverPosition` | `string` | `"right"` | Cover image side in list mode: `"right"` or `"left"`. Grid mode always places the cover on top and is unaffected |
 | `postListLayout.descriptionLines` | `number` | `2` | Number of lines for post excerpts. Set to `0` to disable truncation |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | Show icons in the post card footer stats (published date, word count, reading time) |
 | `postListLayout.tagsPosition` | `string` | `"meta"` | Tag display position: `"meta"` shows in the metadata row below the title, `"bottom"` shows at the card bottom (replaces stats display, only one can be chosen) |
