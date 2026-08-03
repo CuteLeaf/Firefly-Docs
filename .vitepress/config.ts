@@ -80,6 +80,7 @@ export default defineConfig({
                 { text: '追番', link: '/zh/guide/anime' },
                 { text: '打赏', link: '/zh/guide/sponsor' },
                 { text: '番组计划', link: '/zh/guide/bangumi' },
+                { text: '书签导航', link: '/zh/guide/booknav' },
               ],
             },
             {
@@ -165,6 +166,7 @@ export default defineConfig({
                 { text: 'Anime', link: '/en/guide/anime' },
                 { text: 'Sponsor', link: '/en/guide/sponsor' },
                 { text: 'Bangumi', link: '/en/guide/bangumi' },
+                { text: 'Booknav', link: '/en/guide/booknav' },
               ],
             },
             {
