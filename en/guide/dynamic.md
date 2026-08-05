@@ -75,7 +75,7 @@ When the version of your deployed Memos service is ≥ 0.30.0, you need to set t
 
 `MEMOS_INSTANCE_URL=https://memos.example.com`
 
-The environment variable `MEMOS_INSTANCE_URL` must be strictly consistent with `apiUrl`.
+The environment variable `MEMOS_INSTANCE_URL` must be strictly consistent with `memos.apiUrl`.
 :::
 
 ### Memos Data Source
