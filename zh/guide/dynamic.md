@@ -88,6 +88,15 @@ memos: {
 
 启用后，客户端会直接从 Memos API 实时获取数据，支持置顶同步、图片附件展示，并将 `location.placeholder` 映射为动态位置。
 
+::: tip
+Memos 在 0.30.0 中引入了[破坏性变更](https://usememos.com/docs/configuration/environment-variables#public-and-private-mode)
+
+当您部署的 Memos 服务版本号 ≥ 0.30.0 时，您需要设定环境变量：
+
+`MEMOS_INSTANCE_URL=https://memos.example.com`
+
+环境变量 `MEMOS_INSTANCE_URL` 与 `memos.apiUrl` 应当严格保持一致。
+:::
 
 ### 自定义 API 地址
 

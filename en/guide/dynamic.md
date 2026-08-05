@@ -68,6 +68,16 @@ export const dynamicConfig = {
 | `itemsPerPage` | Number of moments shown per page |
 | `apiUrl` | Moments data API URL. Defaults to `/api/dynamic.json`. Ignored when `memos.enable` is true |
 
+::: tip
+Memos introduced a [breaking change](https://usememos.com/docs/configuration/environment-variables#public-and-private-mode) in version 0.30.0.
+
+When the version of your deployed Memos service is ≥ 0.30.0, you need to set the environment variable:
+
+`MEMOS_INSTANCE_URL=https://memos.example.com`
+
+The environment variable `MEMOS_INSTANCE_URL` must be strictly consistent with `memos.apiUrl`.
+:::
+
 ### Memos Data Source
 
 Supports connecting to a [Memos](https://www.usememos.com/) instance for real-time data:
