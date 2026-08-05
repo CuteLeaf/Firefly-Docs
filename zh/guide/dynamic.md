@@ -95,7 +95,7 @@ Memos 在 0.30.0 中引入了[破坏性变更](https://usememos.com/docs/configu
 
 `MEMOS_INSTANCE_URL=https://memos.example.com`
 
-环境变量 `MEMOS_INSTANCE_URL` 与 `apiUrl` 应当严格保持一致。
+环境变量 `MEMOS_INSTANCE_URL` 与 `memos.apiUrl` 应当严格保持一致。
 :::
 
 ### 自定义 API 地址
