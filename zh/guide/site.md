@@ -164,7 +164,7 @@ favicon: [
 | `postListLayout.coverPosition` | `string` | `"right"` | 列表模式下封面图位置：`"right"` 右侧，`"left"` 左侧。网格模式封面固定在卡片顶部，不受此项影响 |
 | `postListLayout.descriptionLines` | `number` | `2` | 文章简介显示行数，设为 `0` 则不截断 |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | 文章卡片底部统计（发布日期、字数、阅读时长）是否显示图标 |
-| `postListLayout.tagsPosition` | `string` | `"meta"` | 标签显示位置：`"meta"` 显示在标题下的元数据行，`"bottom"` 显示在卡片底部（将替换 stats 显示，二者只能选其一） |
+| `postListLayout.tagsPosition` | `string` | `"meta"` | 标签显示位置：`"meta"` 显示在标题下的元数据行，`"bottom"` 显示在卡片底部（将替换 stats 显示，二者只能选其一）。`"bottom"` 时标签数超出 `meta.tagCount` 会追加一个 `+N` 标记，鼠标悬停可查看被折叠的标签 |
 | `postListLayout.grid.masonry` | `boolean` | `false` | 是否开启瀑布流布局 |
 | `postListLayout.grid.columnWidth` | `number` | `320` | 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数 |
 
@@ -177,7 +177,7 @@ favicon: [
 | `postListLayout.meta.showPublished` | `boolean` | `true` | 是否显示发布日期 |
 | `postListLayout.meta.showCategory` | `boolean` | `true` | 是否显示分类 |
 | `postListLayout.meta.showTags` | `boolean` | `true` | 是否显示标签 |
-| `postListLayout.meta.tagCount` | `number` | `1` | 标签数量，设为 `0` 则不限制 |
+| `postListLayout.meta.tagCount` | `number` | `1` | 标签数量，设为 `0` 则不限制。`tagsPosition` 为 `"bottom"` 时，超出的标签会折叠成一个 `+N` 标记 |
 | `postListLayout.meta.showWords` | `boolean` | `true` | 是否显示字数 |
 | `postListLayout.meta.showReadingTime` | `boolean` | `true` | 是否显示阅读时间 |
 

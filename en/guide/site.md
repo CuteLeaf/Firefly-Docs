@@ -157,7 +157,7 @@ Restart the dev server after changing this setting.
 | `postListLayout.coverPosition` | `string` | `"right"` | Cover image side in list mode: `"right"` or `"left"`. Grid mode always places the cover on top and is unaffected |
 | `postListLayout.descriptionLines` | `number` | `2` | Number of lines for post excerpts. Set to `0` to disable truncation |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | Show icons in the post card footer stats (published date, word count, reading time) |
-| `postListLayout.tagsPosition` | `string` | `"meta"` | Tag display position: `"meta"` shows in the metadata row below the title, `"bottom"` shows at the card bottom (replaces stats display, only one can be chosen) |
+| `postListLayout.tagsPosition` | `string` | `"meta"` | Tag display position: `"meta"` shows in the metadata row below the title, `"bottom"` shows at the card bottom (replaces stats display, only one can be chosen). In `"bottom"` mode, tags beyond `meta.tagCount` are collapsed into a `+N` pill; hover it to see the hidden tags |
 | `postListLayout.grid.masonry` | `boolean` | `false` | Enable masonry layout |
 | `postListLayout.grid.columnWidth` | `number` | `320` | Minimum card width in grid mode (px). The browser automatically calculates column count based on container width |
 
@@ -170,7 +170,7 @@ Controls the display of each element in the metadata row below the post card tit
 | `postListLayout.meta.showPublished` | `boolean` | `true` | Show published date |
 | `postListLayout.meta.showCategory` | `boolean` | `true` | Show category |
 | `postListLayout.meta.showTags` | `boolean` | `true` | Show tags |
-| `postListLayout.meta.tagCount` | `number` | `1` | Number of tags to display. Set to `0` for no limit |
+| `postListLayout.meta.tagCount` | `number` | `1` | Number of tags to display. Set to `0` for no limit. When `tagsPosition` is `"bottom"`, extra tags are collapsed into a `+N` pill |
 | `postListLayout.meta.showWords` | `boolean` | `true` | Show word count |
 | `postListLayout.meta.showReadingTime` | `boolean` | `true` | Show reading time |
 
