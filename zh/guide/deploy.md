@@ -226,6 +226,21 @@ EdgeOne Pages 在中国大陆有边缘节点，对国内用户访问速度友好
 阿里云 ESA 在全球有大量边缘节点，尤其在中国大陆覆盖广泛，适合面向国内用户的博客。
 :::
 
+## 环境变量
+
+除了平台自身要求的配置，Firefly 在构建期会读取以下环境变量。都是可选的，不设置即使用默认行为。
+
+| 变量 | 说明 |
+|------|------|
+| `NODE_VERSION` | Node.js 版本，需设为 `22` 或更高 |
+| `PUBLIC_DISPLAY_SETTINGS` | 开启视图设置面板（默认关闭），取值 `true` / `1` / `on` / `yes`，详见[显示设置面板](./display-settings.md#总开关) |
+| `CF_WORKERS` | 启用 Cloudflare 适配器，仅 Workers SSR 部署需要，Pages 不需要 |
+| `FIREFLY_BUILD_PLATFORM` | 自定义站点信息组件里显示的构建平台名称，不设置则自动识别 |
+
+::: tip
+`PUBLIC_DISPLAY_SETTINGS` 这类以 `PUBLIC_` 开头的变量会被注入到浏览器端代码，只用于开关这类非敏感配置，不要放密钥。
+:::
+
 ## 自定义域名
 
 大多数平台都支持自定义域名绑定。一般步骤为：

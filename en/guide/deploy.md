@@ -225,6 +225,21 @@ EdgeOne Pages has edge nodes in mainland China, providing fast access for Chines
 Alibaba Cloud ESA has extensive edge nodes globally, with particularly broad coverage in mainland China, making it ideal for blogs targeting Chinese users.
 :::
 
+## Environment Variables
+
+Besides whatever your platform requires, Firefly reads the following variables at build time. All are optional — leave them unset for the default behavior.
+
+| Variable | Description |
+|----------|-------------|
+| `NODE_VERSION` | Node.js version, must be `22` or higher |
+| `PUBLIC_DISPLAY_SETTINGS` | Enables the display settings panel (disabled by default). Accepts `true` / `1` / `on` / `yes` — see [Display Settings Panel](./display-settings.md#master-switch) |
+| `CF_WORKERS` | Enables the Cloudflare adapter. Only needed for Workers SSR deployment, not for Pages |
+| `FIREFLY_BUILD_PLATFORM` | Overrides the build platform name shown in the site info widget; auto-detected when unset |
+
+::: tip
+Variables prefixed with `PUBLIC_`, such as `PUBLIC_DISPLAY_SETTINGS`, are injected into browser-side code. Use them only for non-sensitive toggles — never for secrets.
+:::
+
 ## Custom Domain
 
 Most platforms support custom domain binding. General steps:
