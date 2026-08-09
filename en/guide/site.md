@@ -237,6 +237,7 @@ When `postListLayout.tagsBottomStyle` is `"text"` the bottom tags have no backgr
 | `pages.sponsor` | `boolean` | `true` | Sponsor page toggle |
 | `pages.guestbook` | `boolean` | `true` | Guestbook page toggle (requires comment system) |
 | `pages.bangumi` | `boolean` | `true` | Bangumi page toggle |
+| `pages.vndb` | `boolean` | `true` | VNDB page toggle |
 | `pages.gallery` | `boolean` | `true` | Gallery page toggle |
 | `pages.dynamic` | `boolean` | `true` | Moments page toggle, including its navigation link and sidebar widget |
 | `categoryBar` | `boolean` | `true` | Category navigation bar on homepage and archive page |
@@ -260,6 +261,20 @@ See [Display Settings Panel](./display-settings.md) for details.
 ::: tip
 In `static` mode, `dev` only fetches one page of data; `build` fetches all data. In `dynamic` mode, data is fetched in real-time in the browser and is always up-to-date.
 :::
+
+## VNDB
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `vndb.userId` | `string` | `""` | VNDB user ID, e.g. `u2` |
+| `vndb.mode` | `"static" \| "dynamic"` | `"static"` | Data mode. `static` fetches data at build time and renders statically; `dynamic` fetches data in the browser via API, always showing the latest data |
+| `vndb.downloadCovers` | `boolean` | `false` | Download and compress covers into `public/vndb-covers` at build time so images are served from your own server. `static` mode only |
+| `vndb.apiUrl` | `string` | `"https://api.vndb.org/kana"` | VNDB API URL |
+| `vndb.vnBaseUrl` | `string` | `"https://vndb.org/"` | Entry detail page URL, must end with `/` |
+| `vndb.apiToken` | `string` | `""` | Access token for private lists, `static` mode only. Never commit a real token to a public repository |
+| `vndb.blurNsfw` | `boolean` | `true` | Whether to blur NSFW covers |
+
+See [VNDB](./vndb.md) for details.
 
 ## Analytics
 

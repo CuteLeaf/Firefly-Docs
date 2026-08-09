@@ -244,6 +244,7 @@ tagStyle: "pill",
 | `pages.sponsor` | `boolean` | `true` | 打赏页面开关 |
 | `pages.guestbook` | `boolean` | `true` | 留言板页面开关（需配置评论系统） |
 | `pages.bangumi` | `boolean` | `true` | 番组计划页面开关 |
+| `pages.vndb` | `boolean` | `true` | VNDB 页面开关 |
 | `pages.gallery` | `boolean` | `true` | 相册页面开关 |
 | `pages.dynamic` | `boolean` | `true` | 动态页面开关，同时控制动态导航入口和动态侧边栏 |
 | `categoryBar` | `boolean` | `true` | 分类导航栏开关，在首页和归档页顶部显示分类快捷导航 |
@@ -267,6 +268,20 @@ tagStyle: "pill",
 ::: tip
 `static` 模式下，`dev` 调试时只获取一页数据，`build` 才会获取全部数据。`dynamic` 模式下数据在浏览器中实时获取，始终为最新状态。
 :::
+
+## VNDB 配置
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `vndb.userId` | `string` | `""` | VNDB 用户 ID，形如 `u2` |
+| `vndb.mode` | `"static" \| "dynamic"` | `"static"` | 数据模式。`static` 在构建时获取数据并静态渲染；`dynamic` 在浏览器中实时请求 API，始终显示最新数据 |
+| `vndb.downloadCovers` | `boolean` | `false` | 构建时下载并压缩封面到 `public/vndb-covers`，图片由本站服务器提供，仅 `static` 模式生效 |
+| `vndb.apiUrl` | `string` | `"https://api.vndb.org/kana"` | VNDB API 地址 |
+| `vndb.vnBaseUrl` | `string` | `"https://vndb.org/"` | 条目详情页地址，末尾需要带 `/` |
+| `vndb.apiToken` | `string` | `""` | 私密列表访问令牌，仅 `static` 模式生效。不要把真实令牌提交到公开仓库 |
+| `vndb.blurNsfw` | `boolean` | `true` | 是否模糊 NSFW 封面 |
+
+详见 [VNDB](./vndb.md)。
 
 ## 统计分析
 
