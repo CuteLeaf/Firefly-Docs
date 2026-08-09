@@ -85,7 +85,7 @@ When `downloadCovers` is `true`, `pnpm build` runs `scripts/generate-vndb-covers
 - Runs 4 downloads concurrently and skips files that already exist, so repeated builds make almost no extra requests
 - At render time, if the local file exists, the cover URL is swapped to `/vndb-covers/xxx.webp` so images are served from your own server instead of VNDB's image host
 
-Downloading only happens when all three conditions hold: `userId` is set, `downloadCovers` is `true`, and `mode` is `static`. Otherwise the script logs the reason and exits.
+Downloading only happens when all four conditions hold: `pages.vndb` is `true`, `userId` is set, `downloadCovers` is `true`, and `mode` is `static`. Otherwise the script logs the reason and exits.
 
 ::: tip
 `public/vndb-covers/` is listed in `.gitignore`, so it never enters the repository. That means platforms like Vercel and Cloudflare re-download every cover on each build. With a large list, cache this directory in CI, or commit the covers by removing that line from `.gitignore`.

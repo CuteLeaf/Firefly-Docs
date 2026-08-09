@@ -85,7 +85,7 @@ VNDB 的收藏列表默认对外可见，此时不需要任何令牌。如果你
 - 并发 4 个请求；已经存在的文件直接跳过，所以重复构建几乎不会产生额外请求
 - 页面渲染时，本地文件存在就把封面地址换成 `/vndb-covers/xxx.webp`，图片由自己的服务器提供，不再直连 VNDB 图床
 
-只有同时满足「配置了 `userId`」「`downloadCovers` 为 `true`」「`mode` 为 `static`」三个条件才会执行下载，否则脚本会打印一行原因后跳过。
+只有同时满足「`pages.vndb` 为 `true`」「配置了 `userId`」「`downloadCovers` 为 `true`」「`mode` 为 `static`」四个条件才会执行下载，否则脚本会打印一行原因后跳过。
 
 ::: tip
 `public/vndb-covers/` 在 `.gitignore` 里，不会进仓库。因此在 Vercel、Cloudflare 等平台上每次构建都会重新下载全部封面；条目较多时建议在 CI 里缓存这个目录，或者把封面提交到仓库（从 `.gitignore` 里移除该行）。
