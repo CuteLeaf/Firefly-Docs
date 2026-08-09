@@ -239,7 +239,9 @@ When `postListLayout.tagsBottomStyle` is `"text"` the bottom tags have no backgr
 | `pages.bangumi` | `boolean` | `true` | Bangumi page toggle |
 | `pages.vndb` | `boolean` | `true` | VNDB page toggle |
 | `pages.gallery` | `boolean` | `true` | Gallery page toggle |
+| `pages.anime` | `boolean` | `true` | Anime page toggle |
 | `pages.dynamic` | `boolean` | `true` | Moments page toggle, including its navigation link and sidebar widget |
+| `pages.booknav` | `boolean` | `true` | Booknav page toggle |
 | `categoryBar` | `boolean` | `true` | Category navigation bar on homepage and archive page |
 
 ## Display Settings Panel
