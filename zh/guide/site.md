@@ -165,8 +165,10 @@ favicon: [
 | `postListLayout.descriptionLines` | `number` | `2` | 文章简介显示行数，设为 `0` 则不截断 |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | 文章卡片底部统计（发布日期、字数、阅读时长）是否显示图标 |
 | `postListLayout.tagsPosition` | `string` | `"meta"` | 标签显示位置：`"meta"` 显示在标题下的元数据行，`"bottom"` 显示在卡片底部（将替换 stats 显示，二者只能选其一）。`"bottom"` 时标签数超出 `meta.tagCount` 会追加一个 `+N` 标记，鼠标悬停可查看被折叠的标签 |
+| `postListLayout.tagsBottomStyle` | `string` | `"chip"` | 底部标签样式，仅在 `tagsPosition` 为 `"bottom"` 时生效：`"chip"` 带底色的按钮，形状跟随 [`tagStyle`](#分类与标签样式)；`"text"` 无底色，只有文字 |
 | `postListLayout.grid.masonry` | `boolean` | `false` | 是否开启瀑布流布局 |
 | `postListLayout.grid.columnWidth` | `number` | `320` | 网格模式卡片最小宽度(px)，浏览器根据容器宽度自动计算列数 |
+| `postListLayout.grid.coverFullWidth` | `boolean` | `false` | 网格模式封面是否撑满卡片贴边。`true` 时封面顶到卡片上、左、右边缘，只有上面两角是圆角；`false` 时封面按卡片内边距内缩，上、左、右留出间距，四角都是圆角（间距随屏幕宽度变化，与卡片内边距一致） |
 
 ### PostMeta 元数据显示控制
 
@@ -190,6 +192,43 @@ favicon: [
 | `postListLayout.stats.showPublished` | `boolean` | `true` | 是否显示发布日期 |
 | `postListLayout.stats.showWords` | `boolean` | `true` | 是否显示字数 |
 | `postListLayout.stats.showReadingTime` | `boolean` | `true` | 是否显示阅读时间 |
+
+## 分类与标签样式
+
+分类导航栏按钮和标签 chip 都可以在「胶囊」和「矩形」两种形状之间切换，两项互相独立。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `categoryStyle` | `string` | `"rectangle"` | 分类导航栏按钮样式：`"pill"` 胶囊，`"rectangle"` 矩形 |
+| `tagStyle` | `string` | `"pill"` | 标签样式：`"pill"` 胶囊（中性灰底），`"rectangle"` 矩形（主题色底） |
+
+```ts
+categoryStyle: "rectangle",
+tagStyle: "pill",
+```
+
+### categoryStyle
+
+只改变形状，不改变配色 —— `"rectangle"` 沿用胶囊的全部配色（含 hover、当前分类高亮、文章数徽章），仅把圆角收小。
+
+作用范围仅限**分类导航栏**（首页和归档页顶部，由 [`categoryBar`](#页面开关) 控制是否显示）。友链、相册、书签导航页的筛选按钮不受影响，始终保持胶囊。
+
+### tagStyle
+
+| 取值 | 外观 |
+|------|------|
+| `"pill"` | 全圆角胶囊，中性灰底，hover 时变为主题色底 |
+| `"rectangle"` | 小圆角矩形，直接使用主题色底（`--btn-regular-bg`），hover / 按下有深浅变化 |
+
+同时作用于三处标签：
+
+- 文章列表卡片的标签（元数据行内，以及 `tagsPosition: "bottom"` 时的底部标签，包含 `+N` 折叠标记）
+- 标签页 `/tags` 的标签及其文章数徽章
+- 侧边栏标签 widget
+
+::: tip
+`postListLayout.tagsBottomStyle` 设为 `"text"` 时底部标签没有底色，`tagStyle` 对它不生效；其他两处标签仍按 `tagStyle` 渲染。
+:::
 
 ## 分页配置
 

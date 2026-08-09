@@ -158,8 +158,10 @@ Restart the dev server after changing this setting.
 | `postListLayout.descriptionLines` | `number` | `2` | Number of lines for post excerpts. Set to `0` to disable truncation |
 | `postListLayout.showStatsIcons` | `boolean` | `true` | Show icons in the post card footer stats (published date, word count, reading time) |
 | `postListLayout.tagsPosition` | `string` | `"meta"` | Tag display position: `"meta"` shows in the metadata row below the title, `"bottom"` shows at the card bottom (replaces stats display, only one can be chosen). In `"bottom"` mode, tags beyond `meta.tagCount` are collapsed into a `+N` pill; hover it to see the hidden tags |
+| `postListLayout.tagsBottomStyle` | `string` | `"chip"` | Bottom tag style, only effective when `tagsPosition` is `"bottom"`: `"chip"` filled buttons whose shape follows [`tagStyle`](#category-and-tag-styles); `"text"` plain text with no background |
 | `postListLayout.grid.masonry` | `boolean` | `false` | Enable masonry layout |
 | `postListLayout.grid.columnWidth` | `number` | `320` | Minimum card width in grid mode (px). The browser automatically calculates column count based on container width |
+| `postListLayout.grid.coverFullWidth` | `boolean` | `false` | Whether the grid-mode cover bleeds to the card edges. `true` makes the cover reach the top, left and right edges with only the top two corners rounded; `false` insets the cover by the card padding, leaving a gap on the top, left and right with all four corners rounded (the gap follows the screen width, matching the card padding) |
 
 ### PostMeta Display Control
 
@@ -183,6 +185,43 @@ Controls the display of each element in the post card footer stats bar. When `ta
 | `postListLayout.stats.showPublished` | `boolean` | `true` | Show published date |
 | `postListLayout.stats.showWords` | `boolean` | `true` | Show word count |
 | `postListLayout.stats.showReadingTime` | `boolean` | `true` | Show reading time |
+
+## Category and Tag Styles
+
+Both the category navigation buttons and the tag chips can switch between a "pill" and a "rectangle" shape. The two options are independent of each other.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `categoryStyle` | `string` | `"rectangle"` | Category navigation button style: `"pill"` or `"rectangle"` |
+| `tagStyle` | `string` | `"pill"` | Tag style: `"pill"` (neutral grey background) or `"rectangle"` (theme-colored background) |
+
+```ts
+categoryStyle: "rectangle",
+tagStyle: "pill",
+```
+
+### categoryStyle
+
+Shape only — no color change. `"rectangle"` keeps every color from the pill variant (including hover, active-category highlight and the post-count badge) and merely reduces the corner radius.
+
+It applies to the **category navigation bar** only (top of the homepage and archive page, toggled by [`categoryBar`](#page-toggles)). The filter buttons on the friends, gallery and bookmark pages are unaffected and always stay pills.
+
+### tagStyle
+
+| Value | Appearance |
+|-------|------------|
+| `"pill"` | Fully rounded pill on a neutral grey background, turning theme-colored on hover |
+| `"rectangle"` | Slightly rounded rectangle using the theme color (`--btn-regular-bg`) directly, with hover / active shade changes |
+
+It applies to all three tag locations:
+
+- Post card tags (in the metadata row, and the bottom tags including the `+N` collapse pill when `tagsPosition` is `"bottom"`)
+- Tags on the `/tags` page and their post-count badges
+- The sidebar tags widget
+
+::: tip
+When `postListLayout.tagsBottomStyle` is `"text"` the bottom tags have no background, so `tagStyle` has no effect there. The other two locations still follow `tagStyle`.
+:::
 
 ## Pagination
 
