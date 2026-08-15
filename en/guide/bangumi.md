@@ -12,6 +12,10 @@ pages: {
 },
 ```
 
+::: tip
+Besides the `pages.bangumi` toggle in the config, you can also set the `PUBLIC_PAGES_BANGUMI=true` / `=false` environment variable on your deployment platform to enable/disable this page without touching the config file.
+:::
+
 ## Configuration
 
 Configure Bangumi in `src/config/siteConfig.ts`:

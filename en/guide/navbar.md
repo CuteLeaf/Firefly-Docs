@@ -65,6 +65,25 @@ const links: NavBarLink[] = [
 ];
 ```
 
+## Menu Name i18n
+
+Navbar menu names are automatically translated based on the site language (`siteConfig.lang` or the `PUBLIC_SITE_LANG` environment variable). The rule: **if `name` is unchanged (still equals the theme default), the language translation is used; if it has been customized, the custom name is shown as-is.**
+
+```ts
+LinkPresets.Home      // default name "主页"; shows "Home" when the site is en, "ホーム" when ja
+{
+  name: "My Home",    // custom name, shown as-is in every language
+  url: "/",
+}
+```
+
+- Group names (Articles / Social / Mine / About / Links) are translated too
+- Brand names (`VNDB`, `AnimeList`, etc.) are identical across languages and are kept as-is
+
+::: tip
+Edit a preset link's `name` to pin a custom label; change it back to the default to restore automatic translation.
+:::
+
 ## Search Configuration
 
 | Property | Type | Default | Description |

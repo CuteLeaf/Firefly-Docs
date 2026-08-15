@@ -14,6 +14,10 @@ pages: {
 
 Once enabled, a VNDB entry appears automatically under the "Mine" navbar group. When disabled, the entry is hidden and visiting `/vndb/` redirects to 404.
 
+::: tip
+Besides the `pages.vndb` toggle in the config, you can also set the `PUBLIC_PAGES_VNDB=true` / `=false` environment variable on your deployment platform to enable/disable this page without touching the config file.
+:::
+
 ## Configuration
 
 Configure VNDB in `src/config/siteConfig.ts`:

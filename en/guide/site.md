@@ -15,7 +15,7 @@ The site configuration is the core configuration file of the Firefly theme, cont
 | `site_url` | `string` | - | Site URL |
 | `description` | `string` | - | Site description for `<meta name="description">` |
 | `keywords` | `string[]` | - | Site keywords for `<meta name="keywords">` |
-| `lang` | `string` | `"zh_CN"` | Site language: `zh_CN`, `zh_TW`, `en`, `ja`, `ru` |
+| `lang` | `string` | `"zh_CN"` | Site language: `zh_CN`, `zh_TW`, `en`, `ja`, `ru`, `ko`. Overridable via `PUBLIC_SITE_LANG` (see tip below) |
 
 ```ts
 export const siteConfig: SiteConfig = {
@@ -27,6 +27,10 @@ export const siteConfig: SiteConfig = {
   lang: "zh_CN",
 };
 ```
+
+::: tip Override site language via environment variable
+`lang` can be overridden by the `PUBLIC_SITE_LANG` environment variable, which takes priority over the config file. For example, set `PUBLIC_SITE_LANG=en` on your deployment platform (Vercel / Cloudflare, etc.) to build the whole site (navbar, page text) in English without touching the config. Accepts values like `en` / `zh_cn` / `zh_tw` / `ja` / `ja_jp` / `ru` / `ko` (case-insensitive); falls back to the config default if unrecognized.
+:::
 
 ## Theme Color
 
@@ -239,9 +243,14 @@ When `postListLayout.tagsBottomStyle` is `"text"` the bottom tags have no backgr
 | `pages.bangumi` | `boolean` | `true` | Bangumi page toggle |
 | `pages.vndb` | `boolean` | `true` | VNDB page toggle |
 | `pages.gallery` | `boolean` | `true` | Gallery page toggle |
-| `pages.anime` | `boolean` | `true` | Anime page toggle |
+| `pages.bilibili` | `boolean` | `true` | Bilibili page toggle |
 | `pages.dynamic` | `boolean` | `true` | Moments page toggle, including its navigation link and sidebar widget |
 | `pages.booknav` | `boolean` | `true` | Booknav page toggle |
+| `pages.mal` | `boolean` | `true` | MyAnimeList page toggle |
+
+::: tip Environment variable override
+Every page toggle can be overridden by an environment variable, which takes priority over the config file. For example, set `PUBLIC_PAGES_BILIBILI=true` on your deployment platform (Vercel / Cloudflare, etc.) to enable the Bilibili page without touching the config file, or `PUBLIC_PAGES_FRIENDS=false` to disable the friends page. Values like `true` / `1` / `on` enable, `false` / `0` / `off` disable.
+:::
 | `categoryBar` | `boolean` | `true` | Category navigation bar on homepage and archive page |
 
 ## Display Settings Panel

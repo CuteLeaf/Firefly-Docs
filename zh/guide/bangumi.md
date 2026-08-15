@@ -12,6 +12,10 @@ pages: {
 },
 ```
 
+::: tip
+除了配置文件里的 `pages.bangumi` 开关，也可以在部署平台设置环境变量 `PUBLIC_PAGES_BANGUMI=true` 开启、`=false` 关闭该页面，无需修改配置文件。
+:::
+
 ## 配置
 
 在 `src/config/siteConfig.ts` 中配置番组计划：

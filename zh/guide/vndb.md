@@ -14,6 +14,10 @@ pages: {
 
 启用后导航栏「我的」分组下会自动出现 VNDB 入口；关闭时入口自动隐藏，直接访问 `/vndb/` 会跳转到 404。
 
+::: tip
+除了配置文件里的 `pages.vndb` 开关，也可以在部署平台设置环境变量 `PUBLIC_PAGES_VNDB=true` 开启、`=false` 关闭该页面，无需修改配置文件。
+:::
+
 ## 配置
 
 在 `src/config/siteConfig.ts` 中配置 VNDB：

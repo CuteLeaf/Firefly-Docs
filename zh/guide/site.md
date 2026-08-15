@@ -15,7 +15,7 @@
 | `site_url` | `string` | - | 站点 URL |
 | `description` | `string` | - | 站点描述，用于 `<meta name="description">` |
 | `keywords` | `string[]` | - | 站点关键词，用于 `<meta name="keywords">` |
-| `lang` | `string` | `"zh_CN"` | 站点语言，支持 `zh_CN`、`zh_TW`、`en`、`ja`、`ru` |
+| `lang` | `string` | `"zh_CN"` | 站点语言，支持 `zh_CN`、`zh_TW`、`en`、`ja`、`ru`、`ko`。可用环境变量 `PUBLIC_SITE_LANG` 覆盖（见下方提示） |
 
 ```ts
 export const siteConfig: SiteConfig = {
@@ -27,6 +27,10 @@ export const siteConfig: SiteConfig = {
   lang: "zh_CN",
 };
 ```
+
+::: tip 环境变量覆盖站点语言
+`lang` 可以用环境变量 `PUBLIC_SITE_LANG` 覆盖，优先级高于配置文件。例如在部署平台（Vercel / Cloudflare 等）设置 `PUBLIC_SITE_LANG=en` 即可让整个站点（含导航栏、页面文案）以英文构建，无需修改配置文件。支持 `en` / `zh_cn` / `zh_tw` / `ja` / `ja_jp` / `ru` / `ko` 等取值，大小写不敏感；无法识别时回退到配置文件里的默认值。
+:::
 
 ## 主题色
 
@@ -246,10 +250,15 @@ tagStyle: "pill",
 | `pages.bangumi` | `boolean` | `true` | 番组计划页面开关 |
 | `pages.vndb` | `boolean` | `true` | VNDB 页面开关 |
 | `pages.gallery` | `boolean` | `true` | 相册页面开关 |
-| `pages.anime` | `boolean` | `true` | 追番页面开关 |
+| `pages.bilibili` | `boolean` | `true` | 哔哩哔哩追番页面开关 |
 | `pages.dynamic` | `boolean` | `true` | 动态页面开关，同时控制动态导航入口和动态侧边栏 |
 | `pages.booknav` | `boolean` | `true` | 书签导航页面开关 |
+| `pages.mal` | `boolean` | `true` | MyAnimeList 页面开关 |
 | `categoryBar` | `boolean` | `true` | 分类导航栏开关，在首页和归档页顶部显示分类快捷导航 |
+
+::: tip 环境变量覆盖
+所有页面开关都可以用环境变量覆盖，优先级高于配置文件。例如在部署平台（Vercel / Cloudflare 等）设置 `PUBLIC_PAGES_BILIBILI=true` 即可开启哔哩哔哩页面，无需修改配置文件；设置 `PUBLIC_PAGES_FRIENDS=false` 即可关闭友链页面。取值为 `true` / `1` / `on` 等表示开启，`false` / `0` / `off` 等表示关闭。
+:::
 
 ## 显示设置面板
 
