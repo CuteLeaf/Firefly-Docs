@@ -10,7 +10,7 @@ The background wallpaper configuration controls the site's background image disp
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `mode` | `string` | `"banner"` | Mode: `"banner"` banner, `"fullscreen"` full-screen, `"overlay"` full-screen transparent, `"none"` solid color |
+| `mode` | `string` | `"banner"` | Mode: `"banner"` banner, `"fullscreen"` full-screen, `"overlay"` overlay transparent, `"none"` solid color |
 
 ::: tip
 The wallpaper mode switch toggle has been moved to `displaySettingsConfig.wallpaperModeSwitchable`. See [Display Settings Panel](./site.md#display-settings-panel).
@@ -106,12 +106,6 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 |----------|------|---------|-------------|
 | `common.dimOpacity` | `number` | `0.2` | Banner text overlay darkness, 0-1, higher values = darker |
 
-### Post Banner Information
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `common.postInfo.mode` | `"description" \| "meta"` | `"description"` | Post banner information mode: `"description"` shows the post description, while `"meta"` shows published/updated dates, word count, and reading time |
-
 ### Home Banner Text
 
 | Property | Type | Default | Description |
@@ -134,46 +128,6 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 ::: info
 - Typewriter **enabled** — cycles through all subtitles
 - Typewriter **disabled** — randomly shows one subtitle on each refresh
-:::
-
-### Navbar Transparency
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `common.navbar.transparentMode` | `string` | `"semi"` | Mode: `"semi"` semi-transparent, `"full"` fully transparent, `"semifull"` dynamic |
-| `common.navbar.blur` | `number` | `5` | Blur intensity; `0` disables the navbar's frosted glass |
-
-::: info
-The navbar's dropdown menus and float panels (search, display settings, light/dark, music, mobile menu) always keep a frosted glass. Its blur follows `common.navbar.blur` with a minimum of `2px`.
-
-So setting `blur` to `0` only disables the frosted glass on the navbar itself — the panels are unaffected. In pure-color mode (`mode: "none"`) the panels stay opaque.
-:::
-
-### Wave Animation
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `common.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable wave animation |
-
-::: warning
-Wave animation affects page performance. Enable based on your needs.
-:::
-
-::: tip
-The wave animation user toggle has been moved to `displaySettingsConfig.wavesSwitchable`. See [Display Settings Panel](./site.md#display-settings-panel).
-:::
-
-### Gradient Transition
-
-Automatically enabled when waves are disabled, providing a smooth gradient fade from the wallpaper bottom to the background color.
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable gradient transition |
-| `common.gradient.height` | `string` | `"15vh"` | Gradient height |
-
-::: info
-Gradient and waves are mutually exclusive: when waves are enabled, the gradient is automatically hidden; when waves are disabled, the gradient is automatically shown. Both user toggles have been moved to `displaySettingsConfig`. See [Display Settings Panel](./site.md#display-settings-panel).
 :::
 
 ### Wallpaper Carousel
@@ -217,13 +171,80 @@ The wallpaper carousel user toggle has been moved to `displaySettingsConfig.bann
 |----------|------|---------|-------------|
 | `banner.position` | `string` | `"0% 20%"` | CSS `object-position` value. Supports `'center'`, `'top'`, `'bottom'`, `'left'`, `'right'`, percentages, etc. |
 
+### Post Banner Information
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `banner.postInfo.mode` | `"description" \| "meta"` | `"description"` | Post banner information mode: `"description"` shows the post description, while `"meta"` shows published/updated dates, word count, and reading time |
+
+### Navbar Transparency
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `banner.navbar.transparentMode` | `string` | `"semi"` | Mode: `"semi"` semi-transparent, `"full"` fully transparent, `"semifull"` dynamic |
+| `banner.navbar.blur` | `number` | `5` | Blur intensity; `0` disables the navbar's frosted glass |
+
+::: info
+The navbar's dropdown menus and float panels (search, display settings, light/dark, music, mobile menu) always keep a frosted glass. Its blur follows `banner.navbar.blur` with a minimum of `2px`.
+
+So setting `blur` to `0` only disables the frosted glass on the navbar itself — the panels are unaffected. In pure-color mode (`mode: "none"`) the panels stay opaque.
+
+The fullscreen wallpaper mode's navbar is not affected by this config (it is controlled separately by `fullscreen.navbar.dynamicTransparent`, see below).
+:::
+
+### Wave Animation
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `banner.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable wave animation |
+
+::: warning
+Wave animation affects page performance. Enable based on your needs.
+:::
+
+::: tip
+The wave animation user toggle has been moved to `displaySettingsConfig.wavesSwitchable`. See [Display Settings Panel](./site.md#display-settings-panel).
+:::
+
+### Gradient Transition
+
+Automatically enabled when waves are disabled, providing a smooth gradient fade from the wallpaper bottom to the background color.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `banner.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | Enable gradient transition |
+| `banner.gradient.height` | `string` | `"15vh"` | Gradient height |
+
+::: info
+Gradient and waves are mutually exclusive: when waves are enabled, the gradient is automatically hidden; when waves are disabled, the gradient is automatically shown. Both user toggles have been moved to `displaySettingsConfig`. See [Display Settings Panel](./site.md#display-settings-panel).
+:::
+
 ## Fullscreen Mode
 
-Fullscreen wallpaper mode fills the entire screen with the background image.
+Fullscreen wallpaper mode **fixes** the background image across the entire screen:
+
+- **Home page**: the first screen shows only the wallpaper with the centered home title; the content area sits below the fold. Scrolling slides the content up over the wallpaper, the title fades out smoothly as it scrolls up, and the wallpaper transitions from crisp to blurred
+- **Other pages**: behaves like overlay mode — the wallpaper stays fixed and blurred, content at the top
+- The wallpaper is **opaque** (`overlay.opacity` does not apply); blur (`blur`), card opacity (`cardOpacity`) and z-index (`zIndex`) are reused from the `overlay` config below
+- Waves and gradient transitions are not shown
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `fullscreen.position` | `string` | `"center"` | CSS `object-position` value |
+| `fullscreen.navbar.dynamicTransparent` | `boolean` | `true` | Enable dynamic transparent navbar: the navbar is transparent at the **top of the home page** and becomes opaque after scrolling (home page only) |
+
+```ts
+fullscreen: {
+  position: "center",
+  navbar: {
+    dynamicTransparent: true,
+  },
+},
+```
+
+::: info
+In fullscreen mode the navbar is fully transparent by default (transparency is controlled by `overlay.cardOpacity`). With `fullscreen.navbar.dynamicTransparent` enabled, the home page's top navbar becomes transparent and shows a card background after scrolling.
+:::
 
 ## Overlay Mode
 

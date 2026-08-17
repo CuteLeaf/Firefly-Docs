@@ -50,12 +50,16 @@ PUBLIC_DISPLAY_SETTINGS=true
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `wallpaperModeSwitchable` | `boolean` | `false` | 壁纸模式切换开关（横幅/全屏/透明/无），开启会显著增大构建体积 |
+| `wallpaperModeSwitchable` | `boolean` | `false` | 壁纸模式切换开关（横幅/全屏/覆盖透明/无），开启会显著增大构建体积 |
 | `wavesSwitchable` | `boolean` | `true` | 水波纹动画开关 |
 | `gradientSwitchable` | `boolean` | `true` | 渐变过渡效果开关 |
 | `bannerTitleSwitchable` | `boolean` | `true` | 横幅标题显示开关（需同时启用 `homeText.enable`） |
 | `bannerCarouselSwitchable` | `boolean` | `true` | 壁纸轮播开关 |
-| `overlaySwitchable` | `boolean \| object` | `{ opacity: true, blur: true, cardOpacity: true }` | 全屏透明模式参数调节开关，支持总开关或分项开关 |
+| `overlaySwitchable` | `boolean \| object` | `{ opacity: true, blur: true, cardOpacity: true }` | 覆盖透明 / 全屏壁纸模式的参数调节开关，支持总开关或分项开关 |
+
+::: info
+这些滑块在**覆盖透明**和**全屏壁纸**模式下都会显示（全屏壁纸复用 overlay 的模糊与卡片透明度配置）。其中**背景透明度**滑块只在覆盖透明模式显示，全屏壁纸模式不适用（壁纸不透明），会自动隐藏。
+:::
 
 `overlaySwitchable` 支持两种写法：
 

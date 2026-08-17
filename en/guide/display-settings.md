@@ -55,7 +55,11 @@ A good workflow: keep the panel off in production for the smallest output, and w
 | `gradientSwitchable` | `boolean` | `true` | Gradient transition effect toggle |
 | `bannerTitleSwitchable` | `boolean` | `true` | Banner title display toggle (requires `homeText.enable` to be enabled) |
 | `bannerCarouselSwitchable` | `boolean` | `true` | Wallpaper carousel toggle |
-| `overlaySwitchable` | `boolean \| object` | `{ opacity: true, blur: true, cardOpacity: true }` | Overlay mode parameter adjustment toggle, supports master toggle or per-item toggles |
+| `overlaySwitchable` | `boolean \| object` | `{ opacity: true, blur: true, cardOpacity: true }` | Overlay / fullscreen wallpaper parameter adjustment toggle, supports master toggle or per-item toggles |
+
+::: info
+These sliders are shown in both **overlay** and **fullscreen wallpaper** modes (fullscreen reuses overlay's blur and card opacity configs). The **background opacity** slider only appears in overlay mode — it is hidden in fullscreen mode since the wallpaper is opaque.
+:::
 
 `overlaySwitchable` supports two formats:
 

@@ -10,7 +10,7 @@
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
-| `mode` | `string` | `"banner"` | 壁纸模式：`"banner"` 横幅、`"fullscreen"` 全屏、`"overlay"` 全屏透明、`"none"` 纯色背景 |
+| `mode` | `string` | `"banner"` | 壁纸模式：`"banner"` 横幅、`"fullscreen"` 全屏、`"overlay"` 覆盖透明、`"none"` 纯色背景 |
 
 ::: tip
 壁纸模式的切换开关已移至 `displaySettingsConfig.wallpaperModeSwitchable`，详见 [显示设置面板](./site.md#显示设置面板)。
@@ -108,12 +108,6 @@ export const backgroundWallpaper = {
 |------|------|--------|------|
 | `common.dimOpacity` | `number` | `0.2` | 横幅文字遮罩暗度，0-1 之间，值越大越暗 |
 
-### 文章横幅信息
-
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `common.postInfo.mode` | `"description" \| "meta"` | `"description"` | 文章详情页横幅信息模式：`"description"` 显示文章描述，`"meta"` 显示发布日期、更新日期、字数和阅读时长 |
-
 ### 首页横幅文字
 
 | 属性 | 类型 | 默认值 | 说明 |
@@ -136,47 +130,6 @@ export const backgroundWallpaper = {
 ::: info
 - 打字机**开启** → 循环显示所有副标题
 - 打字机**关闭** → 每次刷新随机显示一条副标题
-:::
-
-### 导航栏透明模式
-
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `common.navbar.transparentMode` | `string` | `"semi"` | 透明模式：`"semi"` 半透明、`"full"` 完全透明、`"semifull"` 动态透明 |
-| `common.navbar.blur` | `number` | `5` | 毛玻璃模糊度，`0` 即关闭导航栏毛玻璃 |
-
-::: info
-导航栏的子菜单与浮动面板（搜索、显示设置、亮暗色、音乐、移动端菜单）始终保留毛玻璃，模糊度跟随 `common.navbar.blur`，但有 `2px` 的最小值。
-
-所以把 `blur` 设为 `0` 只会关闭导航栏自身的毛玻璃，面板不受影响；纯色背景模式（`mode: "none"`）下面板保持不透明。
-:::
-
-
-### 水波纹动画
-
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `common.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用水波纹动画 |
-
-::: warning
-水波纹动画会影响页面性能，请根据需要开启。
-:::
-
-::: tip
-水波纹的用户切换开关已移至 `displaySettingsConfig.wavesSwitchable`，详见 [显示设置面板](./site.md#显示设置面板)。
-:::
-
-### 渐变过渡
-
-当水波纹关闭时自动启用，在壁纸底部提供到背景色的平滑渐变过渡效果。
-
-| 属性 | 类型 | 默认值 | 说明 |
-|------|------|--------|------|
-| `common.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用渐变过渡 |
-| `common.gradient.height` | `string` | `"15vh"` | 渐变高度 |
-
-::: info
-渐变过渡与水波纹互斥：水波纹开启时渐变自动隐藏，水波纹关闭时渐变自动显示。两者的用户切换开关已移至 `displaySettingsConfig`，详见 [显示设置面板](./site.md#显示设置面板)。
 :::
 
 ### 壁纸轮播
@@ -220,13 +173,80 @@ common: {
 |------|------|--------|------|
 | `banner.position` | `string` | `"0% 20%"` | CSS `object-position` 值。支持 `'center'`、`'top'`、`'bottom'`、`'left'`、`'right'`、百分比等 |
 
+### 文章横幅信息
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.postInfo.mode` | `"description" \| "meta"` | `"description"` | 文章详情页横幅信息模式：`"description"` 显示文章描述，`"meta"` 显示发布日期、更新日期、字数和阅读时长 |
+
+### 导航栏透明模式
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.navbar.transparentMode` | `string` | `"semi"` | 透明模式：`"semi"` 半透明、`"full"` 完全透明、`"semifull"` 动态透明 |
+| `banner.navbar.blur` | `number` | `5` | 毛玻璃模糊度，`0` 即关闭导航栏毛玻璃 |
+
+::: info
+导航栏的子菜单与浮动面板（搜索、显示设置、亮暗色、音乐、移动端菜单）始终保留毛玻璃，模糊度跟随 `banner.navbar.blur`，但有 `2px` 的最小值。
+
+所以把 `blur` 设为 `0` 只会关闭导航栏自身的毛玻璃，面板不受影响；纯色背景模式（`mode: "none"`）下面板保持不透明。
+
+全屏壁纸模式的导航栏不受此配置影响（由 `fullscreen.navbar.dynamicTransparent` 单独控制，见下文）。
+:::
+
+### 水波纹动画
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.waves.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用水波纹动画 |
+
+::: warning
+水波纹动画会影响页面性能，请根据需要开启。
+:::
+
+::: tip
+水波纹的用户切换开关已移至 `displaySettingsConfig.wavesSwitchable`，详见 [显示设置面板](./site.md#显示设置面板)。
+:::
+
+### 渐变过渡
+
+当水波纹关闭时自动启用，在壁纸底部提供到背景色的平滑渐变过渡效果。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `banner.gradient.enable` | `boolean \| { desktop, mobile }` | `{ desktop: true, mobile: true }` | 是否启用渐变过渡 |
+| `banner.gradient.height` | `string` | `"15vh"` | 渐变高度 |
+
+::: info
+渐变过渡与水波纹互斥：水波纹开启时渐变自动隐藏，水波纹关闭时渐变自动显示。两者的用户切换开关已移至 `displaySettingsConfig`，详见 [显示设置面板](./site.md#显示设置面板)。
+:::
+
 ## Fullscreen 模式配置
 
-全屏壁纸模式将背景图片铺满整个屏幕。
+全屏壁纸模式将背景图片**固定**铺满整个屏幕：
+
+- **首页**：首屏只显示壁纸与居中的首页标题，内容区位于首屏之下；下滑时内容区从底部滑上来覆盖壁纸，标题随滚动平滑上移并渐变消失，壁纸从首屏的清晰逐渐过渡到模糊
+- **其他页面**：与覆盖透明模式一致——壁纸固定模糊显示，内容在最上方
+- 壁纸**不透明**（背景透明度 `overlay.opacity` 不适用），模糊度（`blur`）、卡片透明度（`cardOpacity`）、层级（`zIndex`）均复用下方 `overlay` 模式的配置
+- 不显示水波纹与渐变过渡
 
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `fullscreen.position` | `string` | `"center"` | CSS `object-position` 值 |
+| `fullscreen.navbar.dynamicTransparent` | `boolean` | `true` | 是否开启动态透明导航栏：开启后**首页顶部**导航栏透明，下滑后变不透明（仅首页生效） |
+
+```ts
+fullscreen: {
+  position: "center",
+  navbar: {
+    dynamicTransparent: true,
+  },
+},
+```
+
+::: info
+全屏壁纸模式下导航栏默认完全透明（透明度由 `overlay.cardOpacity` 控制）。开启 `fullscreen.navbar.dynamicTransparent` 后，首页顶部导航栏变为透明、下滑后显示卡片底色。
+:::
 
 ## Overlay 模式配置
 
