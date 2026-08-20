@@ -132,6 +132,33 @@ export const backgroundWallpaper = {
 - 打字机**关闭** → 每次刷新随机显示一条副标题
 :::
 
+### 标题下方的链接图标
+
+在首页横幅标题下方显示一排可自定义的链接图标（半透明圆按钮）。
+
+| 属性 | 类型 | 默认值 | 说明 |
+|------|------|--------|------|
+| `common.homeText.linksEnable` | `boolean` | `true` | 是否显示标题下方的链接图标 |
+| `common.homeText.links` | `{ name; url; icon; showName? }[]` | - | 链接图标列表，为空则不显示 |
+
+- `name`：链接名称（用于 `aria-label` / `title` / 可选 `showName` 显示）
+- `url`：链接地址（`http(s)://` 外链自动新窗口打开）
+- `icon`：Iconify 图标，如 `fa7-brands:github`、`fa7-solid:envelope`、`fa7-solid:rss`、`mdi:rss` 等
+- `showName`：可选，`true` 时在图标旁显示文字
+
+```ts
+homeText: {
+  ...
+  links: [
+    { name: "GitHub", icon: "fa7-brands:github", url: "https://github.com/CuteLeaf" },
+    { name: "Email", icon: "fa7-solid:envelope", url: "mailto:xiaye@msn.com" },
+    { name: "RSS", icon: "fa7-solid:rss", url: "/rss/" },
+    // 可选显示文字
+    { name: "Blog", icon: "mdi:rss", url: "/rss/", showName: true },
+  ],
+},
+```
+
 ### 壁纸轮播
 
 横幅壁纸和全屏壁纸共享的轮播配置，仅在配置多张图片时生效。

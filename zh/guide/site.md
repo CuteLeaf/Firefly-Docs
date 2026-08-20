@@ -204,7 +204,7 @@ favicon: [
 | 属性 | 类型 | 默认值 | 说明 |
 |------|------|--------|------|
 | `categoryStyle` | `string` | `"rectangle"` | 分类导航栏按钮样式：`"pill"` 胶囊，`"rectangle"` 矩形 |
-| `tagStyle` | `string` | `"pill"` | 标签样式：`"pill"` 胶囊（中性灰底），`"rectangle"` 矩形（主题色底） |
+| `tagStyle` | `string` | `"pill"` | 标签样式：`"pill"` 胶囊（主题色底），`"pill-gray"` 胶囊（中性灰底），`"rectangle"` 矩形（主题色底） |
 
 ```ts
 categoryStyle: "rectangle",
@@ -221,7 +221,8 @@ tagStyle: "pill",
 
 | 取值 | 外观 |
 |------|------|
-| `"pill"` | 全圆角胶囊，中性灰底，hover 时变为主题色底 |
+| `"pill"` | 全圆角胶囊，主题色底（`--btn-content` 淡色调），hover 时加深并变为主题强调色 |
+| `"pill-gray"` | 全圆角胶囊，中性灰底，hover 时变为主题色底 |
 | `"rectangle"` | 小圆角矩形，直接使用主题色底（`--btn-regular-bg`），hover / 按下有深浅变化 |
 
 同时作用于三处标签：

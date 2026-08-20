@@ -130,6 +130,33 @@ Settings under `common` are shared between banner wallpaper and fullscreen wallp
 - Typewriter **disabled** — randomly shows one subtitle on each refresh
 :::
 
+### Link Icons Below the Title
+
+Shows a customizable row of link icons (translucent round buttons) below the home banner title.
+
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| `common.homeText.linksEnable` | `boolean` | `true` | Show the link icons below the title |
+| `common.homeText.links` | `{ name; url; icon; showName? }[]` | - | List of link icons. Empty to hide |
+
+- `name`: link name (used for `aria-label` / `title` / optional `showName` display)
+- `url`: link URL (`http(s)://` external links open in a new tab)
+- `icon`: Iconify icon, e.g. `fa7-brands:github`, `fa7-solid:envelope`, `fa7-solid:rss`, `mdi:rss`
+- `showName`: optional, `true` to show the name next to the icon
+
+```ts
+homeText: {
+  // ...
+  links: [
+    { name: "GitHub", icon: "fa7-brands:github", url: "https://github.com/CuteLeaf" },
+    { name: "Email", icon: "fa7-solid:envelope", url: "mailto:xiaye@msn.com" },
+    { name: "RSS", icon: "fa7-solid:rss", url: "/rss/" },
+    // optionally show text
+    { name: "Blog", icon: "mdi:rss", url: "/rss/", showName: true },
+  ],
+},
+```
+
 ### Wallpaper Carousel
 
 Shared carousel configuration for both banner and fullscreen modes. Only works when multiple images are configured.

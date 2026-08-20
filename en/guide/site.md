@@ -197,7 +197,7 @@ Both the category navigation buttons and the tag chips can switch between a "pil
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
 | `categoryStyle` | `string` | `"rectangle"` | Category navigation button style: `"pill"` or `"rectangle"` |
-| `tagStyle` | `string` | `"pill"` | Tag style: `"pill"` (neutral grey background) or `"rectangle"` (theme-colored background) |
+| `tagStyle` | `string` | `"pill"` | Tag style: `"pill"` (theme-colored background), `"pill-gray"` (neutral grey background), or `"rectangle"` (theme-colored background) |
 
 ```ts
 categoryStyle: "rectangle",
@@ -214,7 +214,8 @@ It applies to the **category navigation bar** only (top of the homepage and arch
 
 | Value | Appearance |
 |-------|------------|
-| `"pill"` | Fully rounded pill on a neutral grey background, turning theme-colored on hover |
+| `"pill"` | Fully rounded pill on a theme-colored background (light tint of `--btn-content`), deepening to the theme accent on hover |
+| `"pill-gray"` | Fully rounded pill on a neutral grey background, turning theme-colored on hover |
 | `"rectangle"` | Slightly rounded rectangle using the theme color (`--btn-regular-bg`) directly, with hover / active shade changes |
 
 It applies to all three tag locations:
