@@ -96,6 +96,12 @@ export default defineConfig({
                 { text: 'Live2D / Spine 模型', link: '/zh/guide/pio' },
               ],
             },
+            {
+              text: '开发者文档',
+              items: [
+                { text: '首屏闪烁排查', link: '/zh/guide/first-paint-flash.md' },
+              ],
+            },
           ],
         },
         outline: {
