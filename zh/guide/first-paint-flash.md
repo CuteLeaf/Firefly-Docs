@@ -157,6 +157,26 @@ navbar 等组件的 SSR 属性（如 `data-transparent-mode`）按 config 设置
   </script>
 ```
 
+## 模式切换验证矩阵
+
+壁纸模式切换的闪烁问题必须覆盖**全部分支**：4 种默认（config）模式 × 3 种其他运行时（存储）模式 = 12 个非平凡组合。验证时逐个测试"从设置面板切换 → 刷新"，确保首屏只加载切换后的模式，不闪烁其他模式的内容。
+
+| 默认(config) \ 运行时(存储) | banner | fullscreen | overlay | none |
+|---|---|---|---|---|
+| **banner** | — | 壁纸全屏/标题hero/内容首屏之下 | 壁纸全屏透明/标题隐藏/内容5.5rem | 纯色/壁纸隐藏/内容5.5rem |
+| **fullscreen** | 壁纸横幅/标题显示/内容横幅下方 | — | 壁纸全屏透明/标题隐藏 | 纯色/壁纸隐藏 |
+| **overlay** | 壁纸横幅/标题显示 | 壁纸全屏/标题hero | — | 纯色/壁纸隐藏 |
+| **none** | 壁纸横幅/标题显示 | 壁纸全屏/标题hero | 壁纸全屏透明/标题隐藏 | — |
+
+**每个组合需要检查的维度**：
+1. **壁纸**：尺寸正确（横幅 65vh / 全屏 100vh / overlay 全屏 / none 隐藏），不延迟出现、不先横幅后全屏
+2. **图片**：`object-fit: cover; object-position: center`，不出现"比视口宽、靠左→居中"位移
+3. **水波纹/渐变**：banner 显示，fullscreen/overlay/none 隐藏
+4. **横幅标题**：banner 和 fullscreen 首页显示；overlay/none/fullscreen 非首页隐藏
+5. **内容区**：位置正确（banner 下方 / fullscreen 首页首屏之下 / fullscreen 非首页 5.5rem / overlay/none 5.5rem）
+6. **导航栏**：透明模式正确（banner semi / fullscreen none 或 semifull / overlay none / none none）
+7. **body 类**：`enable-banner`/`no-banner-layout`/`wallpaper-transparent` 正确
+
 ## 排查清单
 
 1. **确认运行时模式正确**（`stored`/`mode`）——如果 stored 不是预期值，先排查设置面板的存储逻辑
@@ -169,7 +189,8 @@ navbar 等组件的 SSR 属性（如 `data-transparent-mode`）按 config 设置
 
 ## 已修复场景（2025-08）
 
-- 默认 fullscreen + 存储 banner → 刷新：壁纸/水波纹/内容区闪烁
+- 全部 12 个模式切换组合（见上表）：壁纸尺寸/水波纹/内容区/导航栏/横幅标题/图片定位首帧正确，刷新不闪烁
+- 监听器累积导致切页 CPU 高（另一问题，见代码提交记录）
 - 默认 banner + 存储 fullscreen → 刷新
 - 默认 overlay + 存储 banner → 刷新
 - overlay/fullscreen 壁纸首帧尺寸、全屏图片居中（移动端靠左→居中位移）
