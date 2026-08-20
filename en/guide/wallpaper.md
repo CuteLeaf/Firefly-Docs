@@ -259,6 +259,7 @@ Fullscreen wallpaper mode **fixes** the background image across the entire scree
 |----------|------|---------|-------------|
 | `fullscreen.position` | `string` | `"center"` | CSS `object-position` value |
 | `fullscreen.navbar.dynamicTransparent` | `boolean` | `true` | Enable dynamic transparent navbar: the navbar is transparent at the **top of the home page** and becomes opaque after scrolling (home page only) |
+| `fullscreen.blurRamp.enable` | `boolean \| object` | `{ desktop: true, mobile: true }` | Blur ramp toggle for the home page scroll (blur ramps from 0 to `overlay.blur` as you scroll). Supports a boolean or per-device `{ desktop, mobile }`; when disabled on a device, fullscreen wallpaper stays crisp there (home and other pages) and the settings-panel blur slider is hidden |
 
 ```ts
 fullscreen: {
@@ -266,11 +267,21 @@ fullscreen: {
   navbar: {
     dynamicTransparent: true,
   },
+  blurRamp: {
+    enable: {
+      desktop: true,
+      mobile: true,
+    },
+  },
 },
 ```
 
 ::: info
 In fullscreen mode the navbar is fully transparent by default (transparency is controlled by `overlay.cardOpacity`). With `fullscreen.navbar.dynamicTransparent` enabled, the home page's top navbar becomes transparent and shows a card background after scrolling.
+:::
+
+::: tip
+The crisp-to-blurred wallpaper transition on scroll is expensive on mobile GPUs (it re-rasterizes a full-screen blur). If scrolling feels laggy on mobile, set `blurRamp.enable.mobile` to `false` — fullscreen wallpaper stays crisp on that device and the settings-panel blur slider is hidden as well.
 :::
 
 ## Overlay Mode

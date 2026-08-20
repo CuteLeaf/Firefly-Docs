@@ -261,6 +261,7 @@ common: {
 |------|------|--------|------|
 | `fullscreen.position` | `string` | `"center"` | CSS `object-position` 值 |
 | `fullscreen.navbar.dynamicTransparent` | `boolean` | `true` | 是否开启动态透明导航栏：开启后**首页顶部**导航栏透明，下滑后变不透明（仅首页生效） |
+| `fullscreen.blurRamp.enable` | `boolean \| object` | `{ desktop: true, mobile: true }` | 首页下滑时壁纸模糊渐变开关（从 0 渐变为 `overlay.blur` 的最大模糊）。支持布尔值或分别设置桌面端 / 移动端；关闭后该设备上全屏壁纸保持清晰（首页与非首页都不模糊），设置面板的模糊度滑块也会隐藏 |
 
 ```ts
 fullscreen: {
@@ -268,11 +269,21 @@ fullscreen: {
   navbar: {
     dynamicTransparent: true,
   },
+  blurRamp: {
+    enable: {
+      desktop: true,
+      mobile: true,
+    },
+  },
 },
 ```
 
 ::: info
 全屏壁纸模式下导航栏默认完全透明（透明度由 `overlay.cardOpacity` 控制）。开启 `fullscreen.navbar.dynamicTransparent` 后，首页顶部导航栏变为透明、下滑后显示卡片底色。
+:::
+
+::: tip
+首页下滑时壁纸从清晰渐变到模糊，这个渐变在移动端 GPU 上开销较高（需要反复重栅格化全屏模糊）。若移动端感到卡顿，可将 `blurRamp.enable.mobile` 设为 `false`：此时该设备上全屏壁纸保持清晰，设置面板的模糊度滑块也会同步隐藏。
 :::
 
 ## Overlay 模式配置

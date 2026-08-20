@@ -59,6 +59,8 @@ A good workflow: keep the panel off in production for the smallest output, and w
 
 ::: info
 These sliders are shown in both **overlay** and **fullscreen wallpaper** modes (fullscreen reuses overlay's blur and card opacity configs). The **background opacity** slider only appears in overlay mode — it is hidden in fullscreen mode since the wallpaper is opaque.
+
+In **fullscreen wallpaper** mode, if the blur ramp toggle `fullscreen.blurRamp.enable` is disabled for the current device, the **background blur** slider is hidden as well — fullscreen wallpaper has no blur on that device, so adjusting it would have no effect. See [Wallpaper Config](./wallpaper.md).
 :::
 
 `overlaySwitchable` supports two formats:
