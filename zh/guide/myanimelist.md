@@ -60,11 +60,16 @@ mal: {
 | `mal.apiUrl` | `string` | `"https://api.myanimelist.net/v2"` | MAL API 地址 |
 | `mal.animeBaseUrl` | `string` | `"https://myanimelist.net/anime/"` | 动画条目详情页地址前缀，末尾需要带 `/` |
 | `mal.mangaBaseUrl` | `string` | `"https://myanimelist.net/manga/"` | 漫画条目详情页地址前缀，末尾需要带 `/` |
+| `mal.nsfw` | `"off" \| "blur" \| "hide"` | `"off"` | NSFW 处理：`off` 全部显示，`blur` 模糊封面，`hide` 隐藏条目（按 genre 匹配，如 Hentai） |
 | `pages.mal` | `boolean` | `true` | 是否启用 MyAnimeList 页面 |
 
 ::: tip
 `pnpm dev` 只获取第一页（100 条）以加快启动速度，`pnpm build` 才会获取全部数据 —— 每次请求 100 条，最多 1000 条，请求之间间隔 100 毫秒。
 :::
+
+### NSFW
+
+`mal.nsfw` 控制 NSFW 条目的处理方式。MAL 的列表接口不提供内容评级，因此按 genre 匹配：`"blur"` 会把 genre 列表里含 `Hentai` 的条目封面模糊化，`"hide"` 会将这些条目整体移除，`"off"` 全部照常显示。
 
 ### 封面说明
 

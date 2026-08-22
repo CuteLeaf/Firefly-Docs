@@ -60,11 +60,16 @@ mal: {
 | `mal.apiUrl` | `string` | `"https://api.myanimelist.net/v2"` | MAL API URL |
 | `mal.animeBaseUrl` | `string` | `"https://myanimelist.net/anime/"` | Anime detail page URL prefix, must end with `/` |
 | `mal.mangaBaseUrl` | `string` | `"https://myanimelist.net/manga/"` | Manga detail page URL prefix, must end with `/` |
+| `mal.nsfw` | `"off" \| "blur" \| "hide"` | `"off"` | NSFW handling: `off` show all, `blur` blur covers, `hide` remove entries (matched by genre, e.g. Hentai) |
 | `pages.mal` | `boolean` | `true` | Enable MyAnimeList page |
 
 ::: tip
 `pnpm dev` only fetches the first page (100 entries) to keep startup fast. `pnpm build` fetches everything — 100 entries per request, up to 1000 in total, with a 100 ms delay between requests.
 :::
+
+### NSFW
+
+`mal.nsfw` controls how NSFW entries are handled. MAL's list API exposes no content rating, so entries are matched by genre: `"blur"` blurs the covers of entries whose genre list includes `Hentai`, `"hide"` removes them entirely, `"off"` shows everything.
 
 ### Covers
 

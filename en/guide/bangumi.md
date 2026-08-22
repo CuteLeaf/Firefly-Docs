@@ -44,7 +44,12 @@ bangumi: {
 | `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API URL |
 | `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | Subject detail page URL prefix |
 | `bangumi.categoryOrder` | `string[]` | `["anime", "book", "music", "game"]` | Category display order |
+| `bangumi.nsfw` | `"off" \| "blur" \| "hide"` | `"off"` | NSFW handling: `off` show all, `blur` blur covers, `hide` remove entries |
 | `pages.bangumi` | `boolean` | `false` | Enable Bangumi page |
+
+### NSFW
+
+`bangumi.nsfw` controls how NSFW entries are handled. `"blur"` blurs the covers of entries Bangumi flags with the `subject.nsfw` field (falling back to matching R18 / adult-only tags); `"hide"` removes those entries from the list entirely; `"off"` shows everything. The `subject.nsfw` boolean comes straight from the Bangumi API.
 
 ### Data Mode
 

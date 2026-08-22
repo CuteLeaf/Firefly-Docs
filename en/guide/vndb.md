@@ -36,8 +36,8 @@ vndb: {
   vnBaseUrl: "https://vndb.org/",
   // Access token for private lists, static mode only
   apiToken: "",
-  // Blur NSFW covers
-  blurNsfw: true,
+  // NSFW handling: "off" show all | "blur" blur covers | "hide" remove entries
+  nsfw: "blur",
 },
 ```
 
@@ -51,7 +51,7 @@ vndb: {
 | `vndb.apiUrl` | `string` | `"https://api.vndb.org/kana"` | VNDB API URL |
 | `vndb.vnBaseUrl` | `string` | `"https://vndb.org/"` | Entry detail page URL prefix, must end with `/` |
 | `vndb.apiToken` | `string` | `""` | Access token for private lists. `static` mode only |
-| `vndb.blurNsfw` | `boolean` | `true` | Whether to blur NSFW covers |
+| `vndb.nsfw` | `"off" \| "blur" \| "hide"` | `"blur"` | NSFW handling: `off` show all, `blur` blur covers, `hide` remove entries |
 | `pages.vndb` | `boolean` | `true` | Enable VNDB page |
 
 ::: tip
@@ -97,7 +97,11 @@ Downloading only happens when all four conditions hold: `pages.vndb` is `true`, 
 
 ### NSFW Covers
 
-When `blurNsfw` is `true` (the default), covers whose VNDB image flags rate `sexual` or `violence` above 1 get a 20px blur. This is presentation only — the image itself is still loaded normally. Set it to `false` to show originals.
+`vndb.nsfw` controls how NSFW entries are handled:
+
+- `"blur"` (the default) blurs covers whose VNDB image flags rate `sexual` or `violence` above 1 by 20px. This is presentation only — the image itself is still loaded normally.
+- `"hide"` removes those entries from the list entirely, so they are never shown.
+- `"off"` shows everything unchanged.
 
 ## Page Features
 

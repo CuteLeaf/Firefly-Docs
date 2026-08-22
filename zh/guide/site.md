@@ -276,6 +276,7 @@ tagStyle: "pill",
 | `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API 地址 |
 | `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | 条目详情页地址 |
 | `bangumi.categoryOrder` | `string[]` | `["anime", "book", "music", "game"]` | 条目类型排序，数组中的类型将按顺序优先展示。可选值：`"anime"` `"book"` `"music"` `"game"` `"real"` |
+| `bangumi.nsfw` | `"off" \| "blur" \| "hide"` | `"off"` | NSFW 处理：`off` 全部显示，`blur` 模糊封面，`hide` 隐藏条目 |
 
 ::: tip
 `static` 模式下，`dev` 调试时只获取一页数据，`build` 才会获取全部数据。`dynamic` 模式下数据在浏览器中实时获取，始终为最新状态。
@@ -291,7 +292,7 @@ tagStyle: "pill",
 | `vndb.apiUrl` | `string` | `"https://api.vndb.org/kana"` | VNDB API 地址 |
 | `vndb.vnBaseUrl` | `string` | `"https://vndb.org/"` | 条目详情页地址，末尾需要带 `/` |
 | `vndb.apiToken` | `string` | `""` | 私密列表访问令牌，仅 `static` 模式生效。不要把真实令牌提交到公开仓库 |
-| `vndb.blurNsfw` | `boolean` | `true` | 是否模糊 NSFW 封面 |
+| `vndb.nsfw` | `"off" \| "blur" \| "hide"` | `"blur"` | NSFW 处理：`off` 全部显示，`blur` 模糊封面，`hide` 隐藏条目 |
 
 详见 [VNDB](./vndb.md)。
 

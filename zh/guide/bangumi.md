@@ -44,7 +44,12 @@ bangumi: {
 | `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API 地址 |
 | `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | 条目详情页地址前缀 |
 | `bangumi.categoryOrder` | `string[]` | `["anime", "book", "music", "game"]` | 条目类型展示排序 |
+| `bangumi.nsfw` | `"off" \| "blur" \| "hide"` | `"off"` | NSFW 处理：`off` 全部显示，`blur` 模糊封面，`hide` 隐藏条目 |
 | `pages.bangumi` | `boolean` | `false` | 是否启用番组计划页面 |
+
+### NSFW
+
+`bangumi.nsfw` 控制 NSFW 条目的处理方式。`"blur"` 会把被 Bangumi 通过 `subject.nsfw` 字段标记（缺失时回退到匹配 R18 / 成人向标签）的条目封面模糊化；`"hide"` 会把这些条目从列表里移除；`"off"` 全部照常显示。`subject.nsfw` 布尔值直接来自 Bangumi API。
 
 ### 数据模式
 

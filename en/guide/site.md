@@ -269,6 +269,7 @@ See [Display Settings Panel](./display-settings.md) for details.
 | `bangumi.apiUrl` | `string` | `"https://api.bangumi.one"` | Bangumi API URL |
 | `bangumi.subjectBaseUrl` | `string` | `"https://bangumi.one/subject/"` | Subject detail page URL |
 | `bangumi.categoryOrder` | `string[]` | `["anime", "book", "music", "game"]` | Category display order. Available values: `"anime"` `"book"` `"music"` `"game"` `"real"` |
+| `bangumi.nsfw` | `"off" \| "blur" \| "hide"` | `"off"` | NSFW handling: `off` show all, `blur` blur covers, `hide` remove entries |
 
 ::: tip
 In `static` mode, `dev` only fetches one page of data; `build` fetches all data. In `dynamic` mode, data is fetched in real-time in the browser and is always up-to-date.
@@ -284,7 +285,7 @@ In `static` mode, `dev` only fetches one page of data; `build` fetches all data.
 | `vndb.apiUrl` | `string` | `"https://api.vndb.org/kana"` | VNDB API URL |
 | `vndb.vnBaseUrl` | `string` | `"https://vndb.org/"` | Entry detail page URL, must end with `/` |
 | `vndb.apiToken` | `string` | `""` | Access token for private lists, `static` mode only. Never commit a real token to a public repository |
-| `vndb.blurNsfw` | `boolean` | `true` | Whether to blur NSFW covers |
+| `vndb.nsfw` | `"off" \| "blur" \| "hide"` | `"blur"` | NSFW handling: `off` show all, `blur` blur covers, `hide` remove entries |
 
 See [VNDB](./vndb.md) for details.
 

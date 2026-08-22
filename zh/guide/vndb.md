@@ -36,8 +36,8 @@ vndb: {
   vnBaseUrl: "https://vndb.org/",
   // 私密列表访问令牌，仅 static 模式下使用
   apiToken: "",
-  // 对 NSFW 的游戏封面模糊化
-  blurNsfw: true,
+  // NSFW 处理："off" 不过滤 | "blur" 模糊封面 | "hide" 隐藏条目
+  nsfw: "blur",
 },
 ```
 
@@ -51,7 +51,7 @@ vndb: {
 | `vndb.apiUrl` | `string` | `"https://api.vndb.org/kana"` | VNDB API 地址 |
 | `vndb.vnBaseUrl` | `string` | `"https://vndb.org/"` | 条目详情页地址前缀，末尾需要带 `/` |
 | `vndb.apiToken` | `string` | `""` | 私密列表访问令牌，仅 `static` 模式生效 |
-| `vndb.blurNsfw` | `boolean` | `true` | 是否模糊 NSFW 封面 |
+| `vndb.nsfw` | `"off" \| "blur" \| "hide"` | `"blur"` | NSFW 处理：`off` 全部显示，`blur` 模糊封面，`hide` 隐藏条目 |
 | `pages.vndb` | `boolean` | `true` | 是否启用 VNDB 页面 |
 
 ::: tip
@@ -97,7 +97,11 @@ VNDB 的收藏列表默认对外可见，此时不需要任何令牌。如果你
 
 ### NSFW 封面
 
-`blurNsfw` 为 `true`（默认）时，VNDB 图片标记中 `sexual` 或 `violence` 评级大于 1 的封面会被加上 20px 模糊。这是纯展示层处理，图片本身仍会正常加载。设为 `false` 则原图直接显示。
+`vndb.nsfw` 控制 NSFW 条目的处理方式：
+
+- `"blur"`（默认）：VNDB 图片标记中 `sexual` 或 `violence` 评级大于 1 的封面会被加上 20px 模糊。这是纯展示层处理，图片本身仍会正常加载。
+- `"hide"`：这些条目会直接从列表里移除，不再显示。
+- `"off"`：全部照常显示。
 
 ## 页面功能
 
