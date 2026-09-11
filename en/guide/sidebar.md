@@ -16,7 +16,11 @@ The Moments sidebar follows the `siteConfig.pages.dynamic` toggle and is hidden 
 | `position` | `string` | `"both"` | Sidebar position: `"left"`, `"right"`, `"both"` |
 | `tabletSidebar` | `string` | `"left"` | Which sidebar to show on tablet (769-1279px), only for `"both"` |
 | `hideSidebarOnPostPage` | `boolean` | `false` | Hide sidebar on post detail pages, set to `true` to show only on non-post pages like home |
-| `showBothSidebarsOnPostPage` | `boolean` | `true` | Show both sidebars on post pages when using single sidebar (requires `hideSidebarOnPostPage` to be `false`) |
+| `noSidebarContentWidth` | `number` | — | Ratio (0–1) of the wrapper's total width (sidebars + content column) that the content column takes when the page has no sidebar column at all. Unset means full page width |
+
+Whether a side appears is decided entirely by **whether that side has any visible component on the current page type** (the component-level `showOnPostPage` / `hideOnNonPostPage`), combined with the `position` gate. So to show both sidebars on post pages, just set `position` to `"both"` and configure `showOnPostPage` on both sides — no extra switch is needed.
+
+When neither side has a visible component on a page (or `hideSidebarOnPostPage` is `true`), that page is left with the content column only. If the text then reads too wide, set `noSidebarContentWidth` to a ratio and the content column is narrowed to it and centred. The ratio is relative to the **wrapper's total width** (sidebars + content column), so it looks consistent at every viewport width: `0.7` means 70% wide. Out-of-range values are clamped to `0–1`.
 
 ## Component Configuration
 

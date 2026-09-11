@@ -1,17 +1,17 @@
 # Footer
 
-The footer configuration allows injecting custom HTML content at the bottom of the site, such as ICP filing numbers.
+The footer sits at the global bottom of every page and consists of a dashed divider plus one centred block of text: custom content (optional), the copyright line with feed links, and the theme attribution. It is flush against the page's bottom edge and its width follows the content area (sidebars + main content).
 
 ## Config Files
 
-- TypeScript config: `src/config/footerConfig.ts`
-- HTML content: `src/config/FooterConfig.html`
+- Config: `src/config/footerConfig.ts`
+- Custom HTML: `src/config/FooterConfig.html`
 
 ## Properties
 
 | Property | Type | Default | Description |
 |----------|------|---------|-------------|
-| `enable` | `boolean` | `false` | Enable footer HTML injection |
+| `enable` | `boolean` | `false` | Enable the custom HTML injection from `FooterConfig.html` |
 
 ```ts
 export const footerConfig: FooterConfig = {
@@ -21,7 +21,7 @@ export const footerConfig: FooterConfig = {
 
 ## Custom Content
 
-Edit the `src/config/FooterConfig.html` file directly to add custom content:
+Set `enable` to `true`, then edit `src/config/FooterConfig.html` to add custom content such as an ICP filing number. The injected content renders at the **top** of the footer's centred text block (above the copyright line).
 
 ```html
 <!-- src/config/FooterConfig.html example -->

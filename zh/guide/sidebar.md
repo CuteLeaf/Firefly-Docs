@@ -16,7 +16,18 @@
 | `position` | `string` | `"both"` | 侧边栏位置：`"left"` 左侧、`"right"` 右侧、`"both"` 双侧 |
 | `tabletSidebar` | `string` | `"left"` | 平板端(769-1279px)显示哪侧，仅 `position` 为 `"both"` 时生效 |
 | `hideSidebarOnPostPage` | `boolean` | `false` | 文章详情页隐藏侧边栏，设为 `true` 则只在首页等非文章页显示 |
-| `showBothSidebarsOnPostPage` | `boolean` | `true` | 单侧栏时，是否在文章详情页显示双侧边栏（需 `hideSidebarOnPostPage` 为 `false`） |
+| `noSidebarContentWidth` | `number` | — | 本页没有任何侧栏列时，内容栏占包裹层总宽（侧栏 + 内容栏）的比例，0–1。不设置则铺满页面宽度 |
+
+某一侧是否出现，完全由**该侧组件在当前页型下有没有可见组件**决定（即组件的 `showOnPostPage` / `hideOnNonPostPage`），再叠加 `position` 的门控。因此想在文章页同时显示两侧，把 `position` 设为 `"both"`、并给两侧组件配好 `showOnPostPage` 即可，不需要额外开关。
+
+当某页两侧都没有可见组件（或 `hideSidebarOnPostPage` 为 `true`）时，该页只剩内容栏；此时若觉得正文过宽，用 `noSidebarContentWidth` 指定一个比例，内容栏会按该比例居中收窄。比例是相对**包裹层总宽**（即侧栏 + 内容栏的总宽）而言的，所以在任何视口下观感一致：`0.7` 就是七成宽。越界值会被钳到 `0–1`。
+
+```ts
+// 未设置 -> 铺满
+noSidebarContentWidth: undefined
+// 内容栏占七成并居中
+noSidebarContentWidth: 0.7
+```
 
 ```ts
 export const sidebarLayoutConfig: SidebarLayoutConfig = {
@@ -24,7 +35,7 @@ export const sidebarLayoutConfig: SidebarLayoutConfig = {
   position: "both",
   tabletSidebar: "left",
   hideSidebarOnPostPage: false,
-  showBothSidebarsOnPostPage: true,
+  noSidebarContentWidth: 0.7, // 内容栏占七成；不设置则铺满
   // ...
 };
 ```
