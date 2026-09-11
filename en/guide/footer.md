@@ -2,26 +2,9 @@
 
 The footer sits at the global bottom of every page and consists of a dashed divider plus one centred block of text: custom content (optional), the copyright line with feed links, and the theme attribution. It is flush against the page's bottom edge and its width follows the content area (sidebars + main content).
 
-## Config Files
-
-- Config: `src/config/footerConfig.ts`
-- Custom HTML: `src/config/FooterConfig.html`
-
-## Properties
-
-| Property | Type | Default | Description |
-|----------|------|---------|-------------|
-| `enable` | `boolean` | `false` | Enable the custom HTML injection from `FooterConfig.html` |
-
-```ts
-export const footerConfig: FooterConfig = {
-  enable: false,
-};
-```
-
 ## Custom Content
 
-Set `enable` to `true`, then edit `src/config/FooterConfig.html` to add custom content such as an ICP filing number. The injected content renders at the **top** of the footer's centred text block (above the copyright line).
+The footer's custom content comes from `src/config/FooterConfig.html`. It is **always on** — there is no switch: whatever the file contains gets rendered, and emptying (or deleting) it is how you turn the injection off. The injected content renders at the **top** of the footer's centred text block (above the copyright line).
 
 ```html
 <!-- src/config/FooterConfig.html example -->
@@ -30,6 +13,8 @@ Set `enable` to `true`, then edit `src/config/FooterConfig.html` to add custom c
 </div>
 ```
 
+If the file contains only HTML comments (e.g. a note to yourself), the comments are stripped and nothing is rendered.
+
 ::: tip
-After editing the HTML file, the page will auto-update in dev mode if `enable` is set to `true`.
+After editing the file, the page will auto-update in dev mode.
 :::

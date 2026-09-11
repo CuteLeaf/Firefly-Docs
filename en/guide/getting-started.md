@@ -71,7 +71,6 @@ All configuration files are located in the `src/config/` directory:
 | `expressiveCodeConfig.ts` | Code block configuration | [Code Block](./code-block.md) |
 | `effectsConfig.ts` | Effects configuration | [Effects](./effects.md) |
 | `announcementConfig.ts` | Announcement configuration | [Announcement](./announcement.md) |
-| `footerConfig.ts` | Footer configuration | [Footer](./footer.md) |
 | `licenseConfig.ts` | License configuration | [License](./license.md) |
 | `friendsConfig.ts` | Friends links configuration | [Friends](./friends.md) |
 | `sponsorConfig.ts` | Sponsor configuration | [Sponsor](./sponsor.md) |
