@@ -71,6 +71,7 @@ If an image fails to load, the front end swaps it for the first-letter block, so
 api: "https://a.favicon.im/{domain}"
 api: "https://favicon.im/{domain}"
 api: "https://www.google.com/s2/favicons?domain={domain}&sz=64"
+api: "https://favicondl.com/api/extract?url={domain}"
 ```
 
 If you'd rather not depend on a third-party service, set `favicon.enabled` to `false` — bookmarks without an `icon` will all show the first-letter block.
