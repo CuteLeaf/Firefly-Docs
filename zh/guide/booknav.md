@@ -71,6 +71,7 @@
 api: "https://a.favicon.im/{domain}"
 api: "https://favicon.im/{domain}"
 api: "https://www.google.com/s2/favicons?domain={domain}&sz=64"
+api: "https://favicondl.com/api/extract?url={domain}"
 ```
 
 如果不想依赖第三方服务，把 `favicon.enabled` 设为 `false`，未填 `icon` 的书签会统一显示首字母块。
